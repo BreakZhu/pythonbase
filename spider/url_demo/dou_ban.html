@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="zh-CN" class=" is-anonymous" ><head><meta charset="utf-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta http-equiv="Expires" content="Sun, 6 Mar 2005 01:00:00 GMT"><meta name="google-site-verification" content="Wyui6dsg_StZ9K3rJ6xtsNbxPhELyhMkEp2MsAhviBQ"><meta property="weixin:image" content="https://img3.doubanio.com/f/ark/be39d339b9b95b615e95c7dc542832c3e22ace84/pics/weixin_cover_new.png"><meta name="keywords" content="豆瓣阅读,原创,自出版,写作,作者,电子书,免费,豆瓣读书,小说,爱情,青春,文艺,都市,科幻,幻想,武侠,悬疑,推理,历史,故乡,海外,职业,喜剧,图画,畅销图书,买书"/><meta name="description" content="豆瓣阅读是优秀数字作品的阅读、出版平台，提供个人作者原创作品和出版社精品电子书，类型包括爱情、青春、文艺、都市、科幻、幻想、武侠、悬疑、推理、历史、故乡、海外、职业、喜剧等。支持 Web, iPhone, iPad, Android 多设备的同步阅读，支持批注、划线、分享、讨论。"/><link rel="shortcut icon" href="https://img3.doubanio.com/f/ark/659eb773e1f2fa4ba28fd8e0946258b85e7984d4/pics/favicon/favicon.ico" type="image/x-icon"><link rel="mask-icon" href="https://img3.doubanio.com/f/ark/d3da4917e951bca9782cbd65f1d64e72056fb7aa/pics/favicon/safari-mask-icon.svg" color="#5795aa"><title>原创作品 | 豆瓣阅读</title><link type="application/opensearchdescription+xml" rel="search" href="/opensearch"/><script>
+var Do=function(){Do.actions.push([].slice.call(arguments))};Do.ready=function(){Do.actions.push([].slice.call(arguments))},Do.add=Do.define=function(name,opts){Do.mods[name]=opts},Do.global=function(){Do.global.mods=Array.prototype.concat(Do.global.mods,[].slice.call(arguments))},Do.global.mods=[],Do.mods={},Do.actions=[];
+</script><link href="https://img3.doubanio.com/f/ark/369162b62dea612eef3fa594ab25b16107e64e16/css/store/main.css" rel="stylesheet"/><script src="https://img3.doubanio.com/f/ark/008728896b1d6eb8079cfb1da528ae16bd224553/js/lib/define.js"></script><script>
+  define.ns('Ark')
+  define.config({
+    'jquery': '$'
+  , 'piwik': 'Piwik'
+  , 'mod/ga': 'Ark.ga'
+  , 'mod/cookie': 'Ark.cookie'
+  , 'mod/ajax': 'Ark.ajax'
+  , 'mod/emitter': 'Ark.Emitter'
+  , 'mod/lang': 'Ark._'
+  , 'mod/template': 'Ark.template'
+  , 'mod/url': 'Ark.url'
+  , 'ui/slide': 'Ark.Slide'
+  , 'ui/overlay': 'Ark.overlay'
+  , 'ui/dialog': 'Ark.dialog'
+  , 'widget/profile': 'Ark.profile'
+  })
+
+  Do.add('common', {
+    path: "https://img3.doubanio.com/f/ark/a0b3f0a19bbfc7a7a0b69a68d6535e699c7c03f5/js/mod/common.js"
+  , type: 'js'
+  })
+
+  Do.add('mod/cookie', {
+    path: "https://img3.doubanio.com/f/ark/c6df3ed9983e0976b97065f61c9360e92a8ceb14/js/mod/cookie.js"
+  , type: 'js'
+  })
+
+  Do.add('mod/ajax', {
+    path: "https://img3.doubanio.com/f/ark/545a8e9800bbd85a100fbb4a5937d576a56d8e7b/js/mod/ajax.js"
+      , requires: ['mod/cookie']
+    , type: 'js'
+  })
+
+  Do.add('mod/ga', {
+    path: "https://img3.doubanio.com/f/ark/28d0301da87d6665cbada654f444ac6e14d77cf7/js/mod/ga.js"
+  , type: 'js'
+  })
+
+  Do.add('mod/lang', {
+    path: "https://img3.doubanio.com/f/ark/38757b09c0a4a1b9fbd70df51717870e471e6e34/js/mod/lang.js"
+  , type: 'js'
+  })
+
+  Do.add('mod/emitter', {
+    path: "https://img3.doubanio.com/f/ark/d97d4d7d5d37a671b9a4003ef4e953f7f493022b/js/mod/emitter.js"
+  , requires: ['mod/lang']
+  , type: 'js'
+  })
+
+  Do.add('mod/template', {
+    path: "https://img3.doubanio.com/f/ark/ea49b2c6322cb90f6e34a54e2c27350a96cc6757/js/mod/template.js"
+  , requires: ['mod/lang']
+  , type: 'js'
+  })
+
+  Do.add('mod/url', {
+    path: "https://img3.doubanio.com/f/ark/6dca3a50c972874ee9e8d1a227db9a4483958abb/js/mod/url.js"
+  , type: 'js'
+  })
+
+  Do.add('widget/profile', {
+    path: "https://img3.doubanio.com/f/ark/72d288a3e4b62881d1cd155796f2b0c01bd57c8b/js/widget/profile.js"
+  , requires: ['mod/template', 'mod/cookie']
+  , type: 'js'
+  })
+
+  Do.add('ui/slide', {
+    path: 'https://img3.doubanio.com/f/ark/4b894abf9601fc55ed97083c99196ff84654fa9c/js/ui/slide.js'
+  , requires: ['mod/emitter']
+  , type: 'js'
+  })
+
+  Do.add('ui/overlay', {
+    path: 'https://img3.doubanio.com/f/ark/b499e5d8c93c45fa94dd6697dfb61f93b7807e00/js/ui/overlay.js'
+  , requires: ['mod/emitter']
+  , type: 'js'
+  })
+
+  Do.add('ui/dialog', {
+    path: 'https://img3.doubanio.com/f/ark/b3a1dadfe2fc54320de686f086fa09435585e8e8/js/ui/dialog.js'
+  , requires: ['ui/overlay', 'mod/emitter']
+  , type: 'js'
+  })
+</script><script>
+define.config({
+  'widget/purchase-mixin/ga': 'Ark.PurchaseMixinGa'
+, 'widget/afford-gift': 'Ark.AffordGiftWidget'
+, 'lib/fsm': 'StateMachine'
+})
+
+Do.add('search', {
+  path: "https://img3.doubanio.com/f/ark/15b36c78900a53b66ceeeb87751badc98199f336/js/store/search.js",
+  requires: ['mod/template'],
+  type: 'js'
+});
+
+if (typeof window.Promise !== 'function' || typeof Object.assign !== 'function') {
+  Do.global("https://img3.doubanio.com/f/ark/b4f0d1bd7d54bca571e1ba6f32112b0b88093fc2/js/lib/core-js/shim.js")
+}
+
+Do('common');</script><script>
+    define.config({
+      'widget/login-and-signup': 'Ark.loginAndSignup'
+    })
+
+    Do.add('widget/login-and-signup'
+      , { path: 'https://img3.doubanio.com/f/ark/d49ac5eb3aa2dc1f2c8ec25361c3bbd55055f7b6/js/widget/login-and-signup.js'
+        , requires: ['ui/dialog']
+        , type: 'js'})
+
+    Do.add('widget/store/login-and-signup'
+      , { path: 'https://img3.doubanio.com/f/ark/39126a6aebbaadba81ea72420f34f3ace1502b32/js/store/widget/login-and-signup.js'
+        , requires: ['widget/login-and-signup', 'mod/ga']
+        , type: 'js'})
+
+    var Ark = Ark || {}
+    Ark.DOUBAN_LOGIN_POPUP_URL = 'https://accounts.douban.com/popup/login'
+    Do('widget/store/login-and-signup')
+  </script><link href="https://img3.doubanio.com/f/ark/408c76f28c827c4667f210c994bb0565f08485cd/css/store/index.css" rel="stylesheet"/><link href="https://img3.doubanio.com/f/ark/8973f12f3c7fd4c141d6c9aa801d6d855a0e354c/css/store/xiaoya/header-entrance.css" rel="stylesheet"/><link href="https://img3.doubanio.com/f/ark/de671d2239935949802987d80f9151f064800526/css/store/mod/header-competition.css" rel="stylesheet"/><script>
+!function(){var matched=/^#?ebook-(\d+)$/.exec(location.hash);if(matched){var articleId=matched[1];location.replace("/ebook/"+articleId+"/")}}();
+
+define.config({
+  'ui/collapse': 'Ark.Collapse'
+});
+Do.add('app', {path: 'https://img3.doubanio.com/f/ark/8c9e146882f920fc951f9aa95e269359c6ca4cd7/js/store/works_index.js'})
+Do.add('ui/collapse', {path: 'https://img3.doubanio.com/f/ark/f65dbccd50bab2a6dcb928731a7f098fe6a2c9fd/js/ui/collapse.js'})
+define.ns("Ark");define.config({"widget/tabs": "Ark.Tabs", "store/async-section": "Ark.asyncSection"});Do.add("widget/tabs", {"path": "https://img3.doubanio.com/f/ark/0e0e5ae57fd9ba7ccd53480dd1b0677cbf6788b2/js/widget/tabs.js", "export_name": "Ark.Tabs"});Do.add("store/async-section", {"path": "https://img3.doubanio.com/f/ark/a0ccbe3ad537ba3c3c69dbadb3cb68b413840826/js/store/async-section.js", "export_name": "Ark.asyncSection", "requires": ["ui/slide", "widget/tabs", "mod/ajax"]})
+Do('app')
+Do('store/async-section', function() {
+  Ark.asyncSection()
+})</script><script>
+define.config({
+  'mod/lazyload': 'Ark.Lazyload'
+});
+Do.add('mod/lazyload', {
+  path: "https://img3.doubanio.com/f/ark/37d8c32658fd7869e623957062a6174129b6f232/js/mod/lazyload.js"
+, requires: ['mod/lang']
+, type: 'js'
+});
+Do('mod/lazyload', function() {
+  Ark.Lazyload.apply()
+})</script><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');</script><script>
+ga('create', 'UA-7019765-12');</script></head><body itemscope itemtype="http://schema.org/WebPage"><div class="wrapper"><header><div class="top-info"><div class="inner"><h1 title="豆瓣阅读" class="logo"><a href="/">豆瓣阅读</a></h1><form action="/search" method="get" id="frm-search"><input type="text" name="q" maxlength="60" size="22" value="" placeholder="作品 / 电子书 / 专栏连载 / 作者 / 出版社" autocomplete="off" id="input-query"/><input type="submit" value="搜索" id="btn-search"/></form><ul id="suggest-list" class="suggests-list"></ul><script>
+Do('search')</script><ul class="entrances"><!-- _performtips_ --><li class="app-download"><a href="/app/"><span class="icon-phone"></span><span class="btn-text">客户端免费下载</span></a></li></ul></div></div><nav class="nav nav-store"><div class="inner"><ul itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement" class="nav-main items"><li class="on"><a href="/" itemprop="url"><span itemprop="name">原创作品</span></a></li><li><a href="/ebooks/" itemprop="url"><span itemprop="name">电子图书</span></a></li><li><a href="/columns/" itemprop="url"><span itemprop="name">专栏连载</span></a></li><li><a href="/essays/" itemprop="url"><span itemprop="name">短篇</span></a></li><li><a href="/translation/" itemprop="url"><span itemprop="name">译者项目</span></a></li><li><a href="/competition/" itemprop="url"><span itemprop="name">征文大赛</span></a><sup class="icon-flag flag-ing"></sup></li><li><a href="/kind/0?min_price=0&amp;max_price=0" itemprop="url"><span itemprop="name">免费</span></a></li><li><a href="/bulletins/saleofrights" itemprop="url"><span itemprop="name">出版与改编 </span></a></li></ul><ul class="items items-minor user-info"><li><a data-target-dialog="login" href="https://www.douban.com/accounts/login" class="login">登录</a></li><li><a data-target-dialog="signup" href="https://www.douban.com/accounts/register" class="signup">注册</a></li></ul></div></nav></header><div class="main" ><aside class="col col3"><section class="submit-prompt"><div class="hd"><div class="dot"></div><p><em class="count">48176</em><br/>位作者正在豆瓣阅读写作</p></div><div class="bd"><p class="tip">我要发表</p><ul class="submit-types"><a href="/article_v2/create_by_steps" onClick="" class="open "><li>中长篇作品</li></a><a href="/submit/application?via=column" onClick="" class="open "><li>专栏连载</li></a><a href="/submit/application?via=essay" onClick="" class="open "><li>短篇</li></a><a href="/article_v2/competition/create_by_steps" onClick="" class="open "><li>征文大赛</li></a></ul><a href="/submit/intro" class="write-here">了解在豆瓣阅读发表作品</a></div></section><section class="reading-devices"><div class="hd lined"><h3>阅读平台</h3></div><div class="bd"><ul class="app-list"><li class="web-app"><a href="/reader/" class="icon-device-web">Web</a></li><li class="others-app"><a href="/app/" target="_blank" class="icon-device-ipad"><span class="title">阅读器下载</span><span class="detail"><b>iPhone</b><b>iPad</b><b>Android</b></span></a></li></ul></div></section><section class="kinds tabs-container has-levels"><div class="hd lined"><h3>作品分类</h3></div><div class="bd"><ul id="works-form-tabs" class="tabs-header"><li class=ark-tab-activated>小说</li><li >非小说</li></ul><ul class="list kinds-list tab-panel"><li><a href="/kind/532">女性小说</a></li><li><a href="/kind/501">言情小说</a></li><li><a href="/kind/508">悬疑小说</a></li><li><a href="/kind/509">推理小说</a></li><li><a href="/kind/505">科幻小说</a></li><li><a href="/kind/506">幻想小说</a></li><li><a href="/kind/503">文艺小说</a></li><li><a href="/kind/502">青春小说</a></li><li><a href="/kind/504">都市小说</a></li><li><a href="/kind/507">武侠小说</a></li><li><a href="/kind/510">历史小说</a></li><li><a href="/kind/511">故乡小说</a></li><li><a href="/kind/512">海外小说</a></li><li><a href="/kind/513">职业故事</a></li><li><a href="/kind/514">喜剧故事</a></li><li><a href="/kind/515">图画故事</a></li></ul><ul class="list kinds-list tab-panel"><li><a href="/kind/517">文艺散文</a></li><li><a href="/kind/518">评论随笔</a></li><li><a href="/kind/519">文化</a></li><li><a href="/kind/520">历史纪实</a></li><li><a href="/kind/521">情感成长</a></li><li><a href="/kind/522">旅行游记</a></li><li><a href="/kind/523">生活风尚</a></li><li><a href="/kind/525">科技科普</a></li><li><a href="/kind/526">行业</a></li><li><a href="/kind/527">摄影</a></li><li><a href="/kind/528">漫画绘本</a></li><li><a href="/kind/529">设计艺术</a></li><li><a href="/kind/530">诗歌</a></li><li><a href="/kind/531">剧本</a></li></ul></div></section><div data-async-section-uri="/j/home/works_rankings"></div><div data-async-section-uri="/j/activities/for_indie_store"></div><section class="press-contact"><div class="hd lined"><h3>纸书出版代理</h3></div><div class="bd">豆瓣阅读将在作者的授权下，对在豆瓣阅读发表的作品代理纸书出版事宜，同时接受出版社的合作联系。<br/><a href="/press/">查看详情</a></div></section><section><div class="hd lined"><h3>版权合作</h3></div><div class="bd">影视版权、图书出版、内容入驻等机构方合作，请邮件联系我们<p class="email">read@douban.com</p></div></section><section class="embassy"><div class="hd lined"><h3>关注我们</h3></div><div class="bd"><ul class="embassy-list"><li class="item"><a href="https://site.douban.com/133573/" target="_blank"><i class="icon-embassy icon-embassy-douban"></i><h4>豆瓣小站：豆瓣阅读</h4><h5>编辑手记 & 进展通告</h5></a></li><li class="item"><a href="http://weibo.com/u/2485884157" target="_blank"><i class="icon-embassy icon-embassy-weibo"></i><h4>@豆瓣阅读<i class="icon-embassy-weibov"></i></h4><h5>优秀作品与作者推荐</h5></a></li><li class="item"><i class="icon-embassy icon-embassy-wechat"></i><h4>豆瓣阅读</h4><h5>精品文章每日推送</h5><div class="qrcode-wechat-subscription"></div></li><li class="item"><i class="icon-embassy icon-embassy-wechat"></i><h4>豆瓣阅读服务号</h4><h5>充值、购买问题反馈</h5><div class="qrcode-wechat-service"></div></li></ul></div></section></aside><article class="col col10"><section class="slide-show"><div class="slide-screen"><ul class="slide-list"><li class="slide-item"><a href="https://read.douban.com/competition/2018/?icn=web_banner&amp;icn=index-banner"><img src="https://img3.doubanio.com/view/ark_campaign_pic/large/public/6430.jpg" width="696px" height="205px" /></a></li><li class="slide-item"><a href="https://read.douban.com/reader/bulletin/58391221/?icn=index-banner"><img src="https://img3.doubanio.com/view/ark_campaign_pic/large/public/6624.jpg" width="696px" height="205px" /></a></li><li class="slide-item"><a href="https://read.douban.com/biggie/2/?icn=app-banner&amp;icn=index-banner"><img src="https://img3.doubanio.com/view/ark_campaign_pic/large/public/6485.jpg" width="696px" height="205px" /></a></li><li class="slide-item"><a href="https://read.douban.com/biggie/1/?icn=pc-banner&amp;icn=index-banner"><img src="https://img3.doubanio.com/view/ark_campaign_pic/large/public/6543.jpg" width="696px" height="205px" /></a></li></ul></div><div class="slide-action"><div class="slide-btns"><a href="#" class="prev"></a><a href="#" class="next"></a></div><ol class="slide-controls"><li><a data-index="1" href="#" class="active"></a></li><li><a data-index="2" href="#" class=""></a></li><li><a data-index="3" href="#" class=""></a></li><li><a data-index="4" href="#" class=""></a></li></ol></div></section><section class="header-xiaoya"><div class="hd lined"><h3>「小雅奖」</h3><span class="subtitle">每周奖励最好的原创写作</span></div><div class="bd col-media"><div class="cm-left"><div class="billboard-wrapper"><div class="billboard"><span class="icon-xiaoya-logo"></span><time>第一百四十期</time><section><dt>最佳作品</dt><dd><a href="/ebook/55600551/" title="再见恩格斯" target="_self">《再见恩格斯》</a></dd></section><section><dt>最佳专栏连载</dt><dd><a href="/ebook/53422280/" title="从二而终" target="_self">《从二而终》</a></dd></section><section><dt>最佳作者</dt><dd><a href="/author/63686835/" title="猫爪君" target="_self">猫爪君</a></dd></section><footer><span class="icon-watermark-logo"></span></footer></div></div></div><div class="xiaoya-news cm-body"><ul class="news-list"><li><a href="/reader/column/1696110/chapter/58256942/" target="_blank"><h3 class="title">猫爪君：一边丧着，一边寻找亮光</h3><div class="news-abstract col-media"><div class="figure cm-left "><img src="https://img1.doubanio.com/view/ark_works_pic/common-small/public/1028541169.jpg"/></div><p class="text cm-body">我猜我的丧多半是源于狭窄的生活。我的学霸之路止于高一，也没有靠打架逃学成为地方传奇，深度社恐，完全不文青，而且不喜欢旅行——我去过的地方屈指可数，数来数去不过是加勒比、伦敦、巴黎和埃及。当然这并不难，买一份《刺客信条》合集就能做到。 小雅奖·最佳作…</p></div></a></li><li><a href="/reader/column/1696110/chapter/57982849/" target="_blank"><h3 class="title">在野：无聊的人生，我死也不要</h3><div class="news-abstract col-media"><div class="figure cm-left "><img src="https://img3.doubanio.com/view/ark_works_pic/common-small/public/1025335155.jpg"/></div><p class="text cm-body">以前我听说过一句话，叫二流小说写情节，一流小说写人物。不记得是谁说的，也不知道对不对，但我认可这句话，因为回想起我看过的那么多书，情节早就不记得了，但是那些个性鲜明的角色，一辈子都忘不了。所以我决定写人。小雅奖·最佳作品 第一百四十期：《再见恩格斯…</p></div></a></li></ul></div></div><div class="ft"><a href="/xiaoya/" target="_blank" class="lnk-more"><span class="text">查看获奖作品详情</span><span class="icon-arrow-right"></span></a></div></section><section class="summary featured-works"><div class="hd lined"><h3>编辑推荐<span class="help-tip"></span></h3></div><div class="bd"><a href="#" class="slide-prev">&#8249;</a><div class="carousel"><div class="slide-list"><ul class="slide-item list-col list-col2 summary-list"><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/57169218/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/57169218.jpg?v=1539582061.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/57169218/?icn=index-indie-rec">阳光洒肩头</a></h4><div class="author"><span class="orig-author">章叶良</span></div><div class="rec-intro">喜欢《肖申克的救赎》的你一定不要错过。</div><div class="price-info"><span class="price-tag discount"><s class="original-tag">5.99元</s><span class="discount-price">0.00元</span></span><a href="https://read.douban.com/reader/ebook/57169218/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/55600551/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/55600551.jpg?v=1535096338.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/55600551/?icn=index-indie-rec">再见恩格斯</a></h4><div class="author"><span class="orig-author">在野</span></div><div class="rec-intro">热血少年陈俊与傲娇少年肖承，梦想成为最伟大的漫画家，那个夏天的一场意外却让他们不得不分离。这是一个关于青春、友谊、梦想的故事。</div><div class="price-info"><span class="price-tag discount"><s class="original-tag">1.99元</s><span class="discount-price">0.00元</span></span><a href="https://read.douban.com/reader/ebook/55600551/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/51580680/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/51580680.jpg?v=1526871723.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/51580680/?icn=index-indie-rec">急诊室伤痕女神：生命之光</a></h4><div class="author"><span class="orig-author">祖乐</span></div><div class="rec-intro">第五届豆瓣阅读征文大赛“新女性故事·职业组”首奖作品《急诊室伤痕女神》长篇版。</div><div class="price-info"><span class="price-tag ">3.99元</span><a href="https://read.douban.com/reader/ebook/51580680/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/56371118/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/56371118.jpg?v=1538042644.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/56371118/?icn=index-indie-rec">脑王争霸赛</a></h4><div class="author"><span class="orig-author">Airs</span></div><div class="rec-intro">谁才是最强大脑？！感受最日系的人生羁绊、最热血的脑力竞赛。</div><div class="price-info"><span class="price-tag discount"><s class="original-tag">1.99元</s><span class="discount-price">0.00元</span></span><a href="https://read.douban.com/reader/ebook/56371118/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li></ul><ul class="slide-item list-col list-col2 summary-list"><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/48785838/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/48785838.jpg?v=1526017901.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/48785838/?icn=index-indie-rec">飞蛾之刃</a></h4><div class="author"><span class="orig-author">一耳</span></div><div class="rec-intro">一起疑似自杀案，牵扯出一系列谋杀，凶手动机匪夷所思，层层悬念待你破解。</div><div class="price-info"><span class="price-tag discount"><s class="original-tag">3.99元</s><span class="discount-price">0.00元</span></span><a href="https://read.douban.com/reader/ebook/48785838/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/56006961/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/56006961.jpg?v=1536227827.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/56006961/?icn=index-indie-rec">生瓜</a></h4><div class="author"><span class="orig-author">张敦</span></div><div class="rec-intro">新千年伊始某末流大学里的一段三角恋爱，根据作家张敦亲身经历改编，字里行间满是青春荷尔蒙的味道。</div><div class="price-info"><span class="price-tag ">5.99元</span><a href="https://read.douban.com/reader/ebook/56006961/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/55188168/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/55188168.jpg?v=1534732074.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/55188168/?icn=index-indie-rec">好项目烂团队</a></h4><div class="author"><span class="orig-author">兰思思</span></div><div class="rec-intro">职场小兵吴雪笛被上司一脚踹进莫明其妙的项目组，然而，雪迪深深怀疑，靠这些队友能把项目做成功吗？</div><div class="price-info"><span class="price-tag ">3.99元</span><a href="https://read.douban.com/reader/ebook/55188168/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/50862009/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/50862009.jpg?v=1532677164.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/50862009/?icn=index-indie-rec">手臂糖</a></h4><div class="author"><span class="orig-author">密斯赵</span></div><div class="rec-intro">五个在美国发生的女性故事。到底要多优秀才能超越“女性”的身份呢？
+</div><div class="price-info"><span class="price-tag ">1.99元</span><a href="https://read.douban.com/reader/ebook/50862009/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li></ul><ul class="slide-item list-col list-col2 summary-list"><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/53783926/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/53783926.jpg?v=1535098965.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/53783926/?icn=index-indie-rec">罪恶的枷锁 Ⅲ</a></h4><div class="author"><span class="orig-author">艾石</span></div><div class="rec-intro">吴忌的身边人纷纷意外死亡，是“死神来了”还是惊天阴谋？冤有头债有主，罪恶之旅迎来终结！</div><div class="price-info"><span class="price-tag discount"><s class="original-tag">4.99元</s><span class="discount-price">0.00元</span></span><a href="https://read.douban.com/reader/ebook/53783926/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/55737660/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/55737660.jpg?v=1534302457.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/55737660/?icn=index-indie-rec">八大金刚</a></h4><div class="author"><span class="orig-author">木十</span></div><div class="rec-intro">暴力阴影下失控的青春状态，命运交错的北国少年成长史。</div><div class="price-info"><span class="price-tag discount"><s class="original-tag">2.99元</s><span class="discount-price">0.00元</span></span><a href="https://read.douban.com/reader/ebook/55737660/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/54507345/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/54507345.jpg?v=1532915855.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/54507345/?icn=index-indie-rec">看不见的高墙</a></h4><div class="author"><span class="orig-author">辽京</span></div><div class="rec-intro">怀揣画家梦想的我认识了做人体模特的姑娘，从遇见她的那一刻起我就被她牵着走，直到我成了她的同谋犯……</div><div class="price-info"><span class="price-tag ">2.99元</span><a href="https://read.douban.com/reader/ebook/54507345/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/53474382/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/53474382.jpg?v=1533026351.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/53474382/?icn=index-indie-rec">潮汐预报</a></h4><div class="author"><span class="orig-author">林津鲈</span></div><div class="rec-intro">六个女性，六片海，六种荒诞或孤独。</div><div class="price-info"><span class="price-tag ">1.99元</span><a href="https://read.douban.com/reader/ebook/53474382/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li></ul><ul class="slide-item list-col list-col2 summary-list"><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/53572867/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/53572867.jpg?v=1533203139.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/53572867/?icn=index-indie-rec">天海</a></h4><div class="author"><span class="orig-author">冯朱乙</span></div><div class="rec-intro">海边少年的奇幻之旅，清新亮丽的文字走进破碎的童年梦境。</div><div class="price-info"><span class="price-tag ">1.99元</span><a href="https://read.douban.com/reader/ebook/53572867/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/53275139/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img1.doubanio.com/view/ark_article_cover/retina/public/53275139.jpg?v=1532942499.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/53275139/?icn=index-indie-rec">情热</a></h4><div class="author"><span class="orig-author">Yohi</span></div><div class="rec-intro">一场美男动了心的美男计；一出民国谍战版“爱情无间道”。</div><div class="price-info"><span class="price-tag ">2.99元</span><a href="https://read.douban.com/reader/ebook/53275139/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/48673120/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/48673120.jpg?v=1526870113.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/48673120/?icn=index-indie-rec">两个人的晚餐</a></h4><div class="author"><span class="orig-author">叶眉</span></div><div class="rec-intro">他们都曾遭受重创，现在他们都很懂得珍惜。</div><div class="price-info"><span class="price-tag ">4.99元</span><a href="https://read.douban.com/reader/ebook/48673120/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li><li class="item"><div class="border-wrap"><div class="cover shadow-cover"><a href="/ebook/53874415/?icn=index-indie-rec" class="pic" target="_self" ><img width="110px" height="164px" src="https://img3.doubanio.com/view/ark_article_cover/retina/public/53874415.jpg?v=1532312593.0" alt="" itemprop="image"></a></div><div class="info"><h4 class="title"><a href="/ebook/53874415/?icn=index-indie-rec">他点火的方式</a></h4><div class="author"><span class="orig-author">温凯尔</span></div><div class="rec-intro">爱无能的人，在面对感情时，该如何打破那些深潜的自我预言？
+</div><div class="price-info"><span class="price-tag ">3.99元</span><a href="https://read.douban.com/reader/ebook/53874415/" target="_blank" class="btn btn-preview">试读</a></div></div></div></li></ul></div></div><a href="#" class="slide-next">&#8250;</a></div></section><section data-async-section-uri="/j/home/gallery"><div class="hd lined"><h3>画册</h3></div><div class="bd"><div class="loading-tip">载入中<span class="icon-loading"></span></div></div></section><section data-async-section-uri="/j/home/topics_sections"><div class="hd lined"><h3>专题</h3></div><div class="bd"><div class="loading-tip">载入中<span class="icon-loading"></span></div></div></section><section data-async-section-uri="/j/home/recommend_authors"><div class="hd lined"><h3>推荐作者</h3></div><div class="bd"><div class="loading-tip">载入中<span class="icon-loading"></span></div></div></section><section data-async-section-uri="/j/home/popular_works"><div class="hd lined"><h3>读者好评</h3></div><div class="bd"><div class="loading-tip">载入中<span class="icon-loading"></span></div></div></section><section data-async-section-uri="/j/home/top_agents"><div class="hd lined"><h3>畅销作者</h3></div><div class="bd"><div class="loading-tip">载入中<span class="icon-loading"></span></div></div></section></article><div class="footer-banner"><a href="/app/" title="豆瓣阅读 5.0 客户端"><img width="936px" height="90px" alt="豆瓣阅读 5.0 客户端" src="https://img3.doubanio.com/f/ark/137e3687b354ae340aa972ff94521070ba22960d/pics/ad/app-v5-banner@2x.png"/></a></div><script type="application/ld+json">
+{ "@context": "http://schema.org", "@type": "WebSite", "url": "https://read.douban.com/", "potentialAction": { "@type": "SearchAction", "target": "https://read.douban.com/search?q={search_term_string}", "query-input": "required name=search_term_string" }
+}</script><footer><div class="inner"><div class="copyright"> &copy; 2014 - 2018 read.douban.com, all rights reserved&nbsp;&nbsp;<a href="https://img3.doubanio.com/f/ark/6a5d1af222427b7b6b68637df8644a20c60ae8fe/pics/license/ark-reading-business-license-mark.png" target="_blank">北京方舟阅读科技有限公司</a><br><a href="https://www.douban.com/about?topic=licence" target="_blank">网络视听许可证0110418号</a>&nbsp;&nbsp;<a href="https://img3.doubanio.com/f/ark/d5c4fef08b1bd6fdc8f480540b9784dc0c35d7fc/pics/license/ark-reading-publications-business-license-mark.png" target="_blank">新出发京批字第直160030号</a>&nbsp;&nbsp;文网文[2009]267号&nbsp;&nbsp;(总)网出证(京)字129号 <img width="15" height="17" src="https://img3.doubanio.com/f/ark/b231fcec16444a6fad1339b7a08ff4c3c7d1feab/pics/biaoshi.png" /></div><div class="ft-nav"><a href="/contact">联系我们</a>·<a href="/copyright">版权声明</a>·<a href="/guideline">内容导则</a>·<a href="/submit/faq">作者帮助中心</a>·<a href="/faq">读者帮助中心</a>·<a href="/careers">来这里工作</a></div><script>
+  Do('mod/cookie', function() {
+    $('.go-mobile').on('click', function(e) {
+      e.preventDefault();
+      Ark.cookie('page_style', 'mobile', {
+        path: '/',
+        'max-age': 60 * 60 * 24
+      });
+      location.reload();
+    });
+  });
+</script></div></footer><script src="https://img3.doubanio.com/f/ark/913550dbbb37e996a58047048c529b289fa031a9/js/lib/do/init.js" data-cfg-corelib="https://img3.doubanio.com/f/ark/f1b13eaf4d5e88f8f2e692e0c3014d4ae330a952/js/lib/jquery/jquery.js"></script></div></div><script>
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+  var p=(('https:' == document.location.protocol) ? 'https' : 'http'), u=p+'://fundin.douban.com/';
+  _paq.push(['setTrackerUrl', u+'piwik']);
+  _paq.push(['setSiteId', '100001']);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript';
+  g.defer=true;
+  g.async=true;
+  g.src=p+'://img3.doubanio.com/dae/fundin/piwik.js';
+  s.parentNode.insertBefore(g,s);
+})();
+
+
+  ga('require', 'ecommerce', 'ecommerce.js');
+  ga('require', 'campaignLoader', { debug: false });
+  ga('campaignLoader:loadCampaignFields');
+
+  ga('send', 'pageview', {
+    hitCallback: window.Ark && Ark.onGAPageViewDone
+  });
+
+
+
+
+
+
+
+
+
+ga('set', 'dimension2', '-1');
+
+
+ga('set', 'dimension5', 'none');
+
+
+ga('set', 'dimension3', 'desktop');</script><script async="async" src="https://img3.doubanio.com/f/ark/471e046670e720dd18df29b8d0ac5a73f095257d/js/widget/campaign-loader.js"></script><!-- brand76-docker --></body></html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/weixin_43415194/article/details/83188356"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="1：区分‘+’是字符连接符还是算术运算符
+代码如下：
+
+运行结果如下：
+
+可以看出规律+号是连接符要匹配到字符串才是连接符，要结合运算先后顺序判断是连接符还是算术运算符加号
+2：java的格式化输出的两种方式
+a,熟悉c语言的都知道用printf输出，Java是在c的基础上发展而来的，也保留了printf功能，测试代码如下：
+
+测试结果如下：
+
+可以看出和c的输出大同小异，双引号中的输出格式和引号..." />
+    <meta name="keywords" content="java String方法" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>java常用String方法——通过实例代码测试 - weixin_43415194的博客 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9b39979775.min.css">
+
+    <script type="text/javascript">
+        var username = "weixin_43415194";
+        var blog_address = "https://blog.csdn.net/weixin_43415194";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/weixin_43415194/article/details/83188356"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "java常用String方法——通过实例代码测试 - weixin_43415194的博客";
+        var articleID = "83188356";
+
+        var nickName = "皮雷付";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">java常用String方法——通过实例代码测试</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月19日 21:34:07</span>
+					<a class="follow-nickName" href="https://me.csdn.net/weixin_43415194" target="_blank">皮雷付</a>
+						<span class="read-count">阅读数：263</span>
+						
+														<span class="tags-box artic-tag-box">
+								<span class="label">标签：</span>
+																<a data-track-click='{"mod":"popu_626","con":"java String方法"}' data-track-view='{"mod":"popu_626","con":"java String方法"}' class="tag-link" href="http://so.csdn.net/so/search/s.do?q=java String方法&t=blog" target="_blank">java String方法																</a>
+							</span>
+																					<div class="tags-box space">
+								<span class="label">个人分类：</span>
+																<a class="tag-link" href="https://blog.csdn.net/weixin_43415194/article/category/8233057"  target="_blank">原创																</a>
+							</div>
+																								</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <div class="markdown_views prism-atom-one-dark">
+							<!-- flowchart 箭头图标 勿删 -->
+							<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path></svg>
+							<p><strong>1：区分‘+’是字符连接符还是算术运算符</strong><br>
+代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019203145436?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+运行结果如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019203819143?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>可以看出规律+号是连接符要匹配到字符串才是连接符，要结合运算先后顺序判断是连接符还是算术运算符加号</strong></p>
+<p><strong>2：java的格式化输出的两种方式</strong><br>
+a,熟悉c语言的都知道用printf输出，Java是在c的基础上发展而来的，也保留了printf功能，测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/201810192045475?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+测试结果如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019204654245?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>可以看出和c的输出大同小异，双引号中的输出格式和引号外面是相对应的</strong><br>
+b:format方法输出；<br>
+测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019205138679?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>需要注意的是format方法是通过String.调用的，（实际上基本所有String类方法都是通过String对象.或者String.调用的），然后把输出结果辅助给一个新的String对象，然后输出</strong><br>
+结果如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019205554213?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>3：endWith判断字符串是否以某一个字符结尾，stratsWith判断是否以某一个字符开始。</strong></p>
+<p>测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019205858593?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019205931484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+输出结果如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019210019631?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>注释：endWith，stratsWith 需要注意的是判断返回的类型是blooean型变量</strong></p>
+<p><strong>4：将字符串转化为数组输出–getChars（）</strong><br>
+测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019210359224?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>注释：字符串转化为的是字符性数组.</strong><br>
+测试结果如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019210648426?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>5：比较字符串是否相同–eqluas</strong><br>
+测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019210956903?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+测试结果如下：**<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019211033985?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>注释：测试得知返回的是·blooean变量</strong></p>
+<p><strong>6：查找特定字符–indexOf</strong><br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019211344865?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><strong>注释：代码s.indexOf(“b”,“3”)的意思是从第三个（包含第三个）开始查找。</strong><br>
+测试结果如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019211731434?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>注释：通过结果可以找到indexOf方法如果查到该字符从0开始计算，如果找不到返回—1</strong></p>
+<p><strong>7替换特定字符–s.replace</strong><br>
+测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019212221461?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+测试结果如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019212310948?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+*<strong>8：拆分字符串–split’</strong><br>
+测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019212518840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>注释：由于拆分后，不再是单独字符串，而是多个字符串，所以应该赋值给字符数组</strong><br>
+输出结果如下<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/2018101921272947?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>9:将字符串的大写字母全部转换为小写——toLowerCase<br>
+将字符串的小写字母全部转换为大写–toUpperCas</strong><br>
+测试代码如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019213017886?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+输出结果如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019213058242?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>10：去掉空格–trim</strong><br>
+测试代码如下：<br>
+<img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019213216374?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">结果如下：</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdn.net/20181019213254454?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzQxNTE5NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br>
+<strong>注释：trim去掉的是首尾空格</strong></p>
+<p>、</p>
+
+            </div>
+						<link href="https://csdnimg.cn/release/phoenix/mdeditor/markdown_views-778f64ae39.css" rel="stylesheet">
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/weixin_43415194/article/details/83188356,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/weixin_43415194/article/details/83188356,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/ICANTRYIT/article/details/53487332,BlogCommendFromQuerySearch_15"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/ICANTRYIT/article/details/53487332,BlogCommendFromQuerySearch_15"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/ICANTRYIT/article/details/53487332?utm_source=blogxgwz0" target="_blank" title="JAVA常用类库--String类的常用方法及说明">
+				<h4 class="text-truncate oneline">
+						JAVA常用类库--String类的常用方法及说明				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/B/9/C/3_icantryit.jpg" alt="ICANTRYIT" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">ICANTRYIT</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-06</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1021</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/ICANTRYIT/article/details/53487332?utm_source=blogxgwz0" target="_blank" title="JAVA常用类库--String类的常用方法及说明">
+							<span class="desc oneline">一、String
+String类的基本特点
+1、String类的两种实例化方式
+String类是一个类，所以使用时候就要依靠对象，而String的对象有两种实例化方式
+（1）、直接赋值：String ...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/ICANTRYIT?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> ICANTRYIT的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/Tsaryu/article/details/62235686,BlogCommendFromQuerySearch_19"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/Tsaryu/article/details/62235686,BlogCommendFromQuerySearch_19"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/Tsaryu/article/details/62235686?utm_source=blogxgwz1" target="_blank" title="java十五个常用类学习及方法举例">
+				<h4 class="text-truncate oneline">
+						java十五个常用类学习及方法举例				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/7/4/3_tsaryu.jpg" alt="Tsaryu" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">Tsaryu</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-15</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							8433</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/Tsaryu/article/details/62235686?utm_source=blogxgwz1" target="_blank" title="java十五个常用类学习及方法举例">
+							<span class="desc oneline">一．实验名称：掌握java的十五个常用类二．实验目的：掌握JAVA常用类，包括Scanner类，System类，String类，Arrays类，Integer类，Long类，Short类，Boolea...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/Tsaryu?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Tsaryu的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+									<!-- 第四范式广告开关 -->
+				<div class="p4courset3_target _4paradigm_box recommend-item-box clearfix" ></div>
+				<script>window.p4sdk_enable_recommendBox=true</script>
+			
+					<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/qwertyupoiuytr/article/details/68201710,BlogCommendFromQuerySearch_23"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/qwertyupoiuytr/article/details/68201710,BlogCommendFromQuerySearch_23"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/qwertyupoiuytr/article/details/68201710?utm_source=blogxgwz2" target="_blank" title="Java常用数据结构使用举例">
+				<h4 class="text-truncate oneline">
+						Java常用数据结构使用举例				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/F/F/5/3_qwertyupoiuytr.jpg" alt="qwertyupoiuytr" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">qwertyupoiuytr</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-29</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1167</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/qwertyupoiuytr/article/details/68201710?utm_source=blogxgwz2" target="_blank" title="Java常用数据结构使用举例">
+							<span class="desc oneline">﻿﻿
+
+
+
+
+Enumeration：
+
+
+
+
+
+import java.util.Vector;
+import java.util.Enumeration;
+
+ 
+pu...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/qwertyupoiuytr?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Han的小站</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_387","con":",https://download.csdn.net/download/jiangjian6510401/2112956,BlogCommendFromQuerySearch_0"}' data-track-click='{"mod":"popu_387","con":",https://download.csdn.net/download/jiangjian6510401/2112956,BlogCommendFromQuerySearch_0"}'>
+			<a href="https://download.csdn.net/download/jiangjian6510401/2112956?utm_source=blogxgwz3" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							Java常用实例程序						</h4>
+						<span class="data float-right">03-10</span>
+					</div>
+					<div class="desc oneline">
+							Java常用实例程序Java常用实例程序Java常用实例程序Java常用实例程序Java常用实例程序Java常用实例程序Java常用实例程序Java常用实例程序					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/shanshan_blog/article/details/54709318,BlogCommendFromQuerySearch_1"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/shanshan_blog/article/details/54709318,BlogCommendFromQuerySearch_1"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/shanshan_blog/article/details/54709318?utm_source=blogxgwz4" target="_blank" title="java中常用字符串操作方法">
+				<h4 class="text-truncate oneline">
+						java中常用字符串操作方法				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/9/7/3_shanshan_blog.jpg" alt="shanshan_blog" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">shanshan_blog</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">01-24</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1903</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/shanshan_blog/article/details/54709318?utm_source=blogxgwz4" target="_blank" title="java中常用字符串操作方法">
+							<span class="desc oneline">在编程的过程中，经常会进行截取、替换等操作，每次又记不清使用String类的哪个方法，还要去查，很费时费力，于是把字符串常用方法总结一下，方便以后查阅，也希望能给博友带去一些便利。好了，话不多说，直接...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/shanshan_blog?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> shanshan_blog的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/beauty_1991/article/details/51318316,BlogCommendFromQuerySearch_2"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/beauty_1991/article/details/51318316,BlogCommendFromQuerySearch_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/beauty_1991/article/details/51318316?utm_source=blogxgwz5" target="_blank" title="Java-常用方法汇总">
+				<h4 class="text-truncate oneline">
+						Java-常用方法汇总				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/D/A/3_beauty_1991.jpg" alt="beauty_1991" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">beauty_1991</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-04</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1353</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/beauty_1991/article/details/51318316?utm_source=blogxgwz5" target="_blank" title="Java-常用方法汇总">
+							<span class="desc oneline">1.  java.lang 类 Integer方法： public static int parseInt(String s)描述： 将字符串参数作为有符号的十进制整数进行解析。除了第一个字    符...</span>
+						</a>
+                        					</p>
+			</div>
+					</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/lipengshiwo/article/details/52319174,BlogCommendFromQuerySearch_3"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/lipengshiwo/article/details/52319174,BlogCommendFromQuerySearch_3"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/lipengshiwo/article/details/52319174?utm_source=blogxgwz6" target="_blank" title="Java常用方法函数总结">
+				<h4 class="text-truncate oneline">
+						Java常用方法函数总结				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/7/B/4/3_lipengshiwo.jpg" alt="lipengshiwo" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">lipengshiwo</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-25</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							890</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/lipengshiwo/article/details/52319174?utm_source=blogxgwz6" target="_blank" title="Java常用方法函数总结">
+							<span class="desc oneline">判断字符串为空的方法
+
+
+public static boolean isNull(String... obj){
+                for(String s : obj){
+     ...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/lipengshiwo?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Hugo.Lee的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_387","con":",https://download.csdn.net/download/u011192855/7715047,BlogCommendFromQuerySearch_4"}' data-track-click='{"mod":"popu_387","con":",https://download.csdn.net/download/u011192855/7715047,BlogCommendFromQuerySearch_4"}'>
+			<a href="https://download.csdn.net/download/u011192855/7715047?utm_source=blogxgwz7" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							20个常用的ava程序片段.doc						</h4>
+						<span class="data float-right">08-05</span>
+					</div>
+					<div class="desc oneline">
+							20个常用的Java程序块 详细 //1. 字符串有整型的相互转换 002 String a =... java常用设计模式 java常用类 java常用包 java常用方法 java常用api java常用的..					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_387","con":",https://download.csdn.net/download/luckygino/1357750,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_387","con":",https://download.csdn.net/download/luckygino/1357750,BlogCommendFromQuerySearch_5"}'>
+			<a href="https://download.csdn.net/download/luckygino/1357750?utm_source=blogxgwz8" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							Java常用数据库的连接方法						</h4>
+						<span class="data float-right">05-27</span>
+					</div>
+					<div class="desc oneline">
+							Java常用数据库的连接方法
+Java常用数据库的连接方法					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/baidu_36583119/article/details/78573011,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/baidu_36583119/article/details/78573011,BlogCommendFromQuerySearch_6"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/baidu_36583119/article/details/78573011?utm_source=blogxgwz9" target="_blank" title="java代码的测试手段">
+				<h4 class="text-truncate oneline">
+						java代码的测试手段				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/7/7/4/3_baidu_36583119.jpg" alt="baidu_36583119" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">baidu_36583119</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-19</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							480</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/baidu_36583119/article/details/78573011?utm_source=blogxgwz9" target="_blank" title="java代码的测试手段">
+							<span class="desc oneline">一、控制台打印输出try{
+         System.out.println(&amp;quot;加载配置:&amp;quot;+configuration.getClass());
+         retu...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/baidu_36583119?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> baidu_36583119的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/u011001084/article/details/79216958" target="_blank">
+						java常用</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/u011001084/article/details/79216958" target="_blank">
+						Java常用</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/weixin_42290280/article/details/82498852" target="_blank">
+						java常用对象</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/zhj870975587/article/details/50996811" target="_blank">
+						JAVA常用集合</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/qq_23211905/article/details/72472861" target="_blank">
+						JAVA常用公式</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/weixin_43415194">
+                <img src="https://avatar.csdn.net/2/9/3/3_weixin_43415194.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/weixin_43415194" target="_blank" class="" id="uid">皮雷付</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="2">
+                        <dt><a href="https://blog.csdn.net/weixin_43415194?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/weixin_43415194?t=1"><span class="count">2</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="2">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">2</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>喜欢</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>评论</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="1级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-1"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="285">
+                285            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="22">
+                22            </dd>
+        </dl>
+        <dl title="2243837">
+            <dt>排名：</dt>
+            <dd>224万+</dd>
+        </dl>
+    </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-百度联盟-300x250 --><script type="text/javascript" src="//rabc1.iteye.com/source/api/ymebi.js?bwoc=oltly"></script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/weixin_43415194/article/details/83154535" target="_blank">java特点（面向对象思想）</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    <div id="asideCategory" class="aside-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/weixin_43415194/article/category/8233057">
+                    <span class="title oneline">原创</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/weixin_43415194/article/category/8233058">
+                    <span class="title oneline">总结</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideArchive" class="aside-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/weixin_43415194/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/weixin_43415194/article/details/83154535">java特点（面向对象思想）</a>
+					<p class="read">阅读量：<span>3</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/weixin_43415194/article/details/83188356">java常用String方法——通过实例代码测试</a>
+					<p class="read">阅读量：<span>0</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/source/res/yn6yz.js?ojylrgb=yk"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_382" data-pid="69" data-track-view='{"mod":"kp_popu_382","con":",,"}'><script>
+var mediav_ad_pub = 'cXt9eo_2313086';
+var mediav_ad_width = '500';
+var mediav_ad_height = '36';
+</script>
+<script type="text/javascript" language="javascript" charset="utf-8"  src="//static.mediav.com/js/mvf_g2.js"></script></div><script>$(function(){csdn.track.viewCheck($("#kp_box_382"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/weixin_43415194/article/details/83154535" title="java特点（面向对象思想）">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/weixin_43415194/article/details/83154535" title="java特点（面向对象思想）">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+											</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 16;
+    var articleId = "83188356";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/weixin_43415194/article/details/83188356";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = '';
+		var highlight = ["java\u5e38\u7528","string","\u65b9\u6cd5","\u901a\u8fc7","\u5b9e\u4f8b","\u4ee3\u7801\u6d4b\u8bd5"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"shanshan_blog","nick_name":"shanshan_blog","avatar":"https:\/\/avatar.csdn.net\/9\/9\/7\/3_shanshan_blog.jpg","is_expert":false,"article_count":149},{"user_name":"beauty_1991","nick_name":"\u76ee\u4e4b\u5b50\u53f6","avatar":"https:\/\/avatar.csdn.net\/8\/D\/A\/3_beauty_1991.jpg","is_expert":false,"article_count":73},{"user_name":"lipengshiwo","nick_name":"HugoforAndroid","avatar":"https:\/\/avatar.csdn.net\/7\/B\/4\/3_lipengshiwo.jpg","is_expert":false,"article_count":160},{"user_name":"baidu_36583119","nick_name":"\u4e0d\u559c\u6b22\u86c0\u7259","avatar":"https:\/\/avatar.csdn.net\/7\/7\/4\/3_baidu_36583119.jpg","is_expert":false,"article_count":91},{"user_name":"wxddsr","nick_name":"\u83dc\u997c","avatar":"https:\/\/avatar.csdn.net\/B\/B\/8\/3_wxddsr.jpg","is_expert":false,"article_count":7},{"user_name":"weixin_30363263","nick_name":"\u5c71\u9b3c\u8c23\u5f0b\u75d5\u5915","avatar":"https:\/\/avatar.csdn.net\/E\/9\/B\/3_weixin_30363263.jpg","is_expert":false,"article_count":349},{"user_name":"kaishizhangcheng","nick_name":"FlyingZCC","avatar":"https:\/\/avatar.csdn.net\/3\/C\/2\/3_kaishizhangcheng.jpg","is_expert":false,"article_count":23},{"user_name":"pmcasp","nick_name":"Mr_Pmc","avatar":"https:\/\/avatar.csdn.net\/3\/8\/8\/3_pmcasp.jpg","is_expert":false,"article_count":98},{"user_name":"zhangwen809877665","nick_name":"wen_\u6c76","avatar":"https:\/\/avatar.csdn.net\/0\/2\/D\/3_zhangwen809877665.jpg","is_expert":false,"article_count":32},{"user_name":"ICANTRYIT","nick_name":"ICANTRYIT","avatar":"https:\/\/avatar.csdn.net\/B\/9\/C\/3_icantryit.jpg","is_expert":false,"article_count":2}];
+
+		var articleType = 1;
+		var CopyrightContent = '';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

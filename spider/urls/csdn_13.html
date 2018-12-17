@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/Ch97CKd/article/details/83026657"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="最近一个朋友进入梦寐以求的大公司，和我抱怨了下，他们大公司代码写的也不怎么好，连他一个菜鸡都能看出逻辑漏洞，都没人改。让他有点怀疑人生了。那么为什么有的大公司代码也会如此..." />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>为什么有的大公司代码也很烂？ - 何俊林 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9b39979775.min.css">
+
+    <script type="text/javascript">
+        var username = "Ch97CKd";
+        var blog_address = "https://blog.csdn.net/ch97ckd";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/Ch97CKd/article/details/83026657"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin3-template";
+        // 第四范式所需数据
+        var articleTitles = "为什么有的大公司代码也很烂？ - 何俊林";
+        var articleID = "83026657";
+
+        var nickName = "何俊林";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">为什么有的大公司代码也很烂？</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月12日 11:34:31</span>
+					<a class="follow-nickName" href="https://me.csdn.net/Ch97CKd" target="_blank">何俊林</a>
+						<span class="read-count">阅读数：5610</span>
+						
+																															</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								<div class="article-copyright">
+					版权声明：本文为博主原创文章，未经博主允许不得转载。					https://blog.csdn.net/Ch97CKd/article/details/83026657				</div>
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e4c7a3727d.css" />
+						<div class="htmledit_views">
+                
+    <div class="rich_media_content" id="js_content">
+                    
+
+                    
+
+                    
+                    
+                    <p style="font-size:inherit;color:inherit;line-height:inherit;">最近一个朋友进入梦寐以求的大公司，和我抱怨了下，他们大公司代码写的也不怎么好，连他一个菜鸡都能看出逻辑漏洞，都没人改。让他有点怀疑人生了。那么为什么有的大公司代码也会如此烂呢？</p><p style="font-size:inherit;color:inherit;line-height:inherit;">很多人第一个给的原因就是：<strong>历史原因</strong>。可能这是最重要的点，如果是老项目，几乎每个人都是一来接手一个项目，如果之前维护这个项目的人，水平比较高，代码行云流水，代码规范，逻辑严谨度都很高，恭喜你，你获取一个学习优秀代码的成长起点。对于你是幸运的，鱼哥之前接触过这样的项目，真是写的好，巧妙的设计模式，逻辑清晰，和读系统源码一样。但是你没那么幸运，接手一个水平不是很高的团队维护的代码，那你就有事情做了，重新写，还是重构。烂代码跟一坨屎一样，<strong>很多时候就是和一坨屎共处千万别深挖</strong>，说不定把哪里挖塌了把你埋了，扔一坨代码到屎山上，达到自己目的，能跑就行了，你还要搞清楚山上的屎哪一坨是谁拉的，拉的人吃了什么，就没什么意思了。能在超级大的屎山上扔一坨代码进去，把自己的事干了，也是本事真的，毕竟谁没维护过烂代码。复杂度足够大，都会成为屎山的，什么设计模式都没什么鸟用。这时候可以花时间加班来重写吧，不然你干不下去的，等着你的要么走人。</p><p style="font-size:inherit;color:inherit;line-height:inherit;">大公司业务逻辑复杂这点很容易理解，一个系统和N多系统集成，一个业务对象上百个字段和几十种状态，一个流程几十个环节。大公司人员变动大很多开发的还是外包人员，外包人员的流动性可想而知。技术更新换代代价太大。但没有人敢去推倒重来，单单修改后的测试工作量就不可小觑。<strong>而且改好了无功（不出绩效），改出问题了谁都负责不起，所以只要代码能工作，后面的开发都是在上面修修补补，导致整体代码千疮百孔惨不忍睹</strong>。技术leader只关注功能，不关注代码很多leader其实根本不是写代码写上去的，而是直接就去做了“架构师”，说实话他自己都写不好代码，这也是很主要的一个原因。</p><p style="font-size:inherit;color:inherit;line-height:inherit;">还有，领导也不会关心你什么技术实现，不会关心你是10行代码还是1000行代码。所以，这种背景下，要把代码写得好到好像一个人写的一样人能看懂，还是很难的。老代码只要没有毛病，没人会去优化装饰，没有人会去干这些吃力不讨好的工作，代码重构/代码评审很多时候是流于形式，只是说说而已。有些大项目每年的代码量以50%速度增加，真是好大的负资产啊！</p><p style="font-size:inherit;color:inherit;line-height:inherit;">那有人说，大公司不是每个人技术都很强的么？有这个想法的人，你就大错特错了，大公司每年都会校招很多应届生，有些应届生在短短几年后成才起来，跑路了，有些没有成长起来的，还是要持续写代码，那么自然就有隐患了，如果不是很精干的工程师来负责review代码的话。就会变成一个一坨屎坑。面试时，招大牛是需要价钱的，很多公司由于成本原因，并不会这么去做。</p><p style="font-size:inherit;color:inherit;line-height:inherit;">一个团队，在任何时候，都应该分辨得出：<br />分辨什么样的烂是真烂，什么样的烂是业务复杂；<br />分辨不出，就不要去修改。</p><p style="font-size:inherit;color:inherit;line-height:inherit;">也应该积极寻求：如果是业务复杂，能不能更简化更抽象一些；如果是烂，能不能在有限的成本中改好一些。</p><p style="text-align:center;margin-left:16px;"><img src="https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_png/WGyNiboAjLV4QX0Su58jFKy3ZAuKRiaHmia3VuKQAnZXRcqO1QQ8X4GuKwUpF5mg2OkEf1n8YkVLZVaXkxjRF3xoQ/640?wx_fmt=png" alt="640?wx_fmt=png" /></p>
+                </div>
+              </div>
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/Ch97CKd/article/details/83026657,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/Ch97CKd/article/details/83026657,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/lxrj2008/article/details/9073163,BlogCommendESEnWordWeight_0"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/lxrj2008/article/details/9073163,BlogCommendESEnWordWeight_0"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/lxrj2008/article/details/9073163?utm_source=blogxgwz0" target="_blank" title="为什么大公司几乎都不找.net开发人员">
+				<h4 class="text-truncate oneline">
+						为什么大公司几乎都不找.net开发人员				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/6/C/3_lxrj2008.jpg" alt="lxrj2008" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">lxrj2008</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">06-10</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2270</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/lxrj2008/article/details/9073163?utm_source=blogxgwz0" target="_blank" title="为什么大公司几乎都不找.net开发人员">
+							<span class="desc oneline">经常逛csdn的招聘栏目，像百度、腾讯、360等知名企业招聘要求中有需要java的、php的却唯独没有要  .net开发人员呢？求高人解疑。...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/lxrj2008?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> lxrj2008的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/jennyvenus/article/details/41176973,BlogCommendESEnWordWeight_4"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/jennyvenus/article/details/41176973,BlogCommendESEnWordWeight_4"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/jennyvenus/article/details/41176973?utm_source=blogxgwz1" target="_blank" title="见过比csdn还烂的论坛吗？">
+				<h4 class="text-truncate oneline">
+						见过比csdn还烂的论坛吗？				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/C/0/3_jennyvenus.jpg" alt="jennyvenus" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">jennyvenus</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-16</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1627</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/jennyvenus/article/details/41176973?utm_source=blogxgwz1" target="_blank" title="见过比csdn还烂的论坛吗？">
+							<span class="desc oneline">见过比csdn还烂的论坛吗？</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/jennyvenus?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 娃娃猪的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+									<!-- 第四范式广告开关 -->
+				<div class="p4courset3_target _4paradigm_box recommend-item-box clearfix" ></div>
+				<script>window.p4sdk_enable_recommendBox=true</script>
+			
+					<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/wangshubo1989/article/details/50670514,BlogCommendESEnWordWeight_3"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/wangshubo1989/article/details/50670514,BlogCommendESEnWordWeight_3"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/wangshubo1989/article/details/50670514?utm_source=blogxgwz2" target="_blank" title="当写烂代码的人离职之后....">
+				<h4 class="text-truncate oneline">
+						当写烂代码的人离职之后....				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/0/3/3_wangshubo1989.jpg" alt="wangshubo1989" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">wangshubo1989</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">02-15</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1.2万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/wangshubo1989/article/details/50670514?utm_source=blogxgwz2" target="_blank" title="当写烂代码的人离职之后....">
+							<span class="desc oneline">半个月没有写blog了，正好是春节假期。 
+静下来，想想自己写的代码，真是有些汗颜，更有些惶恐。 
+加油吧~偶尔看到拉勾网上的一篇文章，记录下来，鞭策自己： 
+作者：蛋疼的AXB 
+来源：程序人生休息...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/wangshubo1989?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> wangshubo1989的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/u014646358/article/details/42131639,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/u014646358/article/details/42131639,BlogCommendFromQuerySearch_6"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/u014646358/article/details/42131639?utm_source=blogxgwz3" target="_blank" title="为什么很多大公司都面试算法和数据结构">
+				<h4 class="text-truncate oneline">
+						为什么很多大公司都面试算法和数据结构				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/3/7/3_u014646358.jpg" alt="u014646358" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u014646358</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-24</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2.9万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/u014646358/article/details/42131639?utm_source=blogxgwz3" target="_blank" title="为什么很多大公司都面试算法和数据结构">
+							<span class="desc oneline">参加过大公司的招聘，尤其是校园招聘的同学，很容易发现：很多大公司，都喜欢面试算法和数据结构。
+
+  以前，我对这个问题有点思考。最近，有个小雷粉，特意问到了这个问题。so，简单说几句，吐槽乐一乐。...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/u014646358?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 不知</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/googdev/article/details/69396488,BlogCommendESEnWordWeight_11"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/googdev/article/details/69396488,BlogCommendESEnWordWeight_11"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/googdev/article/details/69396488?utm_source=blogxgwz4" target="_blank" title="代码很烂，所以离职？">
+				<h4 class="text-truncate oneline">
+						代码很烂，所以离职？				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/6/0/E/3_googdev.jpg" alt="googdev" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">googdev</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-06</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1.5万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/googdev/article/details/69396488?utm_source=blogxgwz4" target="_blank" title="代码很烂，所以离职？">
+							<span class="desc oneline">前一段时间一直在面试，有很多感悟，今天分享下其中的一个话题。我在面试的时候通常会问这么一个问题：你为什么离职？其中有不少同学会提到这么一个原因，现在的项目代码太烂了，前人留下了很多坑，我实在忍受不了了...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/googdev?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> stormzhang的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/u011284909/article/details/9326709,BlogCommendFromQuerySearch_16"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/u011284909/article/details/9326709,BlogCommendFromQuerySearch_16"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/u011284909/article/details/9326709?utm_source=blogxgwz5" target="_blank" title="探讨一下：为什么中国做了这么多年的软件，还是烂！不但自己做不行，软件外包也比印度差远了">
+				<h4 class="text-truncate oneline">
+						探讨一下：为什么中国做了这么多年的软件，还是烂！不但自己做不行，软件外包也比印度差远了				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/E/F/C/3_u011284909.jpg" alt="u011284909" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u011284909</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">07-14</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1656</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/u011284909/article/details/9326709?utm_source=blogxgwz5" target="_blank" title="探讨一下：为什么中国做了这么多年的软件，还是烂！不但自己做不行，软件外包也比印度差远了">
+							<span class="desc oneline">其实中国人应该是很能把软件做好的，人聪明，也能吃苦，但是做了这么多年软件，这国产软件的质量，怎得一个烂字了得！做外包也一样，比邻居阿三甩了好远。
+我觉得，究其原因，最大的问题是：所有的规范、流程、制...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/u011284909?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> u011284909的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/iteye_20489/article/details/81576792,BlogCommendFromQuerySearch_17"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/iteye_20489/article/details/81576792,BlogCommendFromQuerySearch_17"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/iteye_20489/article/details/81576792?utm_source=blogxgwz6" target="_blank" title="大公司为什么会倒闭？">
+				<h4 class="text-truncate oneline">
+						大公司为什么会倒闭？				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/6/F/4/3_iteye_20489.jpg" alt="iteye_20489" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">iteye_20489</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-15</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							104</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/iteye_20489/article/details/81576792?utm_source=blogxgwz6" target="_blank" title="大公司为什么会倒闭？">
+							<span class="desc oneline">今天在网上看了一篇关于“破坏性创新”的文章，觉得很受启发。
+文章说有一些大的公司，经营一直很好，利润很丰厚，投入到研发方面的精力也很大，但是还是在几乎一夜之间就倒闭掉了。
+对于这种情况作者把它的原因归...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/iteye_20489?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Focus On Design</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/crow6313077/article/details/51409874,BlogCommendESEnWordWeight_1"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/crow6313077/article/details/51409874,BlogCommendESEnWordWeight_1"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/crow6313077/article/details/51409874?utm_source=blogxgwz7" target="_blank" title="离职总结：大公司与小公司的个人体验">
+				<h4 class="text-truncate oneline">
+						离职总结：大公司与小公司的个人体验				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/5/0/5/3_crow6313077.jpg" alt="crow6313077" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">crow6313077</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-14</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3116</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/crow6313077/article/details/51409874?utm_source=blogxgwz7" target="_blank" title="离职总结：大公司与小公司的个人体验">
+							<span class="desc oneline">离职在即，在准备下一个工作环境的这段时间，忽然有一阵感慨，工作近五年，在这段时间中，体验了两种不同的工作环境：一个规模很大，各种开发体系完备的大公司，另一个（也是目前的）是一个规模100人左右的小公司...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/crow6313077?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Jack_M_Lv的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/android_ls/article/details/50274815,BlogCommendESEnWordWeight_2"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/android_ls/article/details/50274815,BlogCommendESEnWordWeight_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/android_ls/article/details/50274815?utm_source=blogxgwz8" target="_blank" title="为什么有些大公司技术弱爆了？">
+				<h4 class="text-truncate oneline">
+						为什么有些大公司技术弱爆了？				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/A/B/0/3_android_ls.jpg" alt="android_ls" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">android_ls</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-12</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							4700</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/android_ls/article/details/50274815?utm_source=blogxgwz8" target="_blank" title="为什么有些大公司技术弱爆了？">
+							<span class="desc oneline">为什么有些大公司技术弱爆了？
+楼主自述经历：
+
+
+今年年初，到一家互联网公司实习，该公司是国内行业龙头。
+
+不过技术和管理方面，却弱爆了。
+
+那里的程序员，每天都在看邮件，查问题工单。...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/android_ls?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> android_ls的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_387","con":",https://blog.csdn.net/CSDNedu/article/details/80093032,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_387","con":",https://blog.csdn.net/CSDNedu/article/details/80093032,BlogCommendFromQuerySearch_5"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/CSDNedu/article/details/80093032?utm_source=blogxgwz9" target="_blank" title="为啥大公司只要全栈工程师？">
+				<h4 class="text-truncate oneline">
+						为啥大公司只要全栈工程师？				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/4/E/4/3_csdnedu.jpg" alt="CSDNedu" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">CSDNedu</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-26</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							603</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/CSDNedu/article/details/80093032?utm_source=blogxgwz9" target="_blank" title="为啥大公司只要全栈工程师？">
+							<span class="desc oneline">全栈工程师（Full-Stack Engineer），是一个在IT行业圈子里越来越热门的话题，无论是像Facebook这样的大型公司，还是刚刚起步的初创公司，都开始招募全栈工程师。在OSCON会议上，...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/CSDNedu?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> CSDN学院</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/zcs99/article/details/80475622" target="_blank">
+						gbdt为什么</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/xingqingly/article/details/45820851" target="_blank">
+						为什么lspci</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/tanqian351/article/details/51939613" target="_blank">
+						为什么java</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/yizhen_acmer/article/details/54670733" target="_blank">
+						为什么梯度</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/kbx8916/article/details/52594455" target="_blank">
+						为什么解耦</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/Ch97CKd">
+                <img src="https://avatar.csdn.net/5/4/9/3_ch97ckd.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/Ch97CKd" target="_blank" class="" id="uid">何俊林</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="157">
+                        <dt><a href="https://blog.csdn.net/ch97ckd?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/ch97ckd?t=1"><span class="count">157</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="343">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">343</span></dd>
+        </dl>
+        <dl class="text-center" title="265">
+            <dt>喜欢</dt>
+            <dd><span class="count">265</span></dd>
+        </dl>
+        <dl class="text-center" title="234">
+            <dt>评论</dt>
+            <dd><span class="count">234</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="5级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-5"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="314420">
+                31万+            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="3313">
+                3313            </dd>
+        </dl>
+        <dl title="14640">
+            <dt>排名：</dt>
+            <dd>1万+</dd>
+        </dl>
+    </div>
+        <div class="badge-box d-flex">
+        <span>勋章：</span>
+                        <a class="icon-badge" title="持之以恒">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#csdnc-m-lasting"></use>
+            </svg>
+            <div class="icon-arrow"></div>
+            <div class="grade-detail-box item2">
+                <div class="pos-box">
+                    <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#csdnc-m-lasting"></use>
+                        </svg>
+                        <p>持之以恒</p>
+                    </div>
+                    <div class="right-box d-flex justify-content-center align-items-center">
+                        授予每个自然月内发布4篇或4篇以上原创或翻译IT博文的用户。不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累！
+                    </div>
+                </div>
+            </div>
+        </a>
+                            </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-百度联盟-300x250 --><script type="text/javascript" src="//rabc1.iteye.com/source/api/ymebi.js?bwoc=oltly"></script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/Ch97CKd/article/details/83155283" target="_blank">ijkplayer中遇到的问题汇总</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/Ch97CKd/article/details/83113223" target="_blank">怎么用Python爬取抖音app上的视频到自己电脑上？</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/Ch97CKd/article/details/83113205" target="_blank">如何学习OpenGL Shader开发？</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/Ch97CKd/article/details/83067187" target="_blank">推荐一款护眼黑科技产品</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/Ch97CKd/article/details/83044274" target="_blank">你做不到对企业真正有价值，下一个裁员就是你</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    		    <div id="asideArchive" class="aside-box flexible-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">13篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/09">
+                    2018年9月                    <span class="count float-right">21篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/08">
+                    2018年8月                    <span class="count float-right">27篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/07">
+                    2018年7月                    <span class="count float-right">26篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/06">
+                    2018年6月                    <span class="count float-right">23篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/05">
+                    2018年5月                    <span class="count float-right">22篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/04">
+                    2018年4月                    <span class="count float-right">29篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/03">
+                    2018年3月                    <span class="count float-right">19篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/02">
+                    2018年2月                    <span class="count float-right">7篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2018/01">
+                    2018年1月                    <span class="count float-right">20篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2017/12">
+                    2017年12月                    <span class="count float-right">13篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2017/11">
+                    2017年11月                    <span class="count float-right">13篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2017/10">
+                    2017年10月                    <span class="count float-right">10篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/ch97ckd/article/month/2017/09">
+                    2017年9月                    <span class="count float-right">9篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/ch97ckd/article/details/80970685">28岁的程序员，目前考虑转行，但又不知道自己能干什么</a>
+					<p class="read">阅读量：<span>37386</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/ch97ckd/article/details/78661180">创业公司给的期权，真的靠谱么？</a>
+					<p class="read">阅读量：<span>16917</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/ch97ckd/article/details/80730874">天天工作拧螺丝，怎么突破瓶颈？</a>
+					<p class="read">阅读量：<span>16077</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/ch97ckd/article/details/80490958">推荐一个Flutter项目（已开源）</a>
+					<p class="read">阅读量：<span>14247</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/ch97ckd/article/details/79648555">离职前需要注意的事情？</a>
+					<p class="read">阅读量：<span>12755</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    <div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/ch97ckd/article/details/80970685#comments">28岁的程序员，目前考虑转行，但又...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/qcsdncom" class="user-name" target="_blank">qcsdncom</a>：◄◄◄◄箭头让你免积分 赞                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/ch97ckd/article/details/80970685#comments">28岁的程序员，目前考虑转行，但又...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/u014672114" class="user-name" target="_blank">u014672114</a>：我也是这样的，有转行的想法，但是不知道自己干什么，那就看自己擅长什么                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/ch97ckd/article/details/83026657#comments">为什么有的大公司代码也很烂？</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/github_37360787" class="user-name" target="_blank">github_37360787</a>：test                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/ch97ckd/article/details/80970685#comments">28岁的程序员，目前考虑转行，但又...</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/weixin_42229056" class="user-name" target="_blank">weixin_42229056</a>：困惑人生常有，不管做什么，应该把精力用在事情上，而不是犹豫                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/ch97ckd/article/details/83026657#comments">为什么有的大公司代码也很烂？</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/chengxu_kuangrexintu" class="user-name" target="_blank">chengxu_kuangrexintu</a>：领导说，什么时候能好，加快速度！你只能考虑最快的开发方式，有时候写完才发现存在问题，但是领导不会给...                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/source/res/yn6yz.js?ojylrgb=yk"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitchat.csdn.net/?utm_source=wzl" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">告别知识焦虑，即刻启程</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box long-width">
+			<button class=" long-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>1</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments long-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+						8				</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/ch97ckd/article/details/83005426" title="写代码之外，如何再做一份金融副业？">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/ch97ckd/article/details/83044274" title="你做不到对企业真正有价值，下一个裁员就是你">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+						<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/ch97ckd/article/details/83005426" title="写代码之外，如何再做一份金融副业？">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/ch97ckd/article/details/83044274" title="你做不到对企业真正有价值，下一个裁员就是你">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 35;
+    var articleId = "83026657";
+    var commentscount = 8;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/Ch97CKd/article/details/83026657";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 0;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = '';
+		var highlight = ["\u4e3a\u4ec0\u4e48","\u6709\u7684","\u5927\u516c\u53f8","\u4ee3\u7801","\u5f88\u70c2"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"blogdevteam","nick_name":"CSDN\u5b98\u65b9\u535a\u5ba2","avatar":"https:\/\/avatar.csdn.net\/8\/C\/E\/3_blogdevteam.jpg","is_expert":true,"article_count":558},{"user_name":"yuanmeng001","nick_name":"yuanmeng001","avatar":"https:\/\/avatar.csdn.net\/9\/7\/4\/3_yuanmeng001.jpg","is_expert":true,"article_count":5107},{"user_name":"CSDNedu","nick_name":"CSDNedu","avatar":"https:\/\/avatar.csdn.net\/4\/E\/4\/3_csdnedu.jpg","is_expert":false,"article_count":250},{"user_name":"u014646358","nick_name":"\u4e0d\u77e5\u68a6","avatar":"https:\/\/avatar.csdn.net\/8\/3\/7\/3_u014646358.jpg","is_expert":false,"article_count":47},{"user_name":"zlxfogger","nick_name":"zlxfogger","avatar":"https:\/\/avatar.csdn.net\/8\/0\/7\/3_zlxfogger.jpg","is_expert":false,"article_count":165},{"user_name":"iteye_16227","nick_name":"iteye_16227","avatar":"https:\/\/avatar.csdn.net\/A\/D\/1\/3_iteye_16227.jpg","is_expert":false,"article_count":0},{"user_name":"attilax","nick_name":"attilax","avatar":"https:\/\/avatar.csdn.net\/3\/9\/1\/3_attilax.jpg","is_expert":false,"article_count":2565},{"user_name":"u011284909","nick_name":"u011284909","avatar":"https:\/\/avatar.csdn.net\/E\/F\/C\/3_u011284909.jpg","is_expert":false,"article_count":5},{"user_name":"iteye_20489","nick_name":"iteye_20489","avatar":"https:\/\/avatar.csdn.net\/6\/F\/4\/3_iteye_20489.jpg","is_expert":false,"article_count":0},{"user_name":"zhuzhao","nick_name":"zhuzhao","avatar":"https:\/\/avatar.csdn.net\/5\/D\/9\/3_zhuzhao.jpg","is_expert":false,"article_count":912}];
+
+		var articleType = 1;
+		var CopyrightContent = '本文为博主原创文章，未经博主允许不得转载。';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin3-template/skin3-template-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

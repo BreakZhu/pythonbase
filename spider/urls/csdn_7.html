@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/xiang12835/article/details/83188287"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="Part II
+
+Understanding the C# Language
+
+In this part:
+
+Creating and Managing Classes and Objects
+	Understanding Values and References 
+	Creating Value Types with Enumerations and Structures
+	Using Arr..." />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>C# 学习笔记2 - 理解C#语言 - Flyingfish - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-2eefd34acf.min.css">
+
+    <script type="text/javascript">
+        var username = "xiang12835";
+        var blog_address = "https://blog.csdn.net/xiang12835";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/xiang12835/article/details/83188287"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin-yellow";
+        // 第四范式所需数据
+        var articleTitles = "C# 学习笔记2 - 理解C#语言 - Flyingfish";
+        var articleID = "83188287";
+
+        var nickName = "flyingfishyx";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">C# 学习笔记2 - 理解C#语言</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月19日 21:53:59</span>
+					<a class="follow-nickName" href="https://me.csdn.net/xiang12835" target="_blank">flyingfishyx</a>
+						<span class="read-count">阅读数：208</span>
+						
+																					<div class="tags-box space">
+								<span class="label">个人分类：</span>
+																<a class="tag-link" href="https://blog.csdn.net/xiang12835/article/category/2289413"  target="_blank">编程语言																</a>
+							</div>
+																								</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								<div class="article-copyright">
+					版权声明：本文为博主原创文章，未经博主允许不得转载。					https://blog.csdn.net/xiang12835/article/details/83188287				</div>
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e4c7a3727d.css" />
+						<div class="htmledit_views">
+                <p style="margin-left:0cm;">Part II</p>
+
+<p style="margin-left:0cm;">Understanding the C# Language</p>
+
+<p style="margin-left:0cm;">In this part:</p>
+
+<ol><li>Creating and Managing Classes and Objects</li>
+	<li>Understanding Values and References </li>
+	<li>Creating Value Types with Enumerations and Structures</li>
+	<li>Using Arrays and Collections</li>
+	<li>Understanding Parameter Arrays</li>
+	<li>Working with Inheritance </li>
+	<li>Creating Interfaces and Defining Abstract Classes</li>
+	<li>Using Garbage Collection and Resource Management</li>
+</ol><p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;">参考文献：Visual C# 2010 Step by Step</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第七章 创建并管理类和对象</h1>
+
+<h1 style="margin-left:0cm;"><img alt="" class="has" height="1200" src="https://img-blog.csdn.net/20181019215158398?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1014" /></h1>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第八章 理解值和引用</h1>
+
+<h1 style="margin-left:0cm;"><img alt="" class="has" height="876" src="https://img-blog.csdn.net/20181019215158373?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1018" /></h1>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="1076" src="https://img-blog.csdn.net/20181019215158517?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1004" /></p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第9章  使用枚举和结构来创建值类型</h1>
+
+<h1 style="margin-left:0cm;"> </h1>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="966" src="https://img-blog.csdn.net/20181019215158556?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="992" /></p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第10章  使用数组和集合</h1>
+
+<h1 style="margin-left:0cm;"><img alt="" class="has" height="1028" src="https://img-blog.csdn.net/20181019215158641?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="966" /></h1>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="442" src="https://img-blog.csdn.net/20181019215158571?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1000" /></p>
+
+<h1 style="margin-left:0cm;">第11章  理解参数数组</h1>
+
+<h1 style="margin-left:0cm;"> </h1>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="498" src="https://img-blog.csdn.net/2018101921515943?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="992" /></p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第12章  使用继承</h1>
+
+<h1 style="margin-left:0cm;"><img alt="" class="has" height="340" src="https://img-blog.csdn.net/20181019215159155?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1004" /></h1>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="1200" src="https://img-blog.csdn.net/20181019215159117?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="988" /></p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第13章  创建接口和定义抽象类</h1>
+
+<h1 style="margin-left:0cm;"><img alt="" class="has" height="768" src="https://img-blog.csdn.net/20181019215159146?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="968" /></h1>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="542" src="https://img-blog.csdn.net/20181019215159276?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1038" /></p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;">第14章  使用垃圾回收和资源管理</h1>
+
+<h1 style="margin-left:0cm;"><img alt="" class="has" height="1128" src="https://img-blog.csdn.net/20181019215159264?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="966" /></h1>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="814" src="https://img-blog.csdn.net/20181019215159523?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW5nMTI4MzU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="996" /></p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>            </div>
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/xiang12835/article/details/83188287,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/xiang12835/article/details/83188287,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/ivanyoung66/article/details/46765975,BlogCommendFromQuerySearch_0"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/ivanyoung66/article/details/46765975,BlogCommendFromQuerySearch_0"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/ivanyoung66/article/details/46765975?utm_source=blogxgwz0" target="_blank" title="C# Kinect 2.0 SDK 学习笔记（0）——基本情况介绍">
+				<h4 class="text-truncate oneline">
+						C# Kinect 2.0 SDK 学习笔记（0）——基本情况介绍				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/4/3/6/3_ivanyoung66.jpg" alt="ivanyoung66" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">ivanyoung66</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">07-05</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2767</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/ivanyoung66/article/details/46765975?utm_source=blogxgwz0" target="_blank" title="C# Kinect 2.0 SDK 学习笔记（0）——基本情况介绍">
+							<span class="desc oneline">去年十一的时候凑热闹买了个国行版的Xbox One，玩了一阵子之后开始对摄像头感兴趣，咬咬牙又买了个Adapter，把Kinect二代摄像头接到了电脑上，上网找了很多资料，官方2.0的SDK已经放出，...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/ivanyoung66?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 空间站</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/qq_38262266/10391639,BlogCommendFromQuerySearch_1"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/qq_38262266/10391639,BlogCommendFromQuerySearch_1"}'>
+			<a href="https://download.csdn.net/download/qq_38262266/10391639?utm_source=blogxgwz1" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							C#学习笔记						</h4>
+						<span class="data float-right">05-04</span>
+					</div>
+					<div class="desc oneline">
+							C#学习笔记C#学习笔记C#学习笔记C#学习笔记C#学习笔记C#学习笔记C#学习笔记C#学习笔记					</div>
+				</div>
+			</a>
+		</div>
+									<div class="recommend-item-box recommend-ad-box clearfix">
+					<script type="text/javascript" src="//rabc1.iteye.com/production/source/pc3553.js?pkcgstj=jm"></script>
+				</div>
+			
+						<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/qq_26628593/10450217,BlogCommendFromQuerySearch_2"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/qq_26628593/10450217,BlogCommendFromQuerySearch_2"}'>
+			<a href="https://download.csdn.net/download/qq_26628593/10450217?utm_source=blogxgwz2" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							深入理解C#(第2版)深入理解C#(第2版)						</h4>
+						<span class="data float-right">05-31</span>
+					</div>
+					<div class="desc oneline">
+							深入理解C#(第2版)深入理解C#(第2版)深入理解C#(第2版)深入理解C#(第2版)深入理解C#(第2版)深入理解C#(第2版)					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/mrljdx/2600869,BlogCommendFromQuerySearch_3"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/mrljdx/2600869,BlogCommendFromQuerySearch_3"}'>
+			<a href="https://download.csdn.net/download/mrljdx/2600869?utm_source=blogxgwz3" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							C#学习笔记（基础篇）						</h4>
+						<span class="data float-right">08-06</span>
+					</div>
+					<div class="desc oneline">
+							C#的学习笔记总结，涵盖软件的使用，很多地方与C语言作比较从而加深印象，帮助理解。					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/zhongcountry/903029,BlogCommendFromQuerySearch_4"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/zhongcountry/903029,BlogCommendFromQuerySearch_4"}'>
+			<a href="https://download.csdn.net/download/zhongcountry/903029?utm_source=blogxgwz4" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							编程学习笔记(数据库，C＃)						</h4>
+						<span class="data float-right">12-24</span>
+					</div>
+					<div class="desc oneline">
+							编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(数据库，C＃)编程学习笔记(...					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/Jackyqyd/article/details/1913814,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/Jackyqyd/article/details/1913814,BlogCommendFromQuerySearch_5"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/Jackyqyd/article/details/1913814?utm_source=blogxgwz5" target="_blank" title="C#中的概念理解">
+				<h4 class="text-truncate oneline">
+						C#中的概念理解				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/1/0/6/3_jackyqyd.jpg" alt="Jackyqyd" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">Jackyqyd</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-03</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							681</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/Jackyqyd/article/details/1913814?utm_source=blogxgwz5" target="_blank" title="C#中的概念理解">
+							<span class="desc oneline"> 在C#中有很多和C语言,C++,Java相似之处,也有一些自己独有的特点,这些又是非常重要的地方,也是容易混淆的地方.主要有以下几点:       1)变量声明       C#中有8种基本数据类型...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/Jackyqyd?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 晴天雨的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/qq_30096641/9894604,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/qq_30096641/9894604,BlogCommendFromQuerySearch_6"}'>
+			<a href="https://download.csdn.net/download/qq_30096641/9894604?utm_source=blogxgwz6" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							Learning hard C#学习笔记+源码.rar						</h4>
+						<span class="data float-right">07-11</span>
+					</div>
+					<div class="desc oneline">
+							Learning hard C#学习笔记+源码.rar					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/towangjindian/10111611,BlogCommendFromQuerySearch_7"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/towangjindian/10111611,BlogCommendFromQuerySearch_7"}'>
+			<a href="https://download.csdn.net/download/towangjindian/10111611?utm_source=blogxgwz7" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							Learning hard C#学习笔记.pdf(中文高清版)及示例源码						</h4>
+						<span class="data float-right">11-09</span>
+					</div>
+					<div class="desc oneline">
+							Learning hard C#学习笔记是一本面向C#初学者的实用教程。从开发基础开始，由浅入深地讲解了C#的基础语法和重要特性，分析了在开发中必须掌握的技术要领和经验心得。语言轻松幽默，通过精心选择的实例和详尽的代码全面介绍了C#最具特...					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/w605283073/article/details/51305359,BlogCommendFromQuerySearch_8"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/w605283073/article/details/51305359,BlogCommendFromQuerySearch_8"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/w605283073/article/details/51305359?utm_source=blogxgwz8" target="_blank" title="记《learning hard C#学习笔记》 书中一个错误">
+				<h4 class="text-truncate oneline">
+						记《learning hard C#学习笔记》 书中一个错误				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/0/6/3_w605283073.jpg" alt="w605283073" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">w605283073</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-03</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1126</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/w605283073/article/details/51305359?utm_source=blogxgwz8" target="_blank" title="记《learning hard C#学习笔记》 书中一个错误">
+							<span class="desc oneline">以前学过c# 但是不够系统
+最近读了一本《learning hard C#学习笔记》 系统的学习一下
+读到50页 发现一个问题，这本书用的单例有问题 
+
+
+主要问题：
+1 首先public stati...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/w605283073?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 明明如月的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/lookingloo/1582736,BlogCommendFromQuerySearch_9"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/lookingloo/1582736,BlogCommendFromQuerySearch_9"}'>
+			<a href="https://download.csdn.net/download/lookingloo/1582736?utm_source=blogxgwz9" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							c#语言数组用法详解						</h4>
+						<span class="data float-right">08-17</span>
+					</div>
+					<div class="desc oneline">
+							c#语言数组用法详解是对c#语言数组用法的学习笔记					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/xu_jin_shan/article/details/78050609" target="_blank">
+						c＃求差</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/qq_34260009/article/details/71791691" target="_blank">
+						c＃ 安装包</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/qsbbl/article/details/72331713" target="_blank">
+						c＃函数</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/lu930124/article/details/50526915" target="_blank">
+						c＃ java</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/bcbobo21cn/article/details/61614576" target="_blank">
+						c＃数据结构</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/xiang12835">
+                <img src="https://avatar.csdn.net/8/7/B/3_xiang12835.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/xiang12835" target="_blank" class="" id="uid">flyingfishyx</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="54">
+                        <dt><a href="https://blog.csdn.net/xiang12835?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/xiang12835?t=1"><span class="count">54</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="6">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">6</span></dd>
+        </dl>
+        <dl class="text-center" title="14">
+            <dt>喜欢</dt>
+            <dd><span class="count">14</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>评论</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="3级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-3"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="27765">
+                2万+            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="814">
+                814            </dd>
+        </dl>
+        <dl title="71467">
+            <dt>排名：</dt>
+            <dd>7万+</dd>
+        </dl>
+    </div>
+        <div class="badge-box d-flex">
+        <span>勋章：</span>
+                <a class="icon-badge" title="专栏达人">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#csdnc-m-columns"></use>
+            </svg>
+            <div class="icon-arrow"></div>
+            <div class="grade-detail-box item1">
+                <div class="pos-box">
+                    <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#csdnc-m-columns"></use>
+                        </svg>
+                        <p>专栏达人</p>
+                    </div>
+                    <div class="right-box d-flex justify-content-center align-items-center">
+                        授予成功创建个人博客专栏的用户。专栏中添加五篇以上博文即可点亮！撰写博客专栏浓缩技术精华，专栏达人就是你！
+                    </div>
+                </div>
+            </div>
+        </a>
+                                    </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-百度联盟-300x250 --><script type="text/javascript" src="//rabc1.iteye.com/common/production/web/z3n86.js?lg=yyovfyh"></script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/xiang12835/article/details/83188637" target="_blank">C# 学习笔记6 - 使用Visual Studio 2010 构建专业解决方案</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/xiang12835/article/details/83188626" target="_blank">C# 学习笔记5 - 管理数据</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/xiang12835/article/details/83188612" target="_blank">C# 学习笔记4 - 操纵 Windows 应用程序</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/xiang12835/article/details/83154004" target="_blank">Python3.5开发7 - Web开发</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/xiang12835/article/details/83153896" target="_blank">Python3.5开发6 - 实现简单的定向爬虫</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    <div id="asideColumn" class="aside-box">
+    <h3 class="aside-title">博主专栏</h3>
+    <div class="aside-content">
+        <ul class="column-box csdn-tracking-statistics tracking-click" data-mod="popu_520" >
+                            <li class="clearfix">
+                    <div class="img-box float-left">
+                        <a class="d-flex align-items-center" href="https://blog.csdn.net/column/details/14401.html">
+                            <img src="//img-blog.csdn.net/20180917184224665?imageView2/5/w/120/h/120" alt="">
+                        </a>
+                    </div>
+                    <div class="info">
+                        <p class="title"><a href="https://blog.csdn.net/column/details/14401.html">快速入门 Python3.5 开发</a></p>
+                        <div class="data">阅读量：<span>99</span><span class="count">7 篇</span></div>
+                    </div>
+                </li>
+                            <li class="clearfix">
+                    <div class="img-box float-left">
+                        <a class="d-flex align-items-center" href="https://blog.csdn.net/column/details/27462.html">
+                            <img src="//img-blog.csdn.net/20180916221417773?imageView2/5/w/120/h/120" alt="">
+                        </a>
+                    </div>
+                    <div class="info">
+                        <p class="title"><a href="https://blog.csdn.net/column/details/27462.html">Python 学习笔记</a></p>
+                        <div class="data">阅读量：<span>15128</span><span class="count">10 篇</span></div>
+                    </div>
+                </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/2186159">
+                    <span class="title oneline">软件综合</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/2289413">
+                    <span class="title oneline">编程语言</span>
+                    <span class="count float-right">42篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/2289399">
+                    <span class="title oneline">笔试面试</span>
+                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/6398287">
+                    <span class="title oneline">操作系统</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/3058613">
+                    <span class="title oneline">LeetCode</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/6435163">
+                    <span class="title oneline">工具</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/6435164">
+                    <span class="title oneline">数据库</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/6435192">
+                    <span class="title oneline">开发框架</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/xiang12835/article/category/6435203">
+                    <span class="title oneline">算法</span>
+                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideArchive" class="aside-box flexible-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">10篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2018/09">
+                    2018年9月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2018/01">
+                    2018年1月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2017/07">
+                    2017年7月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2017/05">
+                    2017年5月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2017/04">
+                    2017年4月                    <span class="count float-right">22篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2017/02">
+                    2017年2月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2016/09">
+                    2016年9月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2015/12">
+                    2015年12月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2015/03">
+                    2015年3月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2014/08">
+                    2014年8月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2014/07">
+                    2014年7月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2014/05">
+                    2014年5月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/xiang12835/article/month/2014/04">
+                    2014年4月                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/xiang12835/article/details/69663993">Python 学习笔记6 - RESTful API 开发</a>
+					<p class="read">阅读量：<span>11047</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/xiang12835/article/details/24603961">黑盒测试总结</a>
+					<p class="read">阅读量：<span>1414</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/xiang12835/article/details/54835873">mac 上安装 python 虚拟开发环境</a>
+					<p class="read">阅读量：<span>1161</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/xiang12835/article/details/69663864">Python 学习笔记3 - 定向爬虫入门</a>
+					<p class="read">阅读量：<span>1136</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/xiang12835/article/details/54862013">mac 上安装 pylibmc</a>
+					<p class="read">阅读量：<span>843</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/common/site/resource/nqnl.js?mhzzpw=gzj"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitchat.csdn.net/?utm_source=wzl" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">告别知识焦虑，即刻启程</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/xiang12835/article/details/83154004" title="Python3.5开发7 - Web开发">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/xiang12835/article/details/83188592" title="C# 学习笔记3 - 创建组件">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+						<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/xiang12835/article/details/83154004" title="Python3.5开发7 - Web开发">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/xiang12835/article/details/83188592" title="C# 学习笔记3 - 创建组件">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 16;
+    var articleId = "83188287";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/xiang12835/article/details/83188287";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = 'atom-one-light';
+		var highlight = ["c#","\u5b66\u4e60\u7b14\u8bb0","\u7406\u89e3","c#","\u8bed\u8a00"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"ivanyoung66","nick_name":"ivanyoung66","avatar":"https:\/\/avatar.csdn.net\/4\/3\/6\/3_ivanyoung66.jpg","is_expert":false,"article_count":9},{"user_name":"Jackyqyd","nick_name":"Jackyqyd","avatar":"https:\/\/avatar.csdn.net\/1\/0\/6\/3_jackyqyd.jpg","is_expert":false,"article_count":9},{"user_name":"w605283073","nick_name":"\u660e\u660e\u5982\u6708\u5c0f\u89d2\u843d","avatar":"https:\/\/avatar.csdn.net\/8\/0\/6\/3_w605283073.jpg","is_expert":false,"article_count":313},{"user_name":"cf406061841","nick_name":"\u9f99gg\u4e36","avatar":"https:\/\/avatar.csdn.net\/5\/C\/7\/3_cf406061841.jpg","is_expert":false,"article_count":1026},{"user_name":"qq_36074157","nick_name":"\u70bd\u70c8\u4e4b\u5fc3","avatar":"https:\/\/avatar.csdn.net\/9\/1\/4\/3_qq_36074157.jpg","is_expert":false,"article_count":189},{"user_name":"caosiyuan1991","nick_name":"Sean\u4e36\u840c\u840c","avatar":"https:\/\/avatar.csdn.net\/C\/4\/1\/3_caosiyuan1991.jpg","is_expert":false,"article_count":35},{"user_name":"wangxuhebeibd","nick_name":"wangxuhebeibd","avatar":"https:\/\/avatar.csdn.net\/B\/8\/2\/3_wangxuhebeibd.jpg","is_expert":false,"article_count":57},{"user_name":"akadiao","nick_name":"\u963f\u5361\u8482\u5965","avatar":"https:\/\/avatar.csdn.net\/5\/D\/3\/3_akadiao.jpg","is_expert":false,"article_count":185},{"user_name":"singit","nick_name":"Singit","avatar":"https:\/\/avatar.csdn.net\/8\/9\/C\/3_singit.jpg","is_expert":false,"article_count":303},{"user_name":"conanswp","nick_name":"Gunner","avatar":"https:\/\/avatar.csdn.net\/9\/5\/4\/3_conanswp.jpg","is_expert":false,"article_count":111}];
+
+		var articleType = 1;
+		var CopyrightContent = '本文为博主原创文章，未经博主允许不得转载。';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-light.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

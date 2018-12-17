@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/fengtingYan/article/details/83021611"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="JavaScript
+1.javascript是一门什么样的语言，有何特点？
+js最初是一门为了网页交互而设计的语言，一个完整的Javascript实现由下列三个部分组成，严格来说，js是ECMAScript的实现，是ECMAScript+BOM+DOM组成的一种web开发技术：
+ECMAScript (核心)
+文档对象模型（DOM）
+浏览器对象模型（BOM）
+JavaScript特点
+js是一门..." />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>JavaScript面试题整理 - Yanfengting的博客 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-2eefd34acf.min.css">
+
+    <script type="text/javascript">
+        var username = "fengtingYan";
+        var blog_address = "https://blog.csdn.net/fengtingyan";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/fengtingYan/article/details/83021611"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin-yellow";
+        // 第四范式所需数据
+        var articleTitles = "JavaScript面试题整理 - Yanfengting的博客";
+        var articleID = "83021611";
+
+        var nickName = "宝儿的程序生涯";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">JavaScript面试题整理</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月12日 08:58:09</span>
+					<a class="follow-nickName" href="https://me.csdn.net/fengtingYan" target="_blank">宝儿的程序生涯</a>
+						<span class="read-count">阅读数：300</span>
+						
+																					<div class="tags-box space">
+								<span class="label">个人分类：</span>
+																<a class="tag-link" href="https://blog.csdn.net/fengtingYan/article/category/8118989"  target="_blank">面试题																</a>
+							</div>
+																								</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <div class="markdown_views prism-atom-one-dark">
+							<!-- flowchart 箭头图标 勿删 -->
+							<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path></svg>
+							<p>JavaScript</p>
+<p>面试题初级  <a href="https://www.jianshu.com/p/38f81f61e72c" rel="nofollow">https://www.jianshu.com/p/38f81f61e72c</a><br>
+<a href="https://blog.csdn.net/liuwengai/article/details/52628652" rel="nofollow">https://blog.csdn.net/liuwengai/article/details/52628652</a></p>
+<h4><a id="1javascript_4"></a>1.javascript是一门什么样的语言，有何特点？</h4>
+<p>js最初是一门为了网页交互而设计的语言，一个完整的Javascript实现由下列三个部分组成，严格来说，js是ECMAScript的实现，是ECMAScript+BOM+DOM组成的一种web开发技术：<br>
+ECMAScript (核心)<br>
+文档对象模型（DOM）<br>
+浏览器对象模型（BOM）</p>
+<p>JavaScript特点</p>
+<p>js是一门弱类型语言，其变量类型采用弱类型，并未使用严格的数据类型 （灵活性）<br>
+js是一门解释型脚本语言，在程序运行中被逐行的解释，不像（C/C++/Java）这些语言需要先编译，所以它运行起来非常快<br>
+js有事件驱动机制，js对用户的响应，是以事件驱动的方式进行的。在网页中执行了某种操作所产生的动作，称为“事件”，如按下鼠标、移动窗口等<br>
+JavaScript具有跨平台性，JavaScript依赖于浏览器本身，与操作环境无关，只要设备有浏览器，就可以运行js语言</p>
+<h3><a id="2javascript_18"></a>2.javascript的数据类型？</h3>
+<p>基本数据类型：String,boolean,Number,Undefined, Null<br>
+引用数据类型：Object(Array,Date,RegExp,Function)<br>
+null表示"没有对象"，即该处不应该有值。典型用法是：<br>
+（1） 作为函数的参数，表示该函数的参数不是对象。<br>
+（2） 作为对象原型链的终点。<br>
+Object.getPrototypeOf(Object.prototype)// null<br>
+获取元素时，如果当前文档中特定元素不存在则返回null.<br>
+undefined表示"缺少值"，就是此处应该有一个值，但是还没有定义。典型用法是：<br>
+（1）变量被声明了，但没有赋值时，就等于undefined。<br>
+（2) 调用函数时，应该提供的参数没有提供，该参数等于undefined。<br>
+（3）对象没有赋值的属性，该属性的值为undefined。<br>
+（4）函数没有返回值时，默认返回undefined。</p>
+<h4><a id="3IDInput_33"></a>3.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)</h4>
+<pre><code>document.getElementById(“ID”).value
+</code></pre>
+<h4><a id="4IDDIVhtmlxxxx_37"></a>4.设置一个已知ID的DIV的html内容为xxxx，字体颜色设置为黑色(不使用第三方框架)</h4>
+<pre><code>var dom = document.getElementById(“ID”);
+	dom.innerHTML = “xxxx”;
+	dom.style.color = “#000”;
+</code></pre>
+<h4><a id="5IDInput_43"></a>5.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)</h4>
+<p>document.getElementById(“ID”).value</p>
+<h4><a id="6checkbox_45"></a>6.希望获取到页面中所有的checkbox怎么做？(不使用第三方框架)</h4>
+<pre><code>var domList = document.getElementsByTagName(‘input’)
+var checkBoxList = [];
+var len = domList.length;　　//缓存到局部变量
+while (len--) {　　//使用while的效率会比for循环更高
+　　if (domList[len].type == ‘checkbox’) {
+    　　checkBoxList.push(domList[len]);
+　　}
+}
+</code></pre>
+<h4><a id="7DOM_56"></a>7.当一个DOM节点被点击时候，希望执行一个函数，应该怎么做？</h4>
+<pre><code>直接在DOM里绑定事件：&lt;div onclick=”test()”&gt;&lt;/div&gt;
+在JS里通过onclick绑定：xxx.onclick = test
+通过事件添加进行绑定：addEventListener(xxx, ‘click’, test)
+</code></pre>
+<h4><a id="8javascript_62"></a>8.javascript的事件流模型</h4>
+<p>“事件冒泡”：事件开始由最具体的元素接受，然后逐级向上传播<br>
+“事件捕捉”：事件由最不具体的节点先接收，然后逐级向下，一直到最具体的<br>
+“DOM事件流”：三个阶段：事件捕捉，目标阶段，事件冒泡</p>
+<h4><a id="9ajaxjson_66"></a>9.什么是ajax和json？优缺点</h4>
+<p>Ajax是异步JavaScript和XML，用于在Web页面中实现异步数据交互。<br>
+<strong>优点：</strong> 可以使得页面不重载全部内容的情况下加载局部内容，降低数据传输量 避免用户不断刷新或者跳转页面，提高用户体验<br>
+<strong>缺点：</strong> 对搜索引擎不友好（ 要实现ajax下的前后退功能成本较大 可能造成请求数的增加 跨域问题限制 JSON是一种轻量级的数据交换格式，ECMA的一个子集 优点：轻量级、易于人的阅读和编写，便于机器（JavaScript）解析，支持复合数据类型（数组、对象、字符串、数字）</p>
+<h4><a id="10var_aalerttypedef_a___undefined__alertb___71"></a>10.输出var a；alert（typedef a）;  // undefined  alert(b); // 报错</h4>
+<p>Undefined是一个只有一个值的数据类型，这个值就是“undefined”，在使用var声明变量但并未对其赋值进行初始化时，这个变量的值就是undefined。而b由于未声明将报错。注意未申明的变量和声明了未赋值的是不一样的。</p>
+<h4><a id="11var_anullalerttypedef_a_74"></a>11.var a=null；alert（typedef a）;</h4>
+<p>null是一个只有一个值的数据类型，这个值就是null。表示一个空指针对象，所以用typeof检测会返回”object”。</p>
+<h4><a id="12Var_underfined_undefindnull_1true_0false__0__false___77"></a>12.Var underfined; undefind=null; 1=true; 0=false;  0=’’;  []=false;  []=![];</h4>
+<pre><code>var undefined;
+undefined == null; // true
+1 == true;   // true
+2 == true;   // false
+0 == false;  // true
+0 == '';     // true
+NaN == NaN;  // false
+[] == false; // true
+[] == ![];   // true
+undefined与null相等，但不恒等（===）
+一个是number一个是string时，会尝试将string转换为number
+尝试将boolean转换为number，0或1
+尝试将Object转换成number或string，取决于另外一个对比量的类型
+所以，对于0、空字符串的判断，建议使用 “===” 。
+“===”会先判断两边的值类型，类型不匹配时为false。
+</code></pre>
+<p>详细解释请点击：<br>
+<a href="https://blog.csdn.net/liuwengai/article/details/52628652?utm_source=copy" rel="nofollow">https://blog.csdn.net/liuwengai/article/details/52628652?utm_source=copy</a></p>
+<h4><a id="13_YYYYMMDD__20180910_98"></a>13.输出今天的日期 格式YYYY-MM-DD  2018-09-10</h4>
+<pre><code>var d = new Date();
+var year = d.getFullYear();  // 获取年，getFullYear()返回4位的数字
+var month = d.getMonth() + 1;   // 获取月，月份比较特殊，0是1月，11是12月 
+month = month &lt; 10 ? '0' + month : month;     // 变成两位
+var day = d.getDate();   // 获取日
+day = day &lt; 10 ? '0' + day : day; // 变成两位
+alert(year + '-' + month + '-' + day);
+</code></pre>
+<h4><a id="14_108"></a>14.</h4>
+<pre><code>for（var i=1;i&lt;=3;i++）{
+	setTimeOut(function(){
+    		console.log(i);
+    },0);
+}
+</code></pre>
+<p>setTimeout是异步的代码，即使setTimeout中设置的等待时间为0也不会立刻执行，for循环代码是同步，所以要等待for循环执行完以后才会执行setTimeout。<br>
+上面这个代码块会打印三个 <code>4</code> 出来，而我们预想的结果是打印 1 2 3 。<br>
+之所以会这样，是因为 setTimeout 中的 i 是对外层 i 的引用。当 setTimeout 的代码被解释的时候，运行时只是记录了 i 的引用，而不是值。而当 setTimeout 被触发时，三个 setTimeout 中的 i 同时被取值，由于它们都指向了外层的同一个 i，而那个 i 的值在迭代完成时为 4，所以打印了三次 <code>4</code>。<br>
+全文地址请点击：<br>
+<a href="https://blog.csdn.net/u012872875/article/details/52601477?utm_source=copy" rel="nofollow">https://blog.csdn.net/u012872875/article/details/52601477?utm_source=copy</a></p>
+<h4><a id="15_123"></a>15.数组和对象有哪些原生方法，列举一下？</h4>
+<p>Array.concat( ) 连接数组<br>
+Array.join( ) 将数组元素连接起来以构建一个字符串<br>
+Array.length 数组的大小<br>
+Array.pop( ) 删除并返回数组的最后一个元素<br>
+Array.push( ) 给数组添加元素<br>
+Array.reverse( ) 颠倒数组中元素的顺序<br>
+Array.shift( ) 将元素移出数组<br>
+Array.slice( ) 返回数组的一部分<br>
+Array.sort( ) 对数组元素进行排序<br>
+Array.splice( ) 插入、删除或替换数组的元素<br>
+Array.toLocaleString( ) 把数组转换成局部字符串<br>
+Array.toString( ) 将数组转换成一个字符串<br>
+Array.unshift( ) 在数组头部插入一个元素<br>
+Object.hasOwnProperty( ) 检查属性是否被继承<br>
+Object.isPrototypeOf( ) 一个对象是否是另一个对象的原型<br>
+Object.propertyIsEnumerable( ) 是否可以通过for/in循环看到属性<br>
+Object.toLocaleString( ) 返回对象的本地字符串表示<br>
+Object.toString( ) 定义一个对象的字符串表示<br>
+Object.valueOf( ) 指定对象的原始值</p>
+<h4><a id="16_144"></a>16.数组的判断？</h4>
+<h4><a id="17windowonloaddocumentready_147"></a>17.window.onload和documentready的区别</h4>
+<p>window.onload 是在dom文档树加载完和所有文件加载完之后执行一个函数<br>
+document.ready原生中没有这个方法，jquery中有 $().ready(function),在dom文档树加载完之后执行一个函数（注意，这里面的文档树加载完不代表全部文件加载完）。<br>
+<span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mo>)</mo><mi mathvariant="normal">.</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>d</mi><mi>y</mi><mi mathvariant="normal">要</mi><mi mathvariant="normal">比</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>o</mi><mi>w</mi><mi mathvariant="normal">.</mi><mi>o</mi><mi>n</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>d</mi><mi mathvariant="normal">先</mi><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi>w</mi><mi>i</mi><mi>n</mi><mi>d</mi><mi>o</mi><mi>w</mi><mi mathvariant="normal">.</mi><mi>o</mi><mi>n</mi><mi>l</mi><mi>o</mi><mi>a</mi><mi>d</mi><mi mathvariant="normal">只</mi><mi mathvariant="normal">能</mi><mi mathvariant="normal">出</mi><mi mathvariant="normal">来</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">次</mi><mi mathvariant="normal">，</mi></mrow><annotation encoding="application/x-tex">(document).ready要比window.onload先执行
+window.onload只能出来一次，</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathit">d</span><span class="mord mathit">o</span><span class="mord mathit">c</span><span class="mord mathit">u</span><span class="mord mathit">m</span><span class="mord mathit">e</span><span class="mord mathit">n</span><span class="mord mathit">t</span><span class="mclose">)</span><span class="mord">.</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">e</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit" style="margin-right: 0.03588em;">y</span><span class="mord cjk_fallback">要</span><span class="mord cjk_fallback">比</span><span class="mord mathit" style="margin-right: 0.02691em;">w</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right: 0.02691em;">w</span><span class="mord">.</span><span class="mord mathit">o</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord cjk_fallback">先</span><span class="mord cjk_fallback">执</span><span class="mord cjk_fallback">行</span><span class="mord mathit" style="margin-right: 0.02691em;">w</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right: 0.02691em;">w</span><span class="mord">.</span><span class="mord mathit">o</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord cjk_fallback">只</span><span class="mord cjk_fallback">能</span><span class="mord cjk_fallback">出</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">次</span><span class="mord cjk_fallback">，</span></span></span></span></span>(document).ready可以出现多次.</p>
+<h4><a id="18_rpx_153"></a>18.什么 是rpx？</h4>
+<p>rpx单位是微信小程序中css的尺寸单位，rpx可以根据屏幕宽度进行自适应。<br>
+以iphone6的物理像素750*1334为视觉稿进行设计，而在小程序中使用rpx为单位<br>
+iphone6下 1px = 1rpx = 0.5pt<br>
+使用rpx小程序会在不同分辨率的设备下自动进行转换，而px不会建议设计团队按iphone6来做设计图,因为<br>
+Iphone6 1px=1rpx<br>
+Iphone6 plus 1px=0.6rpx<br>
+Iphone6换算比较方便。<br>
+不是所有的单位都适合rpx，字体不适合rpx,会导致不同设备看不清</p>
+<h4><a id="19JSONP_163"></a>19.JSONP原理</h4>
+<p>1.JSONP的由来<br>
+根据浏览器同源策略,所谓同源就是ip地址、端口、协议都相同时。不同源之间是无法直接访问的,但是script标签的src属性的天然支持跨域(不同源之间请求访问)引用文件,所以JSONP利用了这个特点进行访问数据。JSONP是发送请求之后,后台包装好一段json数据,并且把数据放在一个callback(广大程序员做了一个君子约定,统一使用callback作为key)函数中,返回一个js文件。<br>
+2.JSONP有什么用<br>
+由于同源策略的限制,ajax的异步对象 new XMLHttpRequest只能请求同源的资源,为了实现跨域请求,可以通过JSONP实现跨域,从而解决数据的跨域请求句号<br>
+3.JSONP原理<br>
+3.1利用script标签src属性的天然支持跨域访问特点.<br>
+3.2利用get请求发送了一个函数的名字(callback)去服务器.<br>
+3.3服务器返回了一个函数的调用给浏览器.<br>
+3.4并且在函数的参数中传入需要返回的json数据.<br>
+这样就没有了不同源的限制.</p>
+
+            </div>
+						<link href="https://csdnimg.cn/release/phoenix/mdeditor/markdown_views-778f64ae39.css" rel="stylesheet">
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/fengtingYan/article/details/83021611,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/fengtingYan/article/details/83021611,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="t0 clearfix">
+                                                <a href="https://blog.csdn.net/xixi880928/article/details/78842689" target="_blank" data-track-view='{"mod":"popu_642","con": ",https://blog.csdn.net/xixi880928/article/details/78842689,"}' data-track-click='{"mod":"popu_642","con": ",https://blog.csdn.net/xixi880928/article/details/78842689,"}'>
+                                                    <div class="text-content">
+                                                        <h4>[腾讯]前端面试题整理</h4>
+                                                        <div class="description">prototype 与 proto的关系是什么：__proto__是什么？我们在这里简单地说下。每个对象都会在其内部初始化一个属性，就是__proto__，当我们访问一个对象的属性 时，如果这个对象内...</div>
+                                                    </div>
+                                                </a>
+                                            </div>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/yq714588944/article/details/79435816,BlogCommendFromQuerySearch_2"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/yq714588944/article/details/79435816,BlogCommendFromQuerySearch_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/yq714588944/article/details/79435816?utm_source=blogxgwz0" target="_blank" title="java面试题大全（整理版）">
+				<h4 class="text-truncate oneline">
+						java面试题大全（整理版）				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/0/C/3_yq714588944.jpg" alt="yq714588944" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">yq714588944</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-04</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							5280</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/yq714588944/article/details/79435816?utm_source=blogxgwz0" target="_blank" title="java面试题大全（整理版）">
+							<span class="desc oneline">这几天在网上搜集各种java面试题：一是为了自己能复习方便，二是为了分享给大家~~题目都是来自网上大佬的分享，感谢大佬们的贡献~~（持续更新中...）1、面向对象的特征有哪些方面？- 抽象：抽象是将一...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/yq714588944?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 习惯很重要</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/u011200604/article/details/51695316,BlogCommendFromQuerySearch_4"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/u011200604/article/details/51695316,BlogCommendFromQuerySearch_4"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/u011200604/article/details/51695316?utm_source=blogxgwz1" target="_blank" title="[Javascript面试题]--BAT三年面试集锦之Javascript/JS面试(你一定会遇到)">
+				<h4 class="text-truncate oneline">
+						[Javascript面试题]--BAT三年面试集锦之Javascript/JS面试(你一定会遇到)				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/E/F/C/3_u011200604.jpg" alt="u011200604" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u011200604</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">06-16</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3028</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/u011200604/article/details/51695316?utm_source=blogxgwz1" target="_blank" title="[Javascript面试题]--BAT三年面试集锦之Javascript/JS面试(你一定会遇到)">
+							<span class="desc oneline">本文集锦自面试过程中常遇到的问题,都是大家实际遇到的,都是平常收集的,如果你正在求职看一看肯定会帮助很大,如果在工作中也可以读一读巩固基础以查漏补缺. 辛苦整理希望只对大家有帮助!
+
+
+很多面试...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/u011200604?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 风离紫竹的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+									<div class="recommend-item-box recommend-ad-box clearfix">
+					<script type="text/javascript" src="//rabc1.iteye.com/production/source/pc3553.js?pkcgstj=jm"></script>
+				</div>
+			
+					<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/hujie0218/article/details/80232829,BlogCommendFromQuerySearch_1"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/hujie0218/article/details/80232829,BlogCommendFromQuerySearch_1"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/hujie0218/article/details/80232829?utm_source=blogxgwz2" target="_blank" title="ES6高频面试题目整理">
+				<h4 class="text-truncate oneline">
+						ES6高频面试题目整理				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/E/E/5/3_hujie0218.jpg" alt="hujie0218" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">hujie0218</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-07</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							870</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/hujie0218/article/details/80232829?utm_source=blogxgwz2" target="_blank" title="ES6高频面试题目整理">
+							<span class="desc oneline">前言
+
+自从ES6发布以来，就受到了广大开发者的欢迎。它的新特性解决了很多实际开发中的痛点，并且使得JavaScript逐步成为一门能够开发大型企业应用的编程语言，基于这种技术环境下，很多公司都将ES...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/hujie0218?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> AGGirl的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/dongfengxueli/article/details/81252306,BlogCommendFromQuerySearch_3"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/dongfengxueli/article/details/81252306,BlogCommendFromQuerySearch_3"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/dongfengxueli/article/details/81252306?utm_source=blogxgwz3" target="_blank" title="c++面试题整理（含答案）">
+				<h4 class="text-truncate oneline">
+						c++面试题整理（含答案）				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/F/3/B/3_dongfengxueli.jpg" alt="dongfengxueli" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">dongfengxueli</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">07-27</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							195</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/dongfengxueli/article/details/81252306?utm_source=blogxgwz3" target="_blank" title="c++面试题整理（含答案）">
+							<span class="desc oneline">知乎链接：
+
+https://www.zhihu.com/question/34574154/answer/253165162?utm_source=com.tencent.tim&amp;amp;amp;u...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/dongfengxueli?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> dongfengxueli的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/kaixuanman/9969055,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/kaixuanman/9969055,BlogCommendFromQuerySearch_5"}'>
+			<a href="https://download.csdn.net/download/kaixuanman/9969055?utm_source=blogxgwz4" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							java面试题整理						</h4>
+						<span class="data float-right">09-07</span>
+					</div>
+					<div class="desc oneline">
+							java面试题整理java面试题整理java面试题整理java面试题整理java面试题整理java面试题整理java面试题整理java面试题整理					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/qq_34302506/article/details/79562303,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/qq_34302506/article/details/79562303,BlogCommendFromQuerySearch_6"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/qq_34302506/article/details/79562303?utm_source=blogxgwz5" target="_blank" title="sql常见面试题整理">
+				<h4 class="text-truncate oneline">
+						sql常见面试题整理				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/2/5/2/3_qq_34302506.jpg" alt="qq_34302506" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">qq_34302506</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-14</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							254</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/qq_34302506/article/details/79562303?utm_source=blogxgwz5" target="_blank" title="sql常见面试题整理">
+							<span class="desc oneline">1.用一条SQL 语句 查询出每门课都大于80 分的学生姓名name   kecheng   fenshu张三    语文       81张三     数学       75李四     语文   ...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/qq_34302506?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> qq_34302506的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/dayangma/article/details/46008479,BlogCommendFromQuerySearch_7"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/dayangma/article/details/46008479,BlogCommendFromQuerySearch_7"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/dayangma/article/details/46008479?utm_source=blogxgwz6" target="_blank" title="张孝祥正在整理Java就业面试题大全">
+				<h4 class="text-truncate oneline">
+						张孝祥正在整理Java就业面试题大全				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/A/D/1/3_dayangma.jpg" alt="dayangma" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">dayangma</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-26</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							4500</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/dayangma/article/details/46008479?utm_source=blogxgwz6" target="_blank" title="张孝祥正在整理Java就业面试题大全">
+							<span class="desc oneline">提示：本大全每半月更新一次，请持续保持关注！谢谢！ 索取网址：www.itcast.cn
+从享受生活的角度上来说：&quot;程序员并不是一种最好的职业，我认为两种人可以做程序员，第一，你不做程序员，你就没有...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/dayangma?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 烽瑞部落</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/zhangzhen2011/3465631,BlogCommendFromQuerySearch_8"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/zhangzhen2011/3465631,BlogCommendFromQuerySearch_8"}'>
+			<a href="https://download.csdn.net/download/zhangzhen2011/3465631?utm_source=blogxgwz7" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							java面试题整理必看						</h4>
+						<span class="data float-right">07-24</span>
+					</div>
+					<div class="desc oneline">
+							java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看java面试题整理必看					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/zl8762385/article/details/5840251,BlogCommendFromQuerySearch_9"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/zl8762385/article/details/5840251,BlogCommendFromQuerySearch_9"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/zl8762385/article/details/5840251?utm_source=blogxgwz8" target="_blank" title="php面试题和答案整理 ">
+				<h4 class="text-truncate oneline">
+						php面试题和答案整理 				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/3/3/8/3_zl8762385.jpg" alt="zl8762385" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">zl8762385</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-26</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1881</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/zl8762385/article/details/5840251?utm_source=blogxgwz8" target="_blank" title="php面试题和答案整理 ">
+							<span class="desc oneline">1.以下哪一句不会把 John 新增到 users 阵列？$users[] =  ‘john’;成功把 John 新增到阵列 users。array_add($users,’john’);函式  ar...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/zl8762385?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 一直问自己怎样才能把程序写的更好? 编程境界:干净利落，没有任何多余步骤。 动态能力:反应，逻辑思维</span></a></span>
+                        					</p>
+			</div>
+					</div>
+					<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/fengtingYan">
+                <img src="https://avatar.csdn.net/0/1/8/3_fengtingyan.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/fengtingYan" target="_blank" class="" id="uid">宝儿的程序生涯</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="26">
+                        <dt><a href="https://blog.csdn.net/fengtingyan?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/fengtingyan?t=1"><span class="count">26</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="3">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">3</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>喜欢</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>评论</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="2级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-2"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="1729">
+                1729            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="357">
+                357            </dd>
+        </dl>
+        <dl title="244421">
+            <dt>排名：</dt>
+            <dd>24万+</dd>
+        </dl>
+    </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-百度联盟-300x250 --><script type="text/javascript" src="//rabc1.iteye.com/common/production/web/z3n86.js?lg=yyovfyh"></script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/fengtingYan/article/details/83215687" target="_blank">JavaScript中   创建一个对象</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/fengtingYan/article/details/83215356" target="_blank">javascript判断变量是否是数组(Array)</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/fengtingYan/article/details/83177444" target="_blank">技术hr 面试的一些问题？</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/fengtingYan/article/details/83153514" target="_blank">学习“前端开发手册”笔记</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/fengtingYan/article/details/83152517" target="_blank">我是如何走上前端这条“不归路”的？</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    <div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8103878">
+                    <span class="title oneline">干货</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8101223">
+                    <span class="title oneline">vue</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8100810">
+                    <span class="title oneline">软考</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8096117">
+                    <span class="title oneline">HTML</span>
+                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8095932">
+                    <span class="title oneline">css</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8101323">
+                    <span class="title oneline">javascript</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8102376">
+                    <span class="title oneline">常见问题总结</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8114572">
+                    <span class="title oneline">项目集锦</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8118989">
+                    <span class="title oneline">面试题</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8119037">
+                    <span class="title oneline">git</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8119270">
+                    <span class="title oneline">express</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8119400">
+                    <span class="title oneline">ajax</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8120203">
+                    <span class="title oneline">ejs</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8120679">
+                    <span class="title oneline">数据库</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8236098">
+                    <span class="title oneline">微信小程序</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/fengtingyan/article/category/8239929">
+                    <span class="title oneline">mongoose</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideArchive" class="aside-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/fengtingyan/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">37篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/fengtingyan/article/month/2018/09">
+                    2018年9月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/fengtingyan/article/details/82940084">常用浏览器兼容问题 及css hack总结</a>
+					<p class="read">阅读量：<span>120</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/fengtingyan/article/details/82935598">2018上半年软件设计师下午真题及答案</a>
+					<p class="read">阅读量：<span>91</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/fengtingyan/article/details/82936370">web布局方式</a>
+					<p class="read">阅读量：<span>70</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/fengtingyan/article/details/82905101">自适应，响应式，视口单位</a>
+					<p class="read">阅读量：<span>64</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/fengtingyan/article/details/82948062">你真的会搜索吗？</a>
+					<p class="read">阅读量：<span>60</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/common/site/resource/nqnl.js?mhzzpw=gzj"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitchat.csdn.net/?utm_source=wzl" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">告别知识焦虑，即刻启程</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/fengtingyan/article/details/83000200" title="上班签到小项目(nodejs,express,ajax)">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/fengtingyan/article/details/83021673" title="css面试题">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+						<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/fengtingyan/article/details/83000200" title="上班签到小项目(nodejs,express,ajax)">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/fengtingyan/article/details/83021673" title="css面试题">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 9;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 14;
+    var articleId = "83021611";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/fengtingYan/article/details/83021611";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = 'atom-one-dark';
+		var highlight = ["javascript","\u9762\u8bd5\u9898","\u6574\u7406"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"qiuxuewei2012","nick_name":"\u6781\u5ba2\u5b66\u4f1f","avatar":"https:\/\/avatar.csdn.net\/B\/8\/0\/3_qiuxuewei2012.jpg","is_expert":true,"article_count":457},{"user_name":"xllily_11","nick_name":"\u90ed\u5c0f\u5317V5","avatar":"https:\/\/avatar.csdn.net\/2\/4\/7\/3_xllily_11.jpg","is_expert":true,"article_count":206},{"user_name":"dd864140130","nick_name":"\u6c5f\u6e56\u4eba\u79f0\u5c0f\u767d\u54e5","avatar":"https:\/\/avatar.csdn.net\/B\/2\/6\/3_dd864140130.jpg","is_expert":true,"article_count":99},{"user_name":"xixi880928","nick_name":"haliofwu","avatar":"https:\/\/avatar.csdn.net\/6\/D\/2\/3_xixi880928.jpg","is_expert":false,"article_count":133},{"user_name":"hujie0218","nick_name":"AGGirl","avatar":"https:\/\/avatar.csdn.net\/E\/E\/5\/3_hujie0218.jpg","is_expert":false,"article_count":41},{"user_name":"yq714588944","nick_name":"\u4e60\u60ef\u5f88\u91cd\u8981","avatar":"https:\/\/avatar.csdn.net\/8\/0\/C\/3_yq714588944.jpg","is_expert":false,"article_count":9},{"user_name":"dongfengxueli","nick_name":"dongfengxueli","avatar":"https:\/\/avatar.csdn.net\/F\/3\/B\/3_dongfengxueli.jpg","is_expert":false,"article_count":47},{"user_name":"u011200604","nick_name":"\u98ce\u79bb\u7d2b\u7af9_zhangqiang","avatar":"https:\/\/avatar.csdn.net\/E\/F\/C\/3_u011200604.jpg","is_expert":false,"article_count":86},{"user_name":"qq_34302506","nick_name":"qq_34302506","avatar":"https:\/\/avatar.csdn.net\/2\/5\/2\/3_qq_34302506.jpg","is_expert":false,"article_count":55},{"user_name":"dayangma","nick_name":"dayangma","avatar":"https:\/\/avatar.csdn.net\/A\/D\/1\/3_dayangma.jpg","is_expert":false,"article_count":17}];
+
+		var articleType = 1;
+		var CopyrightContent = '';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

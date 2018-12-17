@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/qq_42229034/article/details/83186925"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="最近上计算机系统cs213，这周的作业就需要用到很多奇奇怪怪的位运算，我觉得真的很难啊...所以补一下相关知识。
+
+首先，我们都知道三个逻辑运算符，&amp;amp;amp;&amp;amp;amp;代表逻辑与，||代表逻辑或，！代表单目逻辑非。
+
+（Plus，如果对一个数字进行两次单目逻辑非，得到的是其逻辑值）
+
+
+int a=10,b=0;
+
+cout&amp;amp;lt;&amp;amp;lt;&amp;quot;We use 1 to denote truth and..." />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>C/C++ 位运算 - qq_42229034的博客 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin-blue/skin-blue-b7967eb1c8.min.css">
+
+    <script type="text/javascript">
+        var username = "qq_42229034";
+        var blog_address = "https://blog.csdn.net/qq_42229034";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/qq_42229034/article/details/83186925"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin-blue";
+        // 第四范式所需数据
+        var articleTitles = "C/C++ 位运算 - qq_42229034的博客";
+        var articleID = "83186925";
+
+        var nickName = "分分是菜鸡";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">C/C++ 位运算</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月19日 21:30:32</span>
+					<a class="follow-nickName" href="https://me.csdn.net/qq_42229034" target="_blank">分分是菜鸡</a>
+						<span class="read-count">阅读数：268</span>
+										</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e4c7a3727d.css" />
+						<div class="htmledit_views">
+                <p>最近上计算机系统cs213，这周的作业就需要用到很多奇奇怪怪的位运算，我觉得真的很难啊...所以补一下相关知识。</p>
+
+<p><strong>首先，我们都知道三个逻辑运算符，&amp;&amp;代表逻辑与，||代表逻辑或，！代表单目逻辑非。</strong></p>
+
+<p>（Plus，如果对一个数字进行两次单目逻辑非，得到的是其逻辑值）</p>
+
+<pre class="has">
+<code class="language-cpp">int a=10,b=0;
+
+cout&lt;&lt;"We use 1 to denote truth and 0 to denote false"&lt;&lt;endl;
+cout&lt;&lt;"(5&lt;a)&amp;&amp;b is:"&lt;&lt;((5&lt;a&amp;&amp;b))&lt;&lt;endl;
+</code></pre>
+
+<p><strong>然后我们再看看为逻辑运算符和位逻辑表达式：</strong></p>
+
+<p>位运算算是C语言的特色内容了，位运算可以实现位的设置、清零、取反、取补操作。利用位运算可以实现只有部分汇编语言才能实现的功能。</p>
+
+<pre class="has">
+<code>位逻辑运算符：
+
+&amp; 代表 按位逻辑与
+| 代表 按位逻辑或
+^ 代表 按位 异或
+~ 代表 按位取反        唯一一个单目运算符，以上都是双目运算符
+
+我们假设A是60 （A = 0011 1100）
+&lt;&lt;	二进制左移运算符。左操作数的值向左移动右操作数指定的位数。A &lt;&lt; 2 将得到 240，即为 1111 0000
+&gt;&gt;	二进制右移运算符。左操作数的值向右移动右操作数指定的位数。A &gt;&gt; 2 将得到 15，即为 0000 1111</code></pre>
+
+<p>程序中，位逻辑运算符一般被我们用作开关标志。较低层次的硬件设备驱动程序经常需要对I/O设备进行位操作。</p>
+
+<p>我们举个例子来康康：</p>
+
+<pre class="has">
+<code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+ 
+int main()
+{
+   unsigned int a = 60;      // 60 = 0011 1100  
+   unsigned int b = 13;      // 13 = 0000 1101
+   int c = 0;           
+ 
+   c = a &amp; b;             // 12 = 0000 1100
+   cout &lt;&lt; "Line 1 - c 的值是 " &lt;&lt; c &lt;&lt; endl ;
+ 
+   c = a | b;             // 61 = 0011 1101
+   cout &lt;&lt; "Line 2 - c 的值是 " &lt;&lt; c &lt;&lt; endl ;
+ 
+   c = a ^ b;             // 49 = 0011 0001
+   cout &lt;&lt; "Line 3 - c 的值是 " &lt;&lt; c &lt;&lt; endl ;
+ 
+   c = ~a;                // -61 = 1100 0011
+   cout &lt;&lt; "Line 4 - c 的值是 " &lt;&lt; c &lt;&lt; endl ;
+ 
+   c = a &lt;&lt; 2;            // 240 = 1111 0000，*4
+   cout &lt;&lt; "Line 5 - c 的值是 " &lt;&lt; c &lt;&lt; endl ;
+ 
+   c = a &gt;&gt; 2;            // 15 = 0000 1111，看似是/4，但其实说不清楚
+   cout &lt;&lt; "Line 6 - c 的值是 " &lt;&lt; c &lt;&lt; endl ;
+ 
+   return 0;
+}</code></pre>
+
+<p>在进行右移操作时对于有符号数需要注意符号位的问题，如果是+数，符号位为0；为负数的时候，最高位置是补0还是补1取决于编译系统的规定，移入0进去的话为逻辑右移，1的话为算术右移。大部分机器都是算术右移的。</p>
+
+<p> </p>
+
+<p>(说得比较模糊，这么讲：</p>
+
+<p>首先说明一下这两个概念： <br />
+逻辑右移：右移后左边添加0 <br />
+算术右移：右移后添加的位与原数的符号位相同</p>
+
+<p>在<strong><em>C语言中，对于移位操作执行的是逻辑左移和算术右移</em></strong>，<strong>不过对于无符号类型，所有的移位操作都是逻辑的</strong>。 </p>
+
+<p>)</p>
+
+<p> </p>
+
+<p>可以举个例子来康康：</p>
+
+<p><img alt="" class="has" height="310" src="https://img-blog.csdn.net/20181019204538768?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMjI5MDM0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="746" /></p>
+
+<p>可见，在dev-C++上的默认编译器上，-30右移动三位得到-4，是采取算术右移方式。用2进制表示，前面30位都是1，后面两位是0，算出来这个x&gt;&gt;3=-最高位位权+其余位位权*位的值，就等于-{1+2（+1）}=-4。</p>
+
+<p> </p>
+
+<p>我们再看看循环移位：</p>
+
+<p>顾名思义，循环移位就是将将移除的低位放到高位，移除的高位放到低位，有点像...循环链表？</p>
+
+<p>我们这里稍微介绍一下循环左移：（高位向左出“栈顶”，回归“栈底”）。</p>
+
+<pre class="has">
+<code>比如对x串，向左循环左移n位：
+首先将x的左端n位，在位串内部向右移动，我们假定这台机器里面int占4个字节（小声哔哔
+z=x&gt;&gt;(32-n);
+
+然后将x左移n位，右边补零：
+y=x&lt;&lt;n;
+
+最后将y、z按位“或”运算
+
+y=y|z；
+
+啊哈，大功告成</code></pre>
+
+<p>我们具体实现一下循环左移：从键盘中读入一个八进制数，然后输入想要移位的位数，最后循环左移的结果打印在控制台上。</p>
+
+<pre class="has">
+<code class="language-cpp">#include &lt;stdio.h&gt;
+LeftShift(unsigned value,int n)
+{
+    unsigned z;
+    z=(value&gt;&gt;(32-n)|(value&lt;&lt;n));
+    return z;
+}
+
+int main()
+{
+    unsigned a;
+    int n;
+    printf("hey  boy,please input an octal number in here:\n");
+    scanf("%o",&amp;a);
+    printf("hey boy,please input the number of leftshift displacement:\n");
+    scanf("%d",&amp;n);
+    printf("The result is shown below:\n %o in octal form",LeftShift(a,n));
+    return 0;
+}</code></pre>
+
+<p>而循环右移和循环左移是一个道理，不予赘述。</p>
+
+<p>位段我们就先不介绍了，如有必要再另行补充。</p>
+
+<p>补充：</p>
+
+<p>a&amp;b 9&amp;8 <br />
+1001 <br />
+1000<br />
+结果是1000 <br />
+而a&amp;&amp;b 9&amp;&amp;8 结果是1</p>
+
+<p>——————————————————————————————————————————作业中最简单的一道练习题：</p>
+
+<p>假设我们将一个w位的字中的字节从0（最低位）到w/8 -1（最高位）编号，写出下面的C函数的代码，他会返回一个无符号的值，其中参数x的字节i被替换成字节b：</p>
+
+<p>比如，从第0个字节移到第一个字节，需要移动8位，而从第零个字节到第i个字节，就要移动i&lt;&lt;3=i*2^3=8*i位。</p>
+
+<pre class="has">
+<code class="language-cpp">unsigned replace_byte(unsigned x,int i,unsigned char b);
+
+//form:
+replece_byte(0x12345678,2,0xAB) --&gt;0x12AB5678
+replace_byte(0x12345678,0,0xAB) --&gt;0x123456AB
+
+//solution：
+unsigned replace_byte(unsigned x, unsigned char b, int i)
+{
+    return (x &amp; ~(0xFF&lt;&lt;(i&lt;&lt;3))) | (b &lt;&lt; (i&lt;&lt;3));  //（i&lt;&lt;3可以写成8*i）
+}</code></pre>
+
+<p> </p>            </div>
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/qq_42229034/article/details/83186925,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/qq_42229034/article/details/83186925,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/GlowChar/article/details/78401992,BlogCommendFromQuerySearch_1"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/GlowChar/article/details/78401992,BlogCommendFromQuerySearch_1"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/GlowChar/article/details/78401992?utm_source=blogxgwz0" target="_blank" title="c语言位运算符与逻辑运算符的区别">
+				<h4 class="text-truncate oneline">
+						c语言位运算符与逻辑运算符的区别				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/0/9/0/3_glowchar.jpg" alt="GlowChar" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">GlowChar</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">10-31</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							901</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/GlowChar/article/details/78401992?utm_source=blogxgwz0" target="_blank" title="c语言位运算符与逻辑运算符的区别">
+							<span class="desc oneline">&amp;&amp;、||是逻辑运算符，用于从左到右求表达式的真值。假设x=1；y=2；那么x&amp;&amp;y=1；x||y=1；
+&amp;、|是位运算符，是对x，y进行位运算，x，y取值如上，那么有x&amp;y=0；（x的二进制表示为...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/GlowChar?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> GlowChar的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/Bruce_0712/article/details/63679726,BlogCommendFromQuerySearch_4"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/Bruce_0712/article/details/63679726,BlogCommendFromQuerySearch_4"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/Bruce_0712/article/details/63679726?utm_source=blogxgwz1" target="_blank" title="C/C++之位运算符与逻辑运算符详解">
+				<h4 class="text-truncate oneline">
+						C/C++之位运算符与逻辑运算符详解				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/6/B/4/3_bruce_0712.jpg" alt="Bruce_0712" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">Bruce_0712</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-19</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3258</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/Bruce_0712/article/details/63679726?utm_source=blogxgwz1" target="_blank" title="C/C++之位运算符与逻辑运算符详解">
+							<span class="desc oneline">一、位运算符用法
+
+    C语言中的位运算符主要有以下几种：
+
+   
+
+    使用的时候主要有以下几个注意点：
+
+    1.左移运算符将
+
+    2.右移运算符将&gt;&gt;将运...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/Bruce_0712?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Bruce_0712的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+									<!-- 第四范式广告开关 -->
+				<div class="p4courset3_target _4paradigm_box recommend-item-box clearfix" ></div>
+				<script>window.p4sdk_enable_recommendBox=true</script>
+			
+					<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/UNIONDONG/article/details/79500399,BlogCommendFromQuerySearch_7"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/UNIONDONG/article/details/79500399,BlogCommendFromQuerySearch_7"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/UNIONDONG/article/details/79500399?utm_source=blogxgwz2" target="_blank" title="C语言逻辑运算符，位运算符总结">
+				<h4 class="text-truncate oneline">
+						C语言逻辑运算符，位运算符总结				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/2/3/3_uniondong.jpg" alt="UNIONDONG" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">UNIONDONG</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-09</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							4499</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/UNIONDONG/article/details/79500399?utm_source=blogxgwz2" target="_blank" title="C语言逻辑运算符，位运算符总结">
+							<span class="desc oneline">&amp;amp;amp; | ~ ^  &amp;amp;gt;&amp;amp;gt;  &amp;amp;lt;&amp;amp;lt; &amp;amp;amp;&amp;amp;amp; || ！运算符包括逻辑运算符与位运算符。逻辑运算符针对的就...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/UNIONDONG?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> UNIONDONG的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/baishuwei/article/details/4151341,BlogCommendFromQuerySearch_8"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/baishuwei/article/details/4151341,BlogCommendFromQuerySearch_8"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/baishuwei/article/details/4151341?utm_source=blogxgwz3" target="_blank" title="C语言中逻辑运算符(&amp;&amp;，||，!)和位运算符号(&amp;，|，^)的区别">
+				<h4 class="text-truncate oneline">
+						C语言中逻辑运算符(&amp;&amp;，||，!)和位运算符号(&amp;，|，^)的区别				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/D/A/3/3_baishuwei.jpg" alt="baishuwei" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">baishuwei</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">05-05</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							4.2万</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/baishuwei/article/details/4151341?utm_source=blogxgwz3" target="_blank" title="C语言中逻辑运算符(&amp;&amp;，||，!)和位运算符号(&amp;，|，^)的区别">
+							<span class="desc oneline"> 1.     C语言中逻辑运算符(&amp;&amp;，||，!)和位运算符号(&amp;，|，^)的区别在C语言中，编程者经常混淆两组运算符：（&amp;&amp;，||，！）和（&amp;，|，^）。第一组是逻辑运算符，它的操作数是布尔型，而...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/baishuwei?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> baishuwei的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/woailvmengmeng/article/details/17216633,BlogCommendFromQuerySearch_0"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/woailvmengmeng/article/details/17216633,BlogCommendFromQuerySearch_0"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/woailvmengmeng/article/details/17216633?utm_source=blogxgwz4" target="_blank" title="c语言逻辑运算与位运算区别">
+				<h4 class="text-truncate oneline">
+						c语言逻辑运算与位运算区别				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/3/1/0/3_woailvmengmeng.jpg" alt="woailvmengmeng" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">woailvmengmeng</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-09</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3049</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/woailvmengmeng/article/details/17216633?utm_source=blogxgwz4" target="_blank" title="c语言逻辑运算与位运算区别">
+							<span class="desc oneline">c语言中，逻辑运算与位运算很容易混淆，但是它们的功能是完全不同的。逻辑运算认为所有的非零的参数都为TRUE，参数0表示false，它们返回1或0.
+&amp;&amp;与||和&amp;与|重要的区别是，如果第一个参数求值能...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/woailvmengmeng?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> lvmengmeng</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/wuguangbin1230/article/details/76833794,BlogCommendFromQuerySearch_2"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/wuguangbin1230/article/details/76833794,BlogCommendFromQuerySearch_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/wuguangbin1230/article/details/76833794?utm_source=blogxgwz5" target="_blank" title="c++位运算和逻辑运算（&amp;&amp;和||：逻辑运算符；&amp;和|：按位运算符）">
+				<h4 class="text-truncate oneline">
+						c++位运算和逻辑运算（&amp;&amp;和||：逻辑运算符；&amp;和|：按位运算符）				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/B/5/8/3_wuguangbin1230.jpg" alt="wuguangbin1230" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">wuguangbin1230</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">08-07</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							599</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/wuguangbin1230/article/details/76833794?utm_source=blogxgwz5" target="_blank" title="c++位运算和逻辑运算（&amp;&amp;和||：逻辑运算符；&amp;和|：按位运算符）">
+							<span class="desc oneline">C,C#,C++中&amp;&amp;和||，&amp;和|的联系和区别
+
+
+两者计算结果相同（针对各自的运算对象），只是性能上有差别而已。
+&amp;&amp;和||：逻辑运算符
+&amp;和|：按位运算符
+
+&amp;&amp;是且的意思,a&amp;&amp;b 两者都为真...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/wuguangbin1230?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> wuguangbin1230的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/liu251890347/article/details/39337905,BlogCommendFromQuerySearch_3"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/liu251890347/article/details/39337905,BlogCommendFromQuerySearch_3"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/liu251890347/article/details/39337905?utm_source=blogxgwz6" target="_blank" title="位运算（&amp;、|、^）与逻辑运算（&amp;&amp;、 ||）区别">
+				<h4 class="text-truncate oneline">
+						位运算（&amp;、|、^）与逻辑运算（&amp;&amp;、 ||）区别				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/E/D/A/3_liu251890347.jpg" alt="liu251890347" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">liu251890347</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">09-17</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							8567</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/liu251890347/article/details/39337905?utm_source=blogxgwz6" target="_blank" title="位运算（&amp;、|、^）与逻辑运算（&amp;&amp;、 ||）区别">
+							<span class="desc oneline">刚无意在一篇文章中看到了位运算（&amp;、|）和逻辑运算（&amp;&amp;、||）的介绍，想起了自己薄弱的基础知识，于是百度了几把总结了下。
+        首先从概念上区分下，位运算是将运算符两边的数字换算成二进制...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/liu251890347?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 枫飘瞬间</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/mydriverc2/article/details/52861809,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/mydriverc2/article/details/52861809,BlogCommendFromQuerySearch_5"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/mydriverc2/article/details/52861809?utm_source=blogxgwz7" target="_blank" title="（&amp;&amp; ） 按位与 和 （&amp;） 逻辑与有什么区别？">
+				<h4 class="text-truncate oneline">
+						（&amp;&amp; ） 按位与 和 （&amp;） 逻辑与有什么区别？				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/5/B/C/3_mydriverc2.jpg" alt="mydriverc2" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">mydriverc2</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">10-19</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2484</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/mydriverc2/article/details/52861809?utm_source=blogxgwz7" target="_blank" title="（&amp;&amp; ） 按位与 和 （&amp;） 逻辑与有什么区别？">
+							<span class="desc oneline">&amp;&amp;是逻辑与  即判断&amp;&amp;两侧的表达式是否都为真，都为真则此&amp;&amp;表达式值为真；&amp; 是按位与 即将&amp;两侧的数用二进制展开，每一位都求与运算(二进制与运算，跟逻辑与差不多)，最后得到的二进制数即为结果；逻...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/mydriverc2?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> MyDriverC</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/weixin_39460458/article/details/80027654,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/weixin_39460458/article/details/80027654,BlogCommendFromQuerySearch_6"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/weixin_39460458/article/details/80027654?utm_source=blogxgwz8" target="_blank" title="java中按位运算与逻辑运算的区别">
+				<h4 class="text-truncate oneline">
+						java中按位运算与逻辑运算的区别				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/6/E/9/3_weixin_39460458.jpg" alt="weixin_39460458" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">weixin_39460458</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-21</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							139</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/weixin_39460458/article/details/80027654?utm_source=blogxgwz8" target="_blank" title="java中按位运算与逻辑运算的区别">
+							<span class="desc oneline">问题一： JAVA中&amp;amp;amp;&amp;amp;amp;和&amp;amp;amp;、||和|（短路与和逻辑与、短路或和逻辑或）的区别？ 首先名称是不同的 ＆＆逻辑与　　｜｜逻辑或　　它们都是逻辑运算符 ＆　...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/weixin_39460458?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 木舟的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/u010275850/article/details/45097221,BlogCommendFromQuerySearch_9"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/u010275850/article/details/45097221,BlogCommendFromQuerySearch_9"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/u010275850/article/details/45097221?utm_source=blogxgwz9" target="_blank" title="C语言的按位 或，与，非，异或 运算符">
+				<h4 class="text-truncate oneline">
+						C语言的按位 或，与，非，异或 运算符				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/B/0/4/3_u010275850.jpg" alt="u010275850" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u010275850</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-17</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							4609</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/u010275850/article/details/45097221?utm_source=blogxgwz9" target="_blank" title="C语言的按位 或，与，非，异或 运算符">
+							<span class="desc oneline">注意与常用逻辑运算符的区别
+位运算符
+常用逻辑运算符
+按位与：&amp;  
+与：&amp;&amp; 
+按位或：| 或：||
+按位异或：^ 非：！
+非运算：~
+
+
+按位与&amp;：其功能是参与运算的两数各对应的二进位相与。只有对...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/u010275850?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> fzzjoy的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/leishen1992/article/details/78686512" target="_blank">
+						AT语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/lyg105504/article/details/6631847" target="_blank">
+						as语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/qq_39539470/article/details/81268916" target="_blank">
+						c语言c语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/hgx1996/article/details/79006066" target="_blank">
+						c语言与c语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/zhuangzhineng/article/details/3961886" target="_blank">
+						强语言与弱语言</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/qq_42229034">
+                <img src="https://avatar.csdn.net/C/1/7/3_qq_42229034.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/qq_42229034" target="_blank" class="" id="uid">分分是菜鸡</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="47">
+                        <dt><a href="https://blog.csdn.net/qq_42229034?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/qq_42229034?t=1"><span class="count">47</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="8">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">8</span></dd>
+        </dl>
+        <dl class="text-center" title="10">
+            <dt>喜欢</dt>
+            <dd><span class="count">10</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>评论</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="3级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-3"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="4003">
+                4003            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="507">
+                507            </dd>
+        </dl>
+        <dl title="114203">
+            <dt>排名：</dt>
+            <dd>11万+</dd>
+        </dl>
+    </div>
+        <div class="badge-box d-flex">
+        <span>勋章：</span>
+                        <a class="icon-badge" title="持之以恒">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#csdnc-m-lasting"></use>
+            </svg>
+            <div class="icon-arrow"></div>
+            <div class="grade-detail-box item2">
+                <div class="pos-box">
+                    <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#csdnc-m-lasting"></use>
+                        </svg>
+                        <p>持之以恒</p>
+                    </div>
+                    <div class="right-box d-flex justify-content-center align-items-center">
+                        授予每个自然月内发布4篇或4篇以上原创或翻译IT博文的用户。不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累！
+                    </div>
+                </div>
+            </div>
+        </a>
+                            </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-百度联盟-300x250 --><script type="text/javascript" src="//rabc1.iteye.com/common/production/web/z3n86.js?lg=yyovfyh"></script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_42229034/article/details/83217823" target="_blank">C++ 名字空间</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_42229034/article/details/83065104" target="_blank">C++ 内联函数与重载函数、传引用简介</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_42229034/article/details/82987705" target="_blank">数据结构C语言 番外篇 ADT的表示与实现(以复数为例)</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_42229034/article/details/82956123" target="_blank">C语言算法题 检测uid</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_42229034/article/details/82953520" target="_blank">数据结构C语言 Part1 引入篇</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    <div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/8000442">
+                    <span class="title oneline">C语言</span>
+                    <span class="count float-right">15篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/8104924">
+                    <span class="title oneline">数据结构C语言</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/7970712">
+                    <span class="title oneline">机器学习</span>
+                    <span class="count float-right">10篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/7997160">
+                    <span class="title oneline">算法</span>
+                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/7967510">
+                    <span class="title oneline">C++语言</span>
+                    <span class="count float-right">9篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/7989758">
+                    <span class="title oneline">黑客入门</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/8000439">
+                    <span class="title oneline">计算机系统</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_42229034/article/category/8073713">
+                    <span class="title oneline">数学基础</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideArchive" class="aside-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_42229034/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_42229034/article/month/2018/09">
+                    2018年9月                    <span class="count float-right">14篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_42229034/article/month/2018/08">
+                    2018年8月                    <span class="count float-right">20篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_42229034/article/month/2018/06">
+                    2018年6月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/qq_42229034/article/details/81813396">机器学习概述</a>
+					<p class="read">阅读量：<span>528</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_42229034/article/details/81585082">虚拟机安装教程</a>
+					<p class="read">阅读量：<span>406</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_42229034/article/details/83186925">C/C++ 位运算</a>
+					<p class="read">阅读量：<span>226</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_42229034/article/details/82349084">深入理解计算机系统-第一章</a>
+					<p class="read">阅读量：<span>191</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_42229034/article/details/82290232">黑客攻防学习笔记 准备工作</a>
+					<p class="read">阅读量：<span>135</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/common/site/resource/nqnl.js?mhzzpw=gzj"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitchat.csdn.net/?utm_source=wzl" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">告别知识焦虑，即刻启程</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+								<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+											</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 16;
+    var articleId = "83186925";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/qq_42229034/article/details/83186925";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = 'atom-one-dark';
+		var highlight = ["\u8bed\u8a00","\u903b\u8f91\u4e0e","\u4f4d\u8fd0\u7b97"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"morixinguan","nick_name":"Engineer-Bruce_Yang","avatar":"https:\/\/avatar.csdn.net\/1\/9\/3\/3_morixinguan.jpg","is_expert":true,"article_count":631},{"user_name":"u012515223","nick_name":"SpikeKing","avatar":"https:\/\/avatar.csdn.net\/7\/3\/E\/3_u012515223.jpg","is_expert":true,"article_count":721},{"user_name":"longronglin","nick_name":"\u9a6c\u5982\u6797","avatar":"https:\/\/avatar.csdn.net\/8\/6\/8\/3_longronglin.jpg","is_expert":true,"article_count":970},{"user_name":"woailvmengmeng","nick_name":"lvmengmengzp","avatar":"https:\/\/avatar.csdn.net\/3\/1\/0\/3_woailvmengmeng.jpg","is_expert":false,"article_count":377},{"user_name":"GlowChar","nick_name":"GlowChar","avatar":"https:\/\/avatar.csdn.net\/0\/9\/0\/3_glowchar.jpg","is_expert":false,"article_count":10},{"user_name":"wuguangbin1230","nick_name":"wuguangbin1230","avatar":"https:\/\/avatar.csdn.net\/B\/5\/8\/3_wuguangbin1230.jpg","is_expert":false,"article_count":294},{"user_name":"liu251890347","nick_name":"\u67ab\u98d8\u77ac\u95f4","avatar":"https:\/\/avatar.csdn.net\/E\/D\/A\/3_liu251890347.jpg","is_expert":false,"article_count":151},{"user_name":"Bruce_0712","nick_name":"Bruce_0712","avatar":"https:\/\/avatar.csdn.net\/6\/B\/4\/3_bruce_0712.jpg","is_expert":false,"article_count":253},{"user_name":"mydriverc2","nick_name":"mydriverc2","avatar":"https:\/\/avatar.csdn.net\/5\/B\/C\/3_mydriverc2.jpg","is_expert":false,"article_count":1219},{"user_name":"weixin_39460458","nick_name":"\u6728\u821f\u9065","avatar":"https:\/\/avatar.csdn.net\/6\/E\/9\/3_weixin_39460458.jpg","is_expert":false,"article_count":7}];
+
+		var articleType = 1;
+		var CopyrightContent = '';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

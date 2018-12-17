@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/yanlaifan/article/details/83109890"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="                                                                                     C语言与C++语言相互调用
+
+1 C++调用C中的函数
+
+ 
+
+1.1 C++调用C中的函数（正确使用）
+
+ 
+
+1、案例源文件组成
+
+
+
+                                             ..." />
+    <meta name="keywords" content="" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>C语言与C++语言相互调用 - yanlaifan的博客 - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-2eefd34acf.min.css">
+
+    <script type="text/javascript">
+        var username = "yanlaifan";
+        var blog_address = "https://blog.csdn.net/yanlaifan";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/yanlaifan/article/details/83109890"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin-yellow";
+        // 第四范式所需数据
+        var articleTitles = "C语言与C++语言相互调用 - yanlaifan的博客";
+        var articleID = "83109890";
+
+        var nickName = "yanlaifan";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">C语言与C++语言相互调用</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月17日 15:02:47</span>
+					<a class="follow-nickName" href="https://me.csdn.net/yanlaifan" target="_blank">yanlaifan</a>
+						<span class="read-count">阅读数：227</span>
+						
+																					<div class="tags-box space">
+								<span class="label">个人分类：</span>
+																<a class="tag-link" href="https://blog.csdn.net/yanlaifan/article/category/6235003"  target="_blank">Linux C 编程																</a>
+							</div>
+																								</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								<div class="article-copyright">
+					版权声明：本文为博主原创文章，未经博主允许不得转载。					https://blog.csdn.net/yanlaifan/article/details/83109890				</div>
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e4c7a3727d.css" />
+						<div class="htmledit_views">
+                <p>                                                                                     C语言与C++语言相互调用</p>
+
+<h1 style="margin-left:0cm;"><a name="_Toc512259978">1 C++</a>调用C中的函数</h1>
+
+<p style="margin-left:0cm;"> </p>
+
+<h2 style="margin-left:0cm;"><a name="_Toc512259979">1.1 C++</a>调用C中的函数（正确使用）</h2>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259980">1</a>、案例源文件组成</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="125" src="https://img-blog.csdn.net/20181017152427994?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="410" /></p>
+
+<p style="margin-left:0cm;">                                              图1</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259981">2</a>、math模块包含文件</h3>
+
+<p style="margin-left:0cm;"> </p>
+
+<p><a name="_Toc512259982">1</a>）源文件math.c</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="227" src="https://img-blog.csdn.net/2018101715242815?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="454" /></p>
+
+<p style="margin-left:0cm;">                                              图2</p>
+
+<p><a name="_Toc512259983">2</a>）头文件math.h</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="127" src="https://img-blog.csdn.net/2018101715242819?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="455" /></p>
+
+<p style="margin-left:0cm;">                                                     图3</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259984">3</a>、主模块包含文件</h3>
+
+<p style="margin-left:0cm;"> </p>
+
+<p><a name="_Toc512259985">1</a>）源文件main.cpp</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="272" src="https://img-blog.csdn.net/2018101715242872?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="470" /></p>
+
+<p style="margin-left:0cm;">                                                        图4</p>
+
+<p><a name="_Toc512259986">2</a>）头文件module.h</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="260" src="https://img-blog.csdn.net/20181017152428144?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="465" /></p>
+
+<p style="margin-left:0cm;">                                                     图5</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259987">4</a>、编译math模块</h3>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="273" src="https://img-blog.csdn.net/20181017152428359?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="571" /></p>
+
+<p style="margin-left:0cm;">                                                                 图6</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259988">5</a>、编译主模块</h3>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="275" src="https://img-blog.csdn.net/20181017152428366?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="568" /></p>
+
+<p style="margin-left:0cm;">                                                                   图7</p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259989">6</a>、链接</h3>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="123" src="https://img-blog.csdn.net/20181017152428450?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500" /></p>
+
+<p style="margin-left:0cm;">                                                            图8a</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="80" src="https://img-blog.csdn.net/20181017152428473?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="576" /></p>
+
+<p style="margin-left:0cm;">                                                               图8b</p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h2 style="margin-left:0cm;"><a name="_Toc512259990">1.2 C++</a>调用C中的函数（非正确使用）</h2>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259991">1</a>、案例源文件组成</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="130" src="https://img-blog.csdn.net/20181017152428491?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="478" /></p>
+
+<p style="margin-left:0cm;">                                                           图9</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259992">2</a>、math模块包含文件</h3>
+
+<p><a name="_Toc512259993">1</a>）源文件math.c</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="244" src="https://img-blog.csdn.net/20181017152428655?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="517" /></p>
+
+<p style="margin-left:0cm;">                                                          图10</p>
+
+<p><a name="_Toc512259994">2</a>）头文件math.h</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="133" src="https://img-blog.csdn.net/20181017152428779?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="521" /></p>
+
+<p style="margin-left:0cm;">                                                             图11</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259995">3</a>、主模块包含文件</h3>
+
+<p><a name="_Toc512259996">1</a>）源文件main.cpp</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="230" src="https://img-blog.csdn.net/20181017152428861?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="308" /></p>
+
+<p style="margin-left:0cm;">                               图12</p>
+
+<p><a name="_Toc512259997">2</a>）头文件module.h</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="275" src="https://img-blog.csdn.net/20181017152428932?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="533" /></p>
+
+<p style="margin-left:0cm;">                                                        图13</p>
+
+<p style="margin-left:0cm;">图13与图5内容差异为：图13屏蔽了exterrn “C” {}</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259998">4</a>、编译math模块</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="322" src="https://img-blog.csdn.net/2018101715242955?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="712" /></p>
+
+<p style="margin-left:0cm;">                                                                     图14</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512259999">5</a>、编译主模块</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="387" src="https://img-blog.csdn.net/20181017152429122?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="705" /></p>
+
+<p style="margin-left:0cm;">                                                                                 图15</p>
+
+<p style="margin-left:0cm;">图15与图7中内容差异：图7中的函数符号为add_func，而图15中的函数符号为_Z8add_funcii</p>
+
+<p style="margin-left:0cm;">因C++为面向对象语言，存在多态性，在编译时会将函数参数类型和个数一并加入符号中，其中_Z8add_funcii中的ii为表示有两个参数，并且参数类型为integer型。</p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260000">6</a>、链接</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="101" src="https://img-blog.csdn.net/20181017152429259?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="573" /></p>
+
+<p style="margin-left:0cm;">                                                                 图16</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;"><a name="_Toc512260001">2 C</a>调用C++中的函数</h1>
+
+<p style="margin-left:0cm;"> </p>
+
+<h2 style="margin-left:0cm;"><a name="_Toc512260002">2.1 C</a>调用C++中的函数（正确使用）</h2>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260003">1</a>、源码结构</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="138" src="https://img-blog.csdn.net/20181017152429306?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="432" /></p>
+
+<p style="margin-left:0cm;">                                                 图1</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260004">2</a>、math模块</h3>
+
+<p><a name="_Toc512260005">1</a>）math.h文件</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="259" src="https://img-blog.csdn.net/20181017152429244?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="342" /></p>
+
+<p style="margin-left:0cm;">                                      图2</p>
+
+<p><a name="_Toc512260006">2</a>）math.cpp</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="250" src="https://img-blog.csdn.net/20181017152429324?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="262" /></p>
+
+<p style="margin-left:0cm;">                             图3</p>
+
+<p><a name="_Toc512260007">3</a>）编译math模块</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="81" src="https://img-blog.csdn.net/20181017152429475?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="579" /></p>
+
+<p style="margin-left:0cm;">                                                                  图4</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p><a name="_Toc512260008">4</a>）查看math.o中符号内容</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="250" src="https://img-blog.csdn.net/20181017152429547?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="575" /></p>
+
+<p style="margin-left:0cm;">                                                                图5</p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260009">3</a>、主模块</h3>
+
+<p><a name="_Toc512260010">1</a>）module.h</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="116" src="https://img-blog.csdn.net/20181017152429622?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="312" /></p>
+
+<p style="margin-left:0cm;">                                 图6</p>
+
+<p><a name="_Toc512260011">2</a>）main.c</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="246" src="https://img-blog.csdn.net/20181017152429751?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="355" /></p>
+
+<p style="margin-left:0cm;">                                       图7</p>
+
+<p><a name="_Toc512260012">3</a>）编译主模块</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="76" src="https://img-blog.csdn.net/20181017152429792?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="561" /></p>
+
+<p style="margin-left:0cm;">                                                          图8</p>
+
+<p><a name="_Toc512260013">4</a>）查看main.o中符号</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="262" src="https://img-blog.csdn.net/20181017152429825?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="568" /></p>
+
+<p style="margin-left:0cm;">                                                              图9</p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260014">4</a>、链接（math.o和main.o）</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="150" src="https://img-blog.csdn.net/2018101715243065?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="572" /></p>
+
+<p style="margin-left:0cm;">                                                           图10</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h2 style="margin-left:0cm;"><a name="_Toc512260015">2.2 C</a>调用C++中的函数（非正确使用）</h2>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260016">1</a>、源文件结构</h3>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="161" src="https://img-blog.csdn.net/20181017152430176?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="436" /></p>
+
+<p style="margin-left:0cm;">                                               图1</p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260017">2</a>、math模块</h3>
+
+<p><a name="_Toc512260018">1</a>）math.h文件</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="103" src="https://img-blog.csdn.net/20181017152430201?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="316" /></p>
+
+<p style="margin-left:0cm;">                             图2</p>
+
+<p><a name="_Toc512260019">2</a>）math.cpp文件</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="250" src="https://img-blog.csdn.net/20181017152430374?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="262" /></p>
+
+<p style="margin-left:0cm;">                             图3 </p>
+
+<p><a name="_Toc512260020">3</a>）编译math模块</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="81" src="https://img-blog.csdn.net/20181017152430402?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="579" /></p>
+
+<p style="margin-left:0cm;">                                                          图4</p>
+
+<p><a name="_Toc512260021">4</a>）查看math.o中的符号</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="246" src="https://img-blog.csdn.net/20181017152430436?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="583" /></p>
+
+<p style="margin-left:0cm;">                                                                 图5</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260022">3</a>、主模块</h3>
+
+<p><a name="_Toc512260023">1</a>）module.h</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="116" src="https://img-blog.csdn.net/20181017152430453?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="312" /></p>
+
+<p style="margin-left:0cm;">                                       图6</p>
+
+<p><a name="_Toc512260024">2</a>）main.c</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="246" src="https://img-blog.csdn.net/20181017152430623?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="355" /></p>
+
+<p style="margin-left:0cm;">                                     图7</p>
+
+<p><a name="_Toc512260025">3</a>）编译主模块</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="76" src="https://img-blog.csdn.net/20181017152430653?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="561" /></p>
+
+<p style="margin-left:0cm;">                                                   图8</p>
+
+<p><a name="_Toc512260026">4</a>）查看main.o中符号</p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="262" src="https://img-blog.csdn.net/20181017152430824?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="568" /></p>
+
+<p style="margin-left:0cm;">                                                              图9</p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h3 style="margin-left:0cm;"><a name="_Toc512260027">4</a>、链接（math.o和main.o）</h3>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"><img alt="" class="has" height="84" src="https://img-blog.csdn.net/20181017152430828?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmxhaWZhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="573" /></p>
+
+<p style="margin-left:0cm;">                                                        图10 </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<p style="margin-left:0cm;"> </p>
+
+<h1 style="margin-left:0cm;"><a name="_Toc512260028">3 </a>总结</h1>
+
+<p style="margin-left:0cm;">C++保留了一部分过程式语言特点，因此可以定义不属于任何类的全局变量和函数；但是C++为面向对象语言，支持函数的重载，C++对全局函数处理方式明显与C不同。extern “C”{}目的是为了让C++正确使用C的代码，加上extern “C”{}之后，会指示编译器对这部分代码按照C语言进行编译，而不是C++。C++支持多态，因此编译过程中会将函数的参数类型合入函数名符号中，而不仅仅是函数名。</p>
+
+<p style="margin-left:0cm;">__cplusplus为cpp中自定义的宏，extern表明变量和函数是全局性的。</p>
+
+<p style="margin-left:0cm;">主意：</p>
+
+<p style="margin-left:0cm;">1）C++调用一个C语言编写的.so库时，包含描述.so库中函数的头文件时，应该将对应的头文件放置在extern “C”{}格式的{}中，。</p>
+
+<p style="margin-left:0cm;">2）C中引用C++中的全局函数时，C++的头文件需要加extern “C”，而C文件中不能用extern “C”，只能使用extern关键字。</p>            </div>
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/yanlaifan/article/details/83109890,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/yanlaifan/article/details/83109890,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/wuli2496/article/details/40679403,BlogCommendFromQuerySearch_0"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/wuli2496/article/details/40679403,BlogCommendFromQuerySearch_0"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/wuli2496/article/details/40679403?utm_source=blogxgwz0" target="_blank" title="c++和c语言中的函数相互调用的问题">
+				<h4 class="text-truncate oneline">
+						c++和c语言中的函数相互调用的问题				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/1/C/3/3_wuli2496.jpg" alt="wuli2496" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">wuli2496</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-01</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1480</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/wuli2496/article/details/40679403?utm_source=blogxgwz0" target="_blank" title="c++和c语言中的函数相互调用的问题">
+							<span class="desc oneline">1、如何C++程序要调用 已编译后的C函数，该怎么办？</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/wuli2496?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 多看多听多总结</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/this_is_me_anyway/article/details/79397018,BlogCommendFromQuerySearch_1"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/this_is_me_anyway/article/details/79397018,BlogCommendFromQuerySearch_1"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/this_is_me_anyway/article/details/79397018?utm_source=blogxgwz1" target="_blank" title="C与C++之间的相互调用（混合编程）">
+				<h4 class="text-truncate oneline">
+						C与C++之间的相互调用（混合编程）				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/7/D/3_this_is_me_anyway.jpg" alt="this_is_me_anyway" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">this_is_me_anyway</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">02-28</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3693</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/this_is_me_anyway/article/details/79397018?utm_source=blogxgwz1" target="_blank" title="C与C++之间的相互调用（混合编程）">
+							<span class="desc oneline">      C和C++各自有自身的重要功能，为了能够做到充分利用，避免重复造轮子，有的时候，我们会用到混合编程。然而，我们知道，代码从编写到能执行之前，仍需要经过编译、链接阶段。通常，编译每一个单元文...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/this_is_me_anyway?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 夏天的风的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+									<!-- 第四范式广告开关 -->
+				<div class="p4courset3_target _4paradigm_box recommend-item-box clearfix" ></div>
+				<script>window.p4sdk_enable_recommendBox=true</script>
+			
+					<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/jingzi123456789/article/details/51286119,BlogCommendFromQuerySearch_2"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/jingzi123456789/article/details/51286119,BlogCommendFromQuerySearch_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/jingzi123456789/article/details/51286119?utm_source=blogxgwz2" target="_blank" title="同一个C语言工程不同C文件之间的函数互相调用问题(一)">
+				<h4 class="text-truncate oneline">
+						同一个C语言工程不同C文件之间的函数互相调用问题(一)				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/A/0/8/3_jingzi123456789.jpg" alt="jingzi123456789" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">jingzi123456789</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-30</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2554</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/jingzi123456789/article/details/51286119?utm_source=blogxgwz2" target="_blank" title="同一个C语言工程不同C文件之间的函数互相调用问题(一)">
+							<span class="desc oneline">首先，新建一个头文件。例如，定义一个求和的功能的函数：
+function.h
+int add(int m, int n)
+{
+return m + n;
+}
+
+
+
+然后，新建主函数m...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/jingzi123456789?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> Joohong的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/m47838704/article/details/44968543,BlogCommendFromQuerySearch_3"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/m47838704/article/details/44968543,BlogCommendFromQuerySearch_3"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/m47838704/article/details/44968543?utm_source=blogxgwz3" target="_blank" title="C语言与汇编语言相互调用原理以及实例">
+				<h4 class="text-truncate oneline">
+						C语言与汇编语言相互调用原理以及实例				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/1/6/4/3_m47838704.jpg" alt="m47838704" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">m47838704</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-10</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3231</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/m47838704/article/details/44968543?utm_source=blogxgwz3" target="_blank" title="C语言与汇编语言相互调用原理以及实例">
+							<span class="desc oneline">下面两个分别是一个foo.asm（汇编语言文件），bar.c（c语言文件）
+首先来了解C语言为什么能调用汇编语言，以及汇编语言为什么能调用C语言。其实不管是C语言还是汇编语言想要执行都是最终编译链接成...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/m47838704?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> m47838704的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/tigerxuchuanli/article/details/79719008,BlogCommendFromQuerySearch_4"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/tigerxuchuanli/article/details/79719008,BlogCommendFromQuerySearch_4"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/tigerxuchuanli/article/details/79719008?utm_source=blogxgwz4" target="_blank" title="C与C++之间dll相互调用">
+				<h4 class="text-truncate oneline">
+						C与C++之间dll相互调用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/A/6/3/3_tigerxuchuanli.jpg" alt="tigerxuchuanli" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">tigerxuchuanli</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-27</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							687</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/tigerxuchuanli/article/details/79719008?utm_source=blogxgwz4" target="_blank" title="C与C++之间dll相互调用">
+							<span class="desc oneline">1、导出C函数以用于C或C++的项目如果使用C语言编写的DLL，希望从中导出函数给C或C++的模块访问，则应使用 __cplusplus 预处理器宏确定正在编译的语言。如果是从C++语言模块使用，则用...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/tigerxuchuanli?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> tigerxuchuanli的专栏</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/a_yun_v/8032821,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/a_yun_v/8032821,BlogCommendFromQuerySearch_5"}'>
+			<a href="https://download.csdn.net/download/a_yun_v/8032821?utm_source=blogxgwz5" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							R 和 C，C++语言函数调用						</h4>
+						<span class="data float-right">10-13</span>
+					</div>
+					<div class="desc oneline">
+							R 和 C，C++语言函数之间的相互调用文档					</div>
+				</div>
+			</a>
+		</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/lincoln_2012/article/details/50801080,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/lincoln_2012/article/details/50801080,BlogCommendFromQuerySearch_6"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/lincoln_2012/article/details/50801080?utm_source=blogxgwz6" target="_blank" title="C与C++接口间相互调用">
+				<h4 class="text-truncate oneline">
+						C与C++接口间相互调用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/9/5/D/3_lincoln_2012.jpg" alt="lincoln_2012" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">lincoln_2012</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">03-04</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							6550</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/lincoln_2012/article/details/50801080?utm_source=blogxgwz6" target="_blank" title="C与C++接口间相互调用">
+							<span class="desc oneline">项目中经常使用C和C++混合编程，那么，在调用对方接口时，总是不可避免地出现问题。为了让双方和谐地工作，就得用到extern &quot;C&quot;。...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/lincoln_2012?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 瓦釜苑</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/zhanglianpin/article/details/24050015,BlogCommendFromQuerySearch_7"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/zhanglianpin/article/details/24050015,BlogCommendFromQuerySearch_7"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/zhanglianpin/article/details/24050015?utm_source=blogxgwz7" target="_blank" title="ARM汇编 C语言 C++  相互调用">
+				<h4 class="text-truncate oneline">
+						ARM汇编 C语言 C++  相互调用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/5/A/5/3_zhanglianpin.jpg" alt="zhanglianpin" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">zhanglianpin</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">04-18</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							3680</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/zhanglianpin/article/details/24050015?utm_source=blogxgwz7" target="_blank" title="ARM汇编 C语言 C++  相互调用">
+							<span class="desc oneline">C语言和ARM汇编语言的相互调用
+
+
+
+1.汇编程序访问C语言全局变量
+
+全局变量只能通过地址间接调用，为了访问C语言中全局变量，首先要通过extern伪指令引入全局变量，然后将其地址装入...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/zhanglianpin?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> bahutou, 嵌入式系统解决方案</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/nbhh2748/article/details/78744919,BlogCommendFromQuerySearch_8"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/nbhh2748/article/details/78744919,BlogCommendFromQuerySearch_8"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/nbhh2748/article/details/78744919?utm_source=blogxgwz8" target="_blank" title="c语言中的头文件互相调用">
+				<h4 class="text-truncate oneline">
+						c语言中的头文件互相调用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/D/7/F/3_nbhh2748.jpg" alt="nbhh2748" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">nbhh2748</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">12-07</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							430</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/nbhh2748/article/details/78744919?utm_source=blogxgwz8" target="_blank" title="c语言中的头文件互相调用">
+							<span class="desc oneline">c语言中的头文件互相调用 今天在阅读程序的时候发现两个头文件竟然能够互相调用，感到很奇怪，例如head1.h 调用了head2.h，head2.h调用了head1.h，这样竟然能够编译成功。自己动手试...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/nbhh2748?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> nbhh2748的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/qq_29344757/article/details/73332501,BlogCommendFromQuerySearch_9"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/qq_29344757/article/details/73332501,BlogCommendFromQuerySearch_9"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/qq_29344757/article/details/73332501?utm_source=blogxgwz9" target="_blank" title="c语言和c++的相互调用">
+				<h4 class="text-truncate oneline">
+						c语言和c++的相互调用				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/1/1/7/3_qq_29344757.jpg" alt="qq_29344757" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">qq_29344757</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">06-16</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							1396</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/qq_29344757/article/details/73332501?utm_source=blogxgwz9" target="_blank" title="c语言和c++的相互调用">
+							<span class="desc oneline">在实际项目开发中，c和c++代码的相互调用是常见的，c++能够兼容c语言的编译方式，但是c++编译器g++默认会以c++的方式编译程序，而c程序编译器gcc会默认以c的方式编译它，所以c和c++的相互...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/qq_29344757?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> bright261的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/leishen1992/article/details/78686512" target="_blank">
+						AT语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/lyg105504/article/details/6631847" target="_blank">
+						as语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/qq_39539470/article/details/81268916" target="_blank">
+						c语言c语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/hgx1996/article/details/79006066" target="_blank">
+						c语言与c语言</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/zhuangzhineng/article/details/3961886" target="_blank">
+						强语言与弱语言</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/yanlaifan">
+                <img src="https://avatar.csdn.net/7/E/D/3_yanlaifan.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/yanlaifan" target="_blank" class="" id="uid">yanlaifan</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="108">
+                        <dt><a href="https://blog.csdn.net/yanlaifan?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/yanlaifan?t=1"><span class="count">108</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="16">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">16</span></dd>
+        </dl>
+        <dl class="text-center" title="13">
+            <dt>喜欢</dt>
+            <dd><span class="count">13</span></dd>
+        </dl>
+        <dl class="text-center" title="4">
+            <dt>评论</dt>
+            <dd><span class="count">4</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="5级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-5"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="196107">
+                19万+            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="2664">
+                2664            </dd>
+        </dl>
+        <dl title="19379">
+            <dt>排名：</dt>
+            <dd>1万+</dd>
+        </dl>
+    </div>
+        <div class="badge-box d-flex">
+        <span>勋章：</span>
+                        <a class="icon-badge" title="持之以恒">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#csdnc-m-lasting"></use>
+            </svg>
+            <div class="icon-arrow"></div>
+            <div class="grade-detail-box item2">
+                <div class="pos-box">
+                    <div class="left-box d-flex justify-content-center align-items-center flex-column">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#csdnc-m-lasting"></use>
+                        </svg>
+                        <p>持之以恒</p>
+                    </div>
+                    <div class="right-box d-flex justify-content-center align-items-center">
+                        授予每个自然月内发布4篇或4篇以上原创或翻译IT博文的用户。不积跬步无以至千里，不积小流无以成江海，程序人生的精彩需要坚持不懈地积累！
+                    </div>
+                </div>
+            </div>
+        </a>
+                            </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-百度联盟-300x250 --><script type="text/javascript" src="//rabc1.iteye.com/common/production/web/z3n86.js?lg=yyovfyh"></script>    </div>
+</div>
+		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/yanlaifan/article/details/83114279" target="_blank">Makefile文件中的MAKEFILE_LIST变量</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/yanlaifan/article/details/82896916" target="_blank">音频硬件接口（PCM、I2S、AC'97）</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/yanlaifan/article/details/82896885" target="_blank">PCM（Pulse code Modulation）</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/yanlaifan/article/details/82882231" target="_blank">Linux C中main函数中的参数argc和argv</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/yanlaifan/article/details/82876841" target="_blank">NetBeans IDE使用方法</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    		    <div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6086548">
+                    <span class="title oneline">工具使用</span>
+                    <span class="count float-right">16篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6090366">
+                    <span class="title oneline">vim 快捷键</span>
+                    <span class="count float-right">6篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6090501">
+                    <span class="title oneline">预处理 #error</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6197191">
+                    <span class="title oneline">Kernel内核分析</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6235003">
+                    <span class="title oneline">Linux C 编程</span>
+                    <span class="count float-right">22篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6238351">
+                    <span class="title oneline">内核调试方法</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6301511">
+                    <span class="title oneline">头文件包含</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6378315">
+                    <span class="title oneline">Linux设备驱动</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6404125">
+                    <span class="title oneline">Linux系统管理</span>
+                    <span class="count float-right">22篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6905954">
+                    <span class="title oneline">Makefile编程</span>
+                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6951020">
+                    <span class="title oneline">接口和协议</span>
+                    <span class="count float-right">7篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/6954814">
+                    <span class="title oneline">计算机相关</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/7011657">
+                    <span class="title oneline">Windows</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/7011658">
+                    <span class="title oneline">Windows系统相关</span>
+                    <span class="count float-right">7篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/7141170">
+                    <span class="title oneline">Actions方案</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/7777273">
+                    <span class="title oneline">Java语言</span>
+                    <span class="count float-right">6篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/7841874">
+                    <span class="title oneline">硬件电路</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/yanlaifan/article/category/7894381">
+                    <span class="title oneline">功率相关</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideArchive" class="aside-box flexible-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/09">
+                    2018年9月                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/08">
+                    2018年8月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/07">
+                    2018年7月                    <span class="count float-right">7篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/06">
+                    2018年6月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/05">
+                    2018年5月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/04">
+                    2018年4月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/03">
+                    2018年3月                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/02">
+                    2018年2月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2018/01">
+                    2018年1月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/12">
+                    2017年12月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/11">
+                    2017年11月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/10">
+                    2017年10月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/09">
+                    2017年9月                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/08">
+                    2017年8月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/07">
+                    2017年7月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/06">
+                    2017年6月                    <span class="count float-right">9篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/05">
+                    2017年5月                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/04">
+                    2017年4月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/03">
+                    2017年3月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2017/02">
+                    2017年2月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/12">
+                    2016年12月                    <span class="count float-right">6篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/11">
+                    2016年11月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/10">
+                    2016年10月                    <span class="count float-right">11篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/09">
+                    2016年9月                    <span class="count float-right">5篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/08">
+                    2016年8月                    <span class="count float-right">7篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/07">
+                    2016年7月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/05">
+                    2016年5月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/04">
+                    2016年4月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/02">
+                    2016年2月                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/yanlaifan/article/month/2016/01">
+                    2016年1月                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/yanlaifan/article/details/53907104">ubuntu命令行模式与图形桌面切换方法</a>
+					<p class="read">阅读量：<span>29069</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/yanlaifan/article/details/52766109">grep不区分大小写查找字符串方法</a>
+					<p class="read">阅读量：<span>28459</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/yanlaifan/article/details/72843618">I2S接口介绍</a>
+					<p class="read">阅读量：<span>12001</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/yanlaifan/article/details/52457764">SourceInsight高亮度显示查找字符串</a>
+					<p class="read">阅读量：<span>11184</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/yanlaifan/article/details/52484846">Linux shell终端打开方式</a>
+					<p class="read">阅读量：<span>10953</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    <div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/yanlaifan/article/details/51462497#comments">dump_stack()使用方法</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/yanlaifan" class="user-name" target="_blank">yanlaifan</a>：[reply]A694543965[/reply]
+谢谢~                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/yanlaifan/article/details/50607924#comments">手机ATA测试</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/yanlaifan" class="user-name" target="_blank">yanlaifan</a>：[reply]qq_29993263[/reply]你好，如何进入ATA模式，需要与开发ATA厂测...                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/yanlaifan/article/details/50607924#comments">手机ATA测试</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/qq_29993263" class="user-name" target="_blank">qq_29993263</a>：你好，请问这里，机器端需要进行什么操作来进入Factory模式的吗?                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/yanlaifan/article/details/51462497#comments">dump_stack()使用方法</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/A694543965" class="user-name" target="_blank">A694543965</a>：好                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/common/site/resource/nqnl.js?mhzzpw=gzj"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitchat.csdn.net/?utm_source=wzl" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">告别知识焦虑，即刻启程</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments low-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+										</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/yanlaifan/article/details/82896916" title="音频硬件接口（PCM、I2S、AC'97）">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/yanlaifan/article/details/83114279" title="Makefile文件中的MAKEFILE_LIST变量">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+						<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/yanlaifan/article/details/82896916" title="音频硬件接口（PCM、I2S、AC'97）">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/yanlaifan/article/details/83114279" title="Makefile文件中的MAKEFILE_LIST变量">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 16;
+    var articleId = "83109890";
+    var commentscount = 0;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/yanlaifan/article/details/83109890";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = '';
+		var highlight = ["\u8bed\u8a00","c++","\u8bed\u8a00","\u76f8\u4e92\u8c03\u7528"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"wangshubo1989","nick_name":"\u4e00\u84d1\u70df\u96e81989","avatar":"https:\/\/avatar.csdn.net\/9\/0\/3\/3_wangshubo1989.jpg","is_expert":true,"article_count":615},{"user_name":"stpeace","nick_name":"stpeace","avatar":"https:\/\/avatar.csdn.net\/8\/D\/5\/3_stpeace.jpg","is_expert":true,"article_count":2444},{"user_name":"u011225629","nick_name":"Simon\u4e36Ma","avatar":"https:\/\/avatar.csdn.net\/2\/E\/0\/3_u011225629.jpg","is_expert":true,"article_count":1281},{"user_name":"wuli2496","nick_name":"kgduu","avatar":"https:\/\/avatar.csdn.net\/1\/C\/3\/3_wuli2496.jpg","is_expert":false,"article_count":1524},{"user_name":"this_is_me_anyway","nick_name":"\u6d6a\u6dd8\u7c73","avatar":"https:\/\/avatar.csdn.net\/8\/7\/D\/3_this_is_me_anyway.jpg","is_expert":false,"article_count":67},{"user_name":"jingzi123456789","nick_name":"Joohong","avatar":"https:\/\/avatar.csdn.net\/A\/0\/8\/3_jingzi123456789.jpg","is_expert":false,"article_count":131},{"user_name":"m47838704","nick_name":"m47838704","avatar":"https:\/\/avatar.csdn.net\/1\/6\/4\/3_m47838704.jpg","is_expert":false,"article_count":130},{"user_name":"tigerxuchuanli","nick_name":"arm_xuli","avatar":"https:\/\/avatar.csdn.net\/A\/6\/3\/3_tigerxuchuanli.jpg","is_expert":false,"article_count":33},{"user_name":"lincoln_2012","nick_name":"\u74e6\u91dc\u82d1","avatar":"https:\/\/avatar.csdn.net\/9\/5\/D\/3_lincoln_2012.jpg","is_expert":false,"article_count":131},{"user_name":"zhanglianpin","nick_name":"bahutou","avatar":"https:\/\/avatar.csdn.net\/5\/A\/5\/3_zhanglianpin.jpg","is_expert":false,"article_count":123}];
+
+		var articleType = 1;
+		var CopyrightContent = '本文为博主原创文章，未经博主允许不得转载。';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>

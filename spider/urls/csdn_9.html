@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://blog.csdn.net/qq_40491569/article/details/83039944"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="always">
+    <meta name="description" content="前言
+
+之前租用了腾讯云的服务器，用来学习web安全，因为要搭建的是lamp环境 所以linux的基本操作必须要会，今天趁着在linux中搭建网站，学了一些基本操作，不写下来，总觉得不熟悉。
+
+正文
+
+1.cp命令
+
+Linux cp命令主要用于复制文件或目录。
+
+
+语法：cp [options] source dest
+
+参数说明：
+
+-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复..." />
+    <meta name="keywords" content="linux命令" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><link rel="alternate" media="handheld" href="#" />
+    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848">
+    <script src="https://csdnimg.cn/release/phoenix/vendor/tingyun/tingyun-rum-blog.js"></script>
+
+    <link href="https://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+    <title>linux命令学习笔记 - white_HATmagic - CSDN博客</title>
+
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/detail-bbbe7084c5.min.css">
+        <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/themes/skin-blackboard/skin-blackboard-1340d63bd5.min.css">
+
+    <script type="text/javascript">
+        var username = "qq_40491569";
+        var blog_address = "https://blog.csdn.net/qq_40491569";
+        var static_host = "https://csdnimg.cn/release/phoenix/";
+        var currentUserName = "";
+        var isShowAds = true;
+        var isOwner = false;
+        var loginUrl = "http://passport.csdn.net/account/login?from=https://blog.csdn.net/qq_40491569/article/details/83039944"
+        var blogUrl = "https://blog.csdn.net/";
+        //页面皮肤样式
+        var curSkin = "skin-blackboard";
+        // 第四范式所需数据
+        var articleTitles = "linux命令学习笔记 - white_HATmagic";
+        var articleID = "83039944";
+
+        var nickName = "white_HATmagic";
+    </script>
+    <script type="text/javascript">
+        // Traffic Stats of the entire Web site By baidu
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6bcd52f51e9b3dce32bec4a3997715ac";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+        // Traffic Stats of the entire Web site By baidu end
+    </script>
+    <script src="https://csdnimg.cn/public/common/libs/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://csdnimg.cn/rabbit/exposure-click/main-1.0.6.js"></script>
+    <!-- 新版上报 -->
+    <script src="//g.csdnimg.cn/track/1.1.1/track.js" type="text/javascript"></script>
+    <!-- 新版上报end -->
+            <link rel="stylesheet" href="https://csdnimg.cn/public/sandalstrap/1.4/css/sandalstrap.min.css">
+    <style>
+        .MathJax, .MathJax_Message, .MathJax_Preview{
+            display: none
+        }
+    </style>
+</head>
+<!-- nodata 第三栏接口无数据时样式不变 -->
+<body class="nodata"> 
+    <link rel="stylesheet" href="https://csdnimg.cn/public/common/toolbar/content_toolbar_css/content_toolbar.css">
+    <script id="toolbar-tpl-scriptId" src="https://csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="https://blog.csdn.net/"></script>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/blog_code-c3a0c33d5c.css">
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.css">
+<script type="text/javascript" src="//static.mediav.com/js/mvf_news_feed.js"></script>
+<script type="text/javascript" src="//g.csdnimg.cn/copyright/1.0.3/copyright.js"></script>
+<div style="display:none;">
+	<img src="" onerror='setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href="\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74"}},3000);'>
+</div>
+<link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/chart-3456820cac.css" />
+
+
+
+<script src="https://dup.baidustatic.com/js/ds.js"></script>
+<div class="container clearfix" id="mainBox">
+		<div class="recommend-right">
+  <ul class="recommend-fixed-box">
+    
+  </ul>
+</div>
+    <main>
+        <div class="blog-content-box">
+	<div class="article-header-box">
+		<div class="article-header">
+			<div class="article-title-box">
+				<span class="article-type type-1 float-left">原</span>				<h1 class="title-article">linux命令学习笔记</h1>
+			</div>
+			<div class="article-info-box">
+				<div class="article-bar-top">
+																				<span class="time">2018年10月13日 18:24:54</span>
+					<a class="follow-nickName" href="https://me.csdn.net/qq_40491569" target="_blank">white_HATmagic</a>
+						<span class="read-count">阅读数：743</span>
+						
+														<span class="tags-box artic-tag-box">
+								<span class="label">标签：</span>
+																<a data-track-click='{"mod":"popu_626","con":"linux命令"}' data-track-view='{"mod":"popu_626","con":"linux命令"}' class="tag-link" href="http://so.csdn.net/so/search/s.do?q=linux命令&t=blog" target="_blank">linux命令																</a>
+							</span>
+																					<div class="tags-box space">
+								<span class="label">个人分类：</span>
+																<a class="tag-link" href="https://blog.csdn.net/qq_40491569/article/category/8123972"  target="_blank">linux命令学习																</a>
+							</div>
+																								</div>
+				<div class="operating">
+														</div>
+			</div>
+		</div>
+	</div>
+	<article>
+		<div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog"  data-mod=popu_307  data-dsm = "post" >
+								            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e4c7a3727d.css" />
+						<div class="htmledit_views">
+                <h1>前言</h1>
+
+<p>之前租用了腾讯云的服务器，用来学习web安全，因为要搭建的是lamp环境 所以linux的基本操作必须要会，今天趁着在linux中搭建网站，学了一些基本操作，不写下来，总觉得不熟悉。</p>
+
+<h1>正文</h1>
+
+<h3>1.cp命令</h3>
+
+<p>Linux cp命令主要用于复制文件或目录。</p>
+
+<pre class="has">
+<code class="language-html">语法：cp [options] source dest</code></pre>
+
+<p><strong>参数说明</strong>：</p>
+
+<ul><li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</li>
+	<li>-d：复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。</li>
+	<li>-f：覆盖已经存在的目标文件而不给出提示。</li>
+	<li>-i：与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答"y"时目标文件将被覆盖。</li>
+	<li>-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</li>
+	<li>-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</li>
+	<li>-l：不复制文件，只是生成链接文件。</li>
+</ul><p><strong>实例</strong></p>
+
+<p>使用指令"cp"将当前目录"test/"下的所有文件复制到新目录"newtest"下，输入如下命令：</p>
+
+<pre class="has">
+<code class="language-html">$ cp –r test/ newtest          </code></pre>
+
+<p><a href="https://www.cnblogs.com/gongxq/p/5802718.html" rel="nofollow">更详细的cp命令请查看：https://www.cnblogs.com/gongxq/p/5802718.html</a></p>
+
+<h2>2.mv命令</h2>
+
+<p>Linux mv命令用来为文件或目录改名、或将文件或目录移入其它位置。</p>
+
+<p>语法：mv [options] source dest</p>
+
+<p>参数说明：</p>
+
+<ul><li>-i: 若指定目录已有同名文件，则先询问是否覆盖旧文件;</li>
+	<li>-f: 在mv操作要覆盖某已有的目标文件时不给任何指示;</li>
+</ul><p>mv参数设置与运行结果：</p>
+
+<table><tbody><tr><th>命令格式</th>
+			<th>运行结果</th>
+		</tr><tr><td>mv 文件名 文件名</td>
+			<td>将源文件名改为目标文件名</td>
+		</tr><tr><td>mv 文件名 目录名</td>
+			<td>将文件移动到目标目录</td>
+		</tr><tr><td>mv 目录名 目录名</td>
+			<td>目标目录已存在，将源目录<br />
+			移动到目标目录；目标<br />
+			目录不存在则改名</td>
+		</tr><tr><td>mv 目录名 文件名</td>
+			<td>出错</td>
+		</tr></tbody></table><p><a href="https://www.cnblogs.com/piaozhe116/p/6084214.html" rel="nofollow">查看更详细的mv操作请访问：https://www.cnblogs.com/piaozhe116/p/6084214.html</a></p>
+
+<h2><strong>3.Linux命令行下如何终止当前程序</strong></h2>
+
+<p>快捷键：</p>
+
+<p>Ctrl+c</p>
+
+<p>在命令行下起着终止当前执行程序的作用，</p>
+
+<p>Ctrl+d</p>
+
+<p>相当于exit命令，退出当前shell</p>
+
+<p>Ctrl+s</p>
+
+<p>挂起当前shell（保护作用很明显哦）</p>
+
+<p>4.</p>
+
+<p>Ctrl+q</p>
+
+<p>解冻挂起的shell再不行就重新连接打开一个终端，reboot linux 或 kill 相关进程。</p>
+
+<h2>5.mkdir命令</h2>
+
+<p>1.mkdir命令使用权限</p>
+
+<p>所有用户都可以在终端使用mkdir命令在拥有权限的文件夹创建目录</p>
+
+<p>2.mkdir命令使用格式</p>
+
+<p>mkdir [选项] DirName</p>
+
+<p>3.mkdir命令功能</p>
+
+<p>通过 mkdir 命令可以实现在指定位置创建以 DirName(指定的文件名)命名的目录。要创建目录的用户必须对所创建目录的父目录具有写权限(了解Linux文件-文件夹权 限请点击这里)。并且，所创建的文件夹(目录)不能与其父目录(即父文件夹)中的文件名重名，即同一个目录下不能有同名的(区分大小写)。</p>
+
+<p>4.mkdir命令选项说明</p>
+
+<p>    命令中的［选项］一般有以下两种：</p>
+
+<p>    -m    用于对新建目录设置存取权限，也可以用 chmod 命令进行设置。</p>
+
+<p>    -p     需要时创建上层文件夹(或目录)，如果文件夹(或目录)已经存在，则不视为错误。</p>
+
+<p>    5.mkdir命令使用举例</p>
+
+<p>    例一：在桌面下面创建以“demo”命名的文件夹。</p>
+
+<p>    使用以下命令即可。</p>
+
+<p>    mkdir 桌面/demo</p>
+
+<p>　 例二：在桌面下面创建以“demo”命名的文件夹，并且给文件夹赋权限，权限为123。</p>
+
+<p>    mkdir  123  桌面/demo</p>
+
+<h2>6.rm命令</h2>
+
+<p>    一、rm命令使用权限</p>
+
+<p>    所有用户都可以在终端使用 rm命令删除目录。</p>
+
+<p>    二、rm命令使用格式</p>
+
+<p>    格式：rm [选项] DirName</p>
+
+<p>    三、rm命令功能</p>
+
+<p>    删除档案及目录。</p>
+
+<p>    四、rm命令选项说明</p>
+
+<p>    命令中的［选项］一般有以下几种：</p>
+
+<p>    -i 删除前逐一询问确认。</p>
+
+<p>　 -f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。</p>
+
+<p>　 -r 将目录及以下之档案亦逐一删除,递归所有的子目录,逐一询问。</p>
+
+<p>    五、rm命令使用举例</p>
+
+<p>    例一：删除所有C语言程序文档；删除前逐一询问确认。</p>
+
+<p>    rm -i *.c</p>
+
+<p>　 例二：将 Finished 子目录及子目录中所有档案删除。</p>
+
+<p>    rm -r Finished</p>
+
+<p>rm -f abc.txt的意思是说强制删除文件。如果文件不存在，也不要提示。这是因为如果直接使用rm abc.txt那么如果文件不存在，rm 会提示你。这在某些情况下，比如我们写一些小脚本，可能不需要他这样做。 rm -r abc 的意思是说递归所有的子目录。其中要求abc是一个目录名。这条rm运行后，abc目录下的所有子目录里的东西也会一同被删除。通常我们在删除一个目录时会使用rm -rf abc这样的形式，这就是说明删除目录abc，同时要求命令不要产生任何提示。</p>
+
+<p>注：在linux没有回收站，在试用rm命令的时候，一定要小心些，删除之后就无法再恢复了。</p>
+
+<p><a href="https://blog.csdn.net/linjpg/article/details/77854671" rel="nofollow">源自此博客：https://blog.csdn.net/linjpg/article/details/77854671</a></p>
+
+<h2>7.vi命令</h2>
+
+<p>创建文件【vi】</p>
+
+<p>　 一、进入vi的命令</p>
+
+<p>　    vi filename :打开或新建文件，并将光标置于第一行首</p>
+
+<p>　    vi +n filename ：打开文件，并将光标置于第n行首</p>
+
+<p>　   vi + filename ：打开文件，并将光标置于最后一行首</p>
+
+<p>　   vi +/pattern filename：打开文件，并将光标置于第一个与pattern匹配的串处</p>
+
+<p>　   vi -r filename ：在上次正用vi编辑时发生系统崩溃，恢复filename</p>
+
+<p>　   vi filename....filename ：打开多个文件，依次进行编辑</p>
+
+<p>二、移动光标类命令</p>
+
+<p>　　h ：光标左移一个字符</p>
+
+<p>　　l ：光标右移一个字符</p>
+
+<p>　　space：光标右移一个字符</p>
+
+<p>　　Backspace：光标左移一个字符</p>
+
+<p>　　k或Ctrl+p：光标上移一行</p>
+
+<p>　　j或Ctrl+n ：光标下移一行</p>
+
+<p>　　Enter ：光标下移一行</p>
+
+<p>　　w或W ：光标右移一个字至字首</p>
+
+<p>　　b或B ：光标左移一个字至字首</p>
+
+<p>　　e或E ：光标右移一个字至字尾</p>
+
+<p>　　) ：光标移至句尾</p>
+
+<p>　　( ：光标移至句首</p>
+
+<p>　　}：光标移至段落开头</p>
+
+<p>　　{：光标移至段落结尾</p>
+
+<p>　　nG：光标移至第n行首</p>
+
+<p>　　n+：光标下移n行</p>
+
+<p>　　n-：光标上移n行</p>
+
+<p>　　n$：光标移至第n行尾</p>
+
+<p>　　H ：光标移至屏幕顶行</p>
+
+<p>　　M ：光标移至屏幕中间行</p>
+
+<p>　　L ：光标移至屏幕最后行</p>
+
+<p>　　0：（注意是数字零）光标移至当前行首</p>
+
+<p>　　$：光标移至当前行尾</p>
+
+<p>　三、屏幕翻滚类命令</p>
+
+<p>　　Ctrl+u：向文件首翻半屏</p>
+
+<p>　　Ctrl+d：向文件尾翻半屏</p>
+
+<p>　　Ctrl+f：向文件尾翻一屏</p>
+
+<p>　　Ctrl＋b；向文件首翻一屏</p>
+
+<p>　　nz：将第n行滚至屏幕顶部，不指定n时将当前行滚至屏幕顶部。</p>
+
+<p>　四、插入文本类命令</p>
+
+<p>　　i ：在光标前</p>
+
+<p>　　I ：在当前行首</p>
+
+<p>　　a：光标后</p>
+
+<p>　　A：在当前行尾</p>
+
+<p>　　o：在当前行之下新开一行</p>
+
+<p>　　O：在当前行之上新开一行</p>
+
+<p>　　r：替换当前字符</p>
+
+<p>　　R：替换当前字符及其后的字符，直至按ESC键</p>
+
+<p>　　s：从当前光标位置处开始，以输入的文本替代指定数目的字符</p>
+
+<p>　　S：删除指定数目的行，并以所输入文本代替之</p>
+
+<p>　　ncw或nCW：修改指定数目的字</p>
+
+<p>　　nCC：修改指定数目的行</p>
+
+<p>　五、删除命令</p>
+
+<p>　　ndw或ndW：删除光标处开始及其后的n-1个字</p>
+
+<p>　　do：删至行首</p>
+
+<p>　　d$：删至行尾</p>
+
+<p>　　ndd：删除当前行及其后n-1行</p>
+
+<p>　　x或X：删除一个字符，x删除光标后的，而X删除光标前的</p>
+
+<p>　　Ctrl+u：删除输入方式下所输入的文本</p>
+
+<p>　六、搜索及替换命令</p>
+
+<p>　　/pattern：从光标开始处向文件尾搜索pattern</p>
+
+<p>　　?pattern：从光标开始处向文件首搜索pattern</p>
+
+<p>　　n：在同一方向重复上一次搜索命令</p>
+
+<p>　　N：在反方向上重复上一次搜索命令</p>
+
+<p>　　：s/p1/p2/g：将当前行中所有p1均用p2替代</p>
+
+<p>　　：n1,n2s/p1/p2/g：将第n1至n2行中所有p1均用p2替代</p>
+
+<p>　　：g/p1/s//p2/g：将文件中所有p1均用p2替换</p>
+
+<p>　七、vi命令使用举例</p>
+
+<p>　　例一：创建文件a.txt。</p>
+
+<p>　　vi a.txt</p>
+
+<p>　　Hello everyone!</p>
+
+<p>　　:wq //在退出时，直接输入:wq会发现退不出去，退出方法是：编辑完成后按ESC，然后输入:q就是退出;还有:wq是保存后退出，加感叹号是表示强制</p>
+
+<h2>8.vim 的使用</h2>
+
+<p>基本上 vi/vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，<strong>输入模式（Insert mode）</strong>和<strong>底线命令模式（Last line mode）</strong>。 这三种模式的作用分别是：</p>
+
+<p><strong>命令模式：</strong></p>
+
+<p>用户刚刚启动 vi/vim，便进入了命令模式。</p>
+
+<p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
+
+<p>以下是常用的几个命令：</p>
+
+<ul><li><strong>i</strong> 切换到输入模式，以输入字符。</li>
+	<li><strong>x</strong> 删除当前光标所在处的字符。</li>
+	<li><strong>:</strong> 切换到底线命令模式，以在最底一行输入命令。</li>
+</ul><p>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。</p>
+
+<p>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</p>
+
+<p><strong>输入模式</strong></p>
+
+<p>在命令模式下按下i就进入了输入模式。</p>
+
+<p>在输入模式中，可以使用以下按键：</p>
+
+<ul><li><strong>字符按键以及Shift组合</strong>，输入字符</li>
+	<li><strong>ENTER</strong>，回车键，换行</li>
+	<li><strong>BACK SPACE</strong>，退格键，删除光标前一个字符</li>
+	<li><strong>DEL</strong>，删除键，删除光标后一个字符</li>
+	<li><strong>方向键</strong>，在文本中移动光标</li>
+	<li><strong>HOME</strong>/<strong>END</strong>，移动光标到行首/行尾</li>
+	<li><strong>Page Up</strong>/<strong>Page Down</strong>，上/下翻页</li>
+	<li><strong>Insert</strong>，切换光标为输入/替换模式，光标将变成竖线/下划线</li>
+	<li><strong>ESC</strong>，退出输入模式，切换到命令模式</li>
+</ul><p><strong>底线命令模式：</strong></p>
+
+<p>在命令模式下按下:（英文冒号）就进入了底线命令模式。</p>
+
+<p>底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。</p>
+
+<p>在底线命令模式中，基本的命令有（已经省略了冒号）</p>
+
+<ul><li>
+	<p>vim编辑器几种退出的形式<br />
+	点击Esc键退出编辑模式，进入命令模式，and than</p>
+
+	<p>    :q —–) 退出 eq quit （正常退出，在没有编辑的情况下）<br />
+	    :q! —-)不保存退出 eq quit!（在编辑出现错误的情况下）<br />
+	    :wq —–)写入文件并退出 eq writequit<br />
+	    *:wq! —退出时写入与否取决于文件的权限，有写权限写入并退出，没有写权限就强制退出<br />
+	    :x —-)等同于:wq,写入与否取决于文件是否变动<br />
+	    :qa —-)退出全部 eq quitall</p>
+	</li>
+</ul><p>按ESC键可随时退出底线命令模式。</p>
+
+<h2>9.source命令</h2>
+
+<h1>Linux Source命令及脚本的执行方式解析</h1>
+
+<p>当我修改了/etc/profile文件，我想让它立刻生效，而不用重新登录；这时就想到用<a href="http://www.51testing.com/?uid-225738-action-viewspace-itemid-206878" rel="nofollow">source</a>命令，如:source /etc/profile<br />
+对source进行了<a href="http://www.51testing.com/?uid-225738-action-viewspace-itemid-206878" rel="nofollow">学习</a><br />
+source命令：<br />
+source命令也称为“<a href="http://www.51testing.com/?uid-225738-action-viewspace-itemid-206878" rel="nofollow">点命令</a>”，也就是一个点符号（.）,是bash的内部命令。<br />
+功能：使<a href="http://www.51testing.com/?uid-225738-action-viewspace-itemid-206878" rel="nofollow">Shell</a>读入指定的Shell程序文件并依次执行文件中的所有语句<br />
+source命令通常用于重新执行刚修改的初始化文件，使之立即生效，而不必注销并重新登录。<br />
+用法：<br />
+source filename 或 . filename<br />
+source命令(从 C Shell 而来)是bash shell的内置命令;点命令(.)，就是个点符号(从Bourne Shell而来)是source的另一名称。</p>
+
+<h1>10.tail命令</h1>
+
+<p>inux tail命令用途是依照要求将指定的文件的最后部分输出到标准设备，通常是终端，通俗讲来，就是把某个档案文件的最后几行显示到终端上，假设该档案有更新，tail会自己主动刷新，确保你看到最新的档案内容。</p>
+
+<p><strong>一、tail命令语法</strong></p>
+
+<p>tail [ -f ] [ -c Number | -n Number | -m Number | -b Number | -k Number ] [ File ]<br />
+参数解释：<br />
+-f 该参数用于监视File文件增长。<br />
+-c Number 从 Number 字节位置读取指定文件<br />
+-n Number 从 Number 行位置读取指定文件。<br />
+-m Number 从 Number 多字节字符位置读取指定文件，比方你的文件假设包括中文字，假设指定-c参数，可能导致截断，但使用-m则会避免该问题。<br />
+-b Number 从 Number 表示的512字节块位置读取指定文件。<br />
+-k Number 从 Number 表示的1KB块位置读取指定文件。<br />
+File 指定操作的目标文件名称<br />
+上述命令中，都涉及到number，假设不指定，默认显示10行。Number前面可使用正负号，表示该偏移从顶部还是从尾部開始计算。<br />
+tail可运行文件一般在/usr/bin/以下。</p>
+
+<p><strong>二、tail命令使用方法演示例子</strong></p>
+
+<p>1、tail -f filename<br />
+说明：监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10），刷新显示在屏幕上。退出，按下CTRL+C。</p>
+
+<p>2、tail -n 20 filename<br />
+说明：显示filename最后20行。</p>
+
+<p>3、tail -r -n 10 filename<br />
+说明：逆序显示filename最后10行。</p>
+
+<h2><strong>11. curl 命令</strong></h2>
+
+<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C" rel="nofollow">命令行</a>下工作的文件传输工具，1997年首次发行。它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。</p>
+
+<p>curl -V(大写)查看curl的版本和该版本支持的协议，如下图</p>
+
+<p><img alt="" class="has" height="96" src="https://img-blog.csdn.net/20181015183411892?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNDkxNTY5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1200" /></p>
+
+<p>curl的常见用法请查阅此博客：<a href="https://www.jb51.net/article/118402.htm" rel="nofollow">https://www.jb51.net/article/118402.htm</a></p>
+
+<p>或者查看百度 <a href="https://baike.baidu.com/item/curl/10098606?fr=aladdin" rel="nofollow">https://baike.baidu.com/item/curl/10098606?fr=aladdin</a></p>
+
+<h2>12.pwd命令</h2>
+
+<p>pwd是Print Working Directory的缩写，其功能是显示当前所在工作目录的全路径。主要用在当不确定当前所在位置时，通过pwd来查看当前目录的绝对路径。<br />
+pwd命令语法</p>
+
+<p>pwd [选项]<br />
+参数：<br />
+-L：--logical，显示当前的路径，有连接文件时，直接显示连接文件的路径，(不加参数时默认此方式)，参考示例1。<br />
+-p：--physical，显示当前的路径，有连接文件时，不使用连接路径，直接显示连接文件所指向的文件，参考示例2。 当包含多层连接文件时，显示连接文件最终指向的文件，参考示例3。<br />
+--help：显示帮助信息。</p>
+
+<h2>13.touch命令</h2>
+
+<p>touch命令:</p>
+
+<p>作用：创建空文件，或者改变文件的时间戳属性</p>
+
+<p>格式: touch [option] [file]</p>
+
+<p>可以同时创建一个或者多个空文件</p>
+
+<pre class="has">
+<code class="hljs">ghostwu@dev:~/linux/mkdir$ ls 
+ghostwu@dev:~/linux/mkdir$ touch a.txt 
+ghostwu@dev:~/linux/mkdir$ ls 
+a.txt 
+ghostwu@dev:~/linux/mkdir$ touch b.txt c.txt 
+ghostwu@dev:~/linux/mkdir$ ls 
+a.txt b.txt c.txt 
+ghostwu@dev:~/linux/mkdir$ touch {1..5}.txt 
+ghostwu@dev:~/linux/mkdir$ ls 
+1.txt 2.txt 3.txt 4.txt 5.txt a.txt b.txt c.txt</code></pre>
+
+<p>参考链接 <a href="https://blog.csdn.net/u012294618/article/details/72616293" rel="nofollow">https://blog.csdn.net/u012294618/article/details/72616293    </a><a href="https://www.cnblogs.com/ghostwu/p/8976883.html" rel="nofollow">https://www.cnblogs.com/ghostwu/p/8976883.html</a></p>
+
+<h2>14.cat命令</h2>
+
+<p>cat命令主要用来查看文件内容，文件合并，追加文件内容等功能。</p>
+
+<p> </p>
+
+<p>A:查看文件内容主要用法：</p>
+
+<p>1、cat f1.txt，查看f1.txt文件的内容。</p>
+
+<p>2、cat -n f1.txt，查看f1.txt文件的内容，并且由1开始对所有输出行进行编号。</p>
+
+<p>3、cat -b f1.txt，查看f1.txt文件的内容，用法与-n相似，只不过对于空白行不编号。</p>
+
+<p>4、cat -s f1.txt，当遇到有连续两行或两行以上的空白行，就代换为一行的空白行。</p>
+
+<p>5、cat -e f1.txt，在输出内容的每一行后面加一个$符号。</p>
+
+<p>6、cat f1.txt f2.txt，同时显示f1.txt和f2.txt文件内容，注意文件名之间以空格分隔，而不是逗号。</p>
+
+<p>7、cat -n f1.txt&gt;f2.txt，对f1.txt文件中每一行加上行号后然后写入到f2.txt中，会覆盖原来的内容，文件不存在则创建它。</p>
+
+<p>8、cat -n f1.txt&gt;&gt;f2.txt，对f1.txt文件中每一行加上行号后然后追加到f2.txt中去，不会覆盖原来的内容，文件不存在则创建它。</p>
+
+<p>B:创建文件以及写入文件内容的用法：</p>
+
+<p>注意：创建文件的时候要设置文件结束标志，也就是&lt;&lt;EOF，可以把EOF换成别的字符，注意是大小写敏感的，当文件内容写完之后要输入结束标志EOF，这时命令会正确结束，表示成功创建文件并且写进内容。</p>
+
+<p><img alt="" class="has" height="168" src="https://img-blog.csdn.net/20181021132215285?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwNDkxNTY5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="518" /></p>
+
+<p> C:追加文件内容的用法：</p>
+
+<p>注意：与创建文件内容不同的是符号单边号&gt;变成了双边号&gt;&gt;</p>
+
+<p>更多参考链接： <a href="https://www.cnblogs.com/fabulousyoung/p/4079759.html" rel="nofollow">https://www.cnblogs.com/fabulousyoung/p/4079759.html   </a><a href="http://www.runoob.com/linux/linux-comm-cat.html" rel="nofollow">http://www.runoob.com/linux/linux-comm-cat.html</a></p>
+
+<p> </p>
+
+<p>----------------------------------------------------未完待续--------------------------------------------</p>            </div>
+                </div>
+									<div class="hide-article-box text-center">
+						<a class="btn" id="btn-readmore" data-track-view='{"mod":"popu_376","con":",https://blog.csdn.net/qq_40491569/article/details/83039944,"}' data-track-click='{"mod":"popu_376","con":",https://blog.csdn.net/qq_40491569/article/details/83039944,"}'>阅读更多</a>
+					</div>
+					<script>
+						(function(){
+							function setArticleH(btnReadmore,posi){
+								var winH = $(window).height();
+								var articleBox = $("div.article_content");
+								var artH = articleBox.height();
+								if(artH > winH*posi){
+									articleBox.css({
+										'height':winH*posi+'px',
+										'overflow':'hidden'
+									})
+									btnReadmore.click(function(){
+										articleBox.removeAttr("style");
+										$(this).parent().remove();
+									})
+								}else{
+									btnReadmore.parent().remove();
+								}
+							}
+							var btnReadmore = $("#btn-readmore");
+							if(btnReadmore.length>0){
+								if(currentUserName){
+									setArticleH(btnReadmore,3);
+								}else{
+									setArticleH(btnReadmore,1.2);
+								}
+							}
+						})()
+					</script>
+					</article>
+	
+</div>
+<script>
+		$(".MathJax").remove();
+		if($('div.markdown_views pre.prettyprint code.hljs').length > 0 ){
+				$('div.markdown_views')[0].className = 'markdown_views';
+		}
+</script>
+        <div class="p4course_target" ></div><script>window.p4sdk_enable_courseBox=true</script>        <a id="commentBox"></a>
+<div class="comment-box">
+	  	<div class="unlogin-box text-center">
+		想对作者说点什么？
+		<!-- $curl 当前地址 -->
+		<button id="btnCommentUnlogin" class="btn btn-sm btn-red">我来说一句</button>
+	</div>
+			<div class="comment-list-container">
+		<a id="comments"></a>
+		<div class="comment-list-box">
+		</div>
+		<div id="commentPage" class="pagination-box d-none"></div>
+		<div class="opt-box text-center">
+			<button class="btn btn-sm btn-link-blue" id="btnMoreComment"></button>
+		</div>
+	</div>
+</div>
+        <div class="recommend-box">
+            		<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/morning_color/article/details/50063417,BlogCommendESEnWordWeight_0"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/morning_color/article/details/50063417,BlogCommendESEnWordWeight_0"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/morning_color/article/details/50063417?utm_source=blogxgwz0" target="_blank" title="lamp兄弟连linux学习笔记-linux常用命令大全(思维导图)">
+				<h4 class="text-truncate oneline">
+						lamp兄弟连linux学习笔记-linux常用命令大全(思维导图)				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/8/F/4/3_morning_color.jpg" alt="morning_color" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">morning_color</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">11-26</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							2660</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/morning_color/article/details/50063417?utm_source=blogxgwz0" target="_blank" title="lamp兄弟连linux学习笔记-linux常用命令大全(思维导图)">
+							<span class="desc oneline"></span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/morning_color?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> morning_color的博客</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/nt_zpj/3990613,BlogCommendESEnWordWeight_1"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/nt_zpj/3990613,BlogCommendESEnWordWeight_1"}'>
+			<a href="https://download.csdn.net/download/nt_zpj/3990613?utm_source=blogxgwz1" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							oracle语句大全						</h4>
+						<span class="data float-right">01-01</span>
+					</div>
+					<div class="desc oneline">
+							oracle学习笔记,入门，oracle常用sql命令					</div>
+				</div>
+			</a>
+		</div>
+									<div class="recommend-item-box recommend-ad-box clearfix">
+					<script type="text/javascript" src="//rabc1.iteye.com/production/source/pc3553.js?pkcgstj=jm"></script>
+				</div>
+			
+					<div class="recommend-item-box recommend-box-ident type_blog clearfix" data-track-view='{"mod":"popu_614","con":",https://blog.csdn.net/u013785779/article/details/19965333,BlogCommendESEnWordWeight_2"}' data-track-click='{"mod":"popu_614","con":",https://blog.csdn.net/u013785779/article/details/19965333,BlogCommendESEnWordWeight_2"}'>
+			<div class="content">
+				<a href="https://blog.csdn.net/u013785779/article/details/19965333?utm_source=blogxgwz2" target="_blank" title="lunix 查找80端口被占的命令">
+				<h4 class="text-truncate oneline">
+						lunix 查找80端口被占的命令				</h4>
+				<div class="info-box d-flex align-content-center">
+					<!-- <p class="avatar">
+							<img src="https://avatar.csdn.net/A/F/8/3_u013785779.jpg" alt="u013785779" class="avatar-pic">
+							<span class="namebox">
+								<span class="name">u013785779</span>
+								<span class="triangle"></span>
+							</span>
+					</p> -->
+					<p class="date-and-readNum">
+						<span class="date hover-show">02-26</span>
+						<span class="read-num hover-hide">
+							<svg class="icon csdnc-yuedushu" aria-hidden="true">
+								<use xlink:href="#csdnc-yuedushu"></use>
+							</svg>
+							470</span>
+						</p>
+					</div>
+				</a>
+					<p class="content">
+						<a href="https://blog.csdn.net/u013785779/article/details/19965333?utm_source=blogxgwz2" target="_blank" title="lunix 查找80端口被占的命令">
+							<span class="desc oneline">linux环境下，经常在重启apache或者nginx的时候，发现无法重启，总是提示80端口被某个进程给占用了。
+
+初步怀疑是apache或者nginx重启命令没有完全关闭掉,通过linux命令...</span>
+						</a>
+                        						<span class="blog_title_box oneline"><a target="_blank" href="https://blog.csdn.net/u013785779?utm_source=blog_pc_recommand">来自：	<span class="blog_title"> 过滤阳光</span></a></span>
+                        					</p>
+			</div>
+					</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/zl1121/9439407,BlogCommendESEnWordWeight_3"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/zl1121/9439407,BlogCommendESEnWordWeight_3"}'>
+			<a href="https://download.csdn.net/download/zl1121/9439407?utm_source=blogxgwz3" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							Git学习笔记						</h4>
+						<span class="data float-right">02-22</span>
+					</div>
+					<div class="desc oneline">
+							Git学习笔记教程，linux命令等，常用命令的整理					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/u010297892/8596853,BlogCommendESEnWordWeight_4"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/u010297892/8596853,BlogCommendESEnWordWeight_4"}'>
+			<a href="https://download.csdn.net/download/u010297892/8596853?utm_source=blogxgwz4" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							linux学习笔记.pdf						</h4>
+						<span class="data float-right">04-15</span>
+					</div>
+					<div class="desc oneline">
+							linux命令，学习笔记等，初学者必读，数据库工程师适合参考，linux下开发软件必备命令					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/u011099317/8377617,BlogCommendFromQuerySearch_5"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/u011099317/8377617,BlogCommendFromQuerySearch_5"}'>
+			<a href="https://download.csdn.net/download/u011099317/8377617?utm_source=blogxgwz5" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							韩顺平教学Linux笔记						</h4>
+						<span class="data float-right">01-19</span>
+					</div>
+					<div class="desc oneline">
+							Linux学习笔记。详述了Linux命令，gcc编译器					</div>
+				</div>
+			</a>
+		</div>
+								<div class="recommend-item-box recommend-ad-box" id="a_d_feed_0"></div>
+			<script>
+				var width = $("div.recommend-box").outerWidth() - 48;
+				typeof NEWS_FEED != "function" ? "" : NEWS_FEED({
+					w: width,
+					h: 60,
+					showid: 'Afihld',
+					placeholderId: 'a_d_feed_0',
+					inject: 'define',
+					define: {
+						imagePosition: 'left',
+						imageBorderRadius: 0,
+						imageWidth: 90,
+						imageHeight: 60,
+						imageFill: 'clip',
+						displayImage: true,
+						displayTitle: true,
+						titleFontSize: 20,
+						titleFontColor: '#333',
+						titleFontFamily: 'Microsoft Yahei',
+						titleFontWeight: 'bold',
+						titlePaddingTop: 0,
+						titlePaddingRight: 0,
+						titlePaddingBottom: 10,
+						titlePaddingLeft: 8,
+						displayDesc: true,
+						descFontSize: 14,
+						descPaddingLeft: 14,
+						descFontColor: '#6b6b6b',
+						descFontFamily: 'Microsoft Yahei',
+						paddingTop: 0,
+						paddingRight: 0,
+						paddingBottom: 0,
+						paddingLeft: 0,
+						backgroundColor: '#fff',
+						hoverColor: '#ca0c16'
+					}
+				})
+			</script>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/sshi1984/1150941,BlogCommendFromQuerySearch_6"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/sshi1984/1150941,BlogCommendFromQuerySearch_6"}'>
+			<a href="https://download.csdn.net/download/sshi1984/1150941?utm_source=blogxgwz6" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							Linux学习笔记(主要是命令)						</h4>
+						<span class="data float-right">03-28</span>
+					</div>
+					<div class="desc oneline">
+							Linux学习笔记,主要介绍了常用的Linux命令和系统的目录结构。					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/haihan568388657/2577587,BlogCommendFromQuerySearch_7"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/haihan568388657/2577587,BlogCommendFromQuerySearch_7"}'>
+			<a href="https://download.csdn.net/download/haihan568388657/2577587?utm_source=blogxgwz7" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							linux常用命令集锦						</h4>
+						<span class="data float-right">07-27</span>
+					</div>
+					<div class="desc oneline">
+							linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/wei801004/3351780,BlogCommendFromQuerySearch_8"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/wei801004/3351780,BlogCommendFromQuerySearch_8"}'>
+			<a href="https://download.csdn.net/download/wei801004/3351780?utm_source=blogxgwz8" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							linux命令linux命令linux命令linux命令						</h4>
+						<span class="data float-right">06-09</span>
+					</div>
+					<div class="desc oneline">
+							linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令linux命令					</div>
+				</div>
+			</a>
+		</div>
+							<div class="recommend-item-box recommend-box-ident recommend-download-box clearfix" data-track-view='{"mod":"popu_614","con":",https://download.csdn.net/download/ws19870901/3405410,BlogCommendFromQuerySearch_9"}' data-track-click='{"mod":"popu_614","con":",https://download.csdn.net/download/ws19870901/3405410,BlogCommendFromQuerySearch_9"}'>
+			<a href="https://download.csdn.net/download/ws19870901/3405410?utm_source=blogxgwz9" target="_blank">
+				<div class="content">
+					<div class="">
+						<span class="type">下载</span>
+						<h4 class="text-truncate oneline clearfix">
+							linux命令.linux命令.linux命令.linux命令.						</h4>
+						<span class="data float-right">06-29</span>
+					</div>
+					<div class="desc oneline">
+							linux命令.linux命令.linux命令.linux命令.linux命令.linux命令.linux命令.linux命令.linux命令.linux命令.					</div>
+				</div>
+			</a>
+		</div>
+						<div class="recommend-item-box type_hot_word">
+									<div class="content clearfix oneline">
+				<h5 class="float-left">相关热词</h5>
+				<div class="float-left">
+									<span>
+						<a href="https://blog.csdn.net/tao934798774/article/details/79491951" target="_blank">
+						lunix指令</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/greensprin/article/details/50253143" target="_blank">
+						lunix编译</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/BabyBirdToFly/article/details/54944763" target="_blank">
+						lunix解压</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/zhuocr/article/details/60571882" target="_blank">
+						lunix重命名</a>
+					</span>
+									<span>
+						<a href="https://blog.csdn.net/lv_shijun/article/details/52453882" target="_blank">
+						lunix防火墙</a>
+					</span>
+								</div>
+			</div>
+					</div>
+		<div class="recommend-item-box blog-expert-recommend-box">
+			<h4 class="text-truncate">博主推荐
+			</h4>
+			<div class="blog-expert-recommend">
+				<div class="blog-expert-load-new" data-index="3">
+					<svg version="1.1" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+					<path d="M142.5,57.5c-1.3-1.2-2.1-3.3-2.1-5.4c0-4.2,3.3-7.5,7.5-7.5h19.6c4.2,0,7.5,3.3,7.5,7.5s-3.3,7.5-7.5,7.5h-4.2
+					 C170.8,71.2,175,85,175,100c0,41.7-33.8,75-75,75c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5c33.3,0,60-27.1,60-60
+					 C160,83.7,153.8,68.7,142.5,57.5L142.5,57.5z M57.5,142.5c1.2,1.2,2.1,3.3,2.1,5.4c0,4.2-3.3,7.5-7.5,7.5H32.5
+					 c-4.2,0-7.5-3.3-7.5-7.5c0-4.2,3.3-7.5,7.5-7.5h4.2C29.2,128.8,25,115,25,100c0-41.7,33.7-75,75-75c4.2,0,7.5,3.3,7.5,7.5
+					 S104.2,40,100,40c-33.3,0-60,27.1-60,60C40,116.2,46.2,131.2,57.5,142.5z"/>
+					</svg>
+					<span>换一批</span>
+				</div>
+				<div class="blog-expert">
+				</div>
+			</div>
+		</div>
+
+
+            <div class="recommend-loading-box">
+                <img src='https://csdnimg.cn/release/phoenix/images/feedLoading.gif'>
+            </div>
+            <div class="recommend-end-box">
+                <p class="text-center">没有更多推荐了，<a href="https://blog.csdn.net/" class="c-blue c-blue-hover c-blue-focus">返回首页</a></p>
+            </div>
+        </div>
+    </main>
+
+    <aside>
+		    <div id="asideProfile" class="aside-box">
+    <!-- <h3 class="aside-title">个人资料</h3> -->
+    <div class="profile-intro d-flex">
+        <div class="avatar-box d-flex justify-content-center flex-column">
+            <a href="https://blog.csdn.net/qq_40491569">
+                <img src="https://avatar.csdn.net/C/B/1/3_qq_40491569.jpg" class="avatar_pic">
+            </a>
+        </div>
+        <div class="user-info d-flex justify-content-center flex-column">
+            <p class="name csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a href="https://blog.csdn.net/qq_40491569" target="_blank" class="" id="uid">white_HATmagic</a>
+            </p>
+                    </div>
+                <div class="opt-box d-flex justify-content-center flex-column">
+            <span  class="csdn-tracking-statistics tracking-click" data-mod="popu_379">
+                <a class="btn btn-sm btn-red-hollow" id="btnAttent">关注</a>
+            </span>
+                    </div>
+            </div>
+    <div class="data-info d-flex item-tiling">
+                <dl class="text-center" title="12">
+                        <dt><a href="https://blog.csdn.net/qq_40491569?t=1">原创</a></dt>
+            <dd><a href="https://blog.csdn.net/qq_40491569?t=1"><span class="count">12</span></a></dd>
+                    </dl>
+        <dl class="text-center" id="fanBox" title="2">
+            <dt>粉丝</dt>
+            <dd><span class="count" id="fan">2</span></dd>
+        </dl>
+        <dl class="text-center" title="0">
+            <dt>喜欢</dt>
+            <dd><span class="count">0</span></dd>
+        </dl>
+        <dl class="text-center" title="3">
+            <dt>评论</dt>
+            <dd><span class="count">3</span></dd>
+        </dl>
+    </div>
+    <div class="grade-box clearfix">
+        <dl>
+            <dt>等级：</dt>
+            <dd>
+                <a href="https://blog.csdn.net/home/help.html#level" title="2级,点击查看等级说明" target="_blank">
+                    <svg class="icon icon-level" aria-hidden="true">
+                        <use xlink:href="#csdnc-bloglevel-2"></use>
+                    </svg>
+                </a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>访问：</dt>
+            <dd title="1425">
+                1425            </dd>
+        </dl>
+        <dl>
+            <dt>积分：</dt>
+            <dd title="181">
+                181            </dd>
+        </dl>
+        <dl title="1069196">
+            <dt>排名：</dt>
+            <dd>106万+</dd>
+        </dl>
+    </div>
+    </div>
+		    <div class="csdn-tracking-statistics mb8 box-shadow" data-pid="blog" data-mod="popu_4" style="height:250px;">
+    <div class="aside-content text-center" id="cpro_u2734133">
+      <!-- 广告位：PC-博客内页-运维-300x250 -->
+                      <script>
+                          (function() {
+                          var s = "_" + Math.random().toString(36).slice(2);
+                          document.write("<div id=" + s + "></div>");
+                          (window.slotbydup=window.slotbydup || []).push({
+                          id: "5865577",
+                          container: s,
+                          size: "300,250",
+                          display: "inlay-fix"
+                              });
+                          })();
+                      </script>
+                      <script src="https://dup.baidustatic.com/js/os.js"></script>    </div>
+</div>
+		    		    <div id="asideNewArticle" class="aside-box">
+    <h3 class="aside-title">最新文章</h3>
+    <div class="aside-content">
+        <ul class="inf_list clearfix csdn-tracking-statistics tracking-click" data-mod="popu_382">
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_40491569/article/details/83217232" target="_blank">mysql_query的坑</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_40491569/article/details/83211727" target="_blank">php代码审计命令执行漏洞</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_40491569/article/details/83182525" target="_blank">mysql 基础操作</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_40491569/article/details/83113670" target="_blank">PHP超全局变量$_SERVER</a>
+            </li>
+                        <li class="clearfix">
+                <a href="https://blog.csdn.net/qq_40491569/article/details/83107343" target="_blank">阿里云的这群疯子们</a>
+            </li>
+                    </ul>
+    </div>
+</div>
+		    <div id="asideCategory" class="aside-box flexible-box">
+    <h3 class="aside-title">个人分类</h3>
+    <div class="aside-content">
+        <ul>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8123967">
+                    <span class="title oneline">c数据结构学习</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8123971">
+                    <span class="title oneline">web安全学习</span>
+                    <span class="count float-right">2篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8123972">
+                    <span class="title oneline">linux命令学习</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8124827">
+                    <span class="title oneline">web前端</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8127596">
+                    <span class="title oneline">php</span>
+                    <span class="count float-right">4篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8224739">
+                    <span class="title oneline">实用命令</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8226457">
+                    <span class="title oneline">鸡汤</span>
+                    <span class="count float-right">1篇</span>
+                </a>
+            </li>
+                        <li>
+                <a class="clearfix" href="https://blog.csdn.net/qq_40491569/article/category/8235778">
+                    <span class="title oneline">mysql</span>
+                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+        <p class="text-center">
+        <a class="btn btn-link-blue flexible-btn" data-fbox="aside-archive">展开</a>
+    </p>
+    </div>
+		    <div id="asideHotArticle" class="aside-box">
+	<h3 class="aside-title">热门文章</h3>
+	<div class="aside-content">
+		<ul class="hotArticle-list csdn-tracking-statistics tracking-click" data-mod="popu_521">
+							<li>
+					<a href="https://blog.csdn.net/qq_40491569/article/details/83039944">linux命令学习笔记</a>
+					<p class="read">阅读量：<span>518</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_40491569/article/details/82861002">c数据结构线性表之单链表(带头结点)基本操作</a>
+					<p class="read">阅读量：<span>30</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_40491569/article/details/82860962">c数据结构线性表之顺序表基本操作</a>
+					<p class="read">阅读量：<span>25</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_40491569/article/details/82318550">简单理解SQL约束攻击</a>
+					<p class="read">阅读量：<span>18</span></p>
+				</li>
+							<li>
+					<a href="https://blog.csdn.net/qq_40491569/article/details/83076481">php 短标记 short_open_tag</a>
+					<p class="read">阅读量：<span>10</span></p>
+				</li>
+					</ul>
+	</div>
+</div>
+		    <div id="asideArchive" class="aside-box">
+    <h3 class="aside-title">归档</h3>
+    <div class="aside-content">
+        <ul class="archive-list">
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_40491569/article/month/2018/10">
+                    2018年10月                    <span class="count float-right">12篇</span>
+                </a>
+            </li>
+                        <!--归档统计-->
+            <li>
+                <a href="https://blog.csdn.net/qq_40491569/article/month/2018/09">
+                    2018年9月                    <span class="count float-right">3篇</span>
+                </a>
+            </li>
+                    </ul>
+    </div>
+    </div>
+		    <div id="asideNewComments" class="aside-box">
+    <h3 class="aside-title">最新评论</h3>
+    <div class="aside-content">
+        <ul class="newcomment-list">
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/qq_40491569/article/details/83039944#comments">linux命令学习笔记</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/qq_40491569" class="user-name" target="_blank">qq_40491569</a>：[reply]xp_xpxp[/reply]
+之前看到了  忘改了                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/qq_40491569/article/details/83039944#comments">linux命令学习笔记</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/xp_xpxp" class="user-name" target="_blank">xp_xpxp</a>：[reply]qq_40795466[/reply]
++1                </p>
+            </li>
+                        <li>
+                <a class="title text-truncate" target="_blank" href="https://blog.csdn.net/qq_40491569/article/details/83039944#comments">linux命令学习笔记</a>
+                <p class="comment">
+                    <a href="https://my.csdn.net/qq_40795466" class="user-name" target="_blank">qq_40795466</a>：稍微有点慌，lunix，我是看名字进来的，还好内容没有错                </p>
+            </li>
+                    </ul>
+    </div>
+</div>
+		<div id="asideFooter">
+			
+		<div class="aside-box">
+						<script type="text/javascript" src="//rabc1.iteye.com/common/site/resource/nqnl.js?mhzzpw=gzj"></script>
+					</div>
+				<div class="aside-box">
+			<div class="persion_article">
+			</div>
+		</div>
+	</div>
+</aside>
+<script src="https://csdnimg.cn/pubfooter/js/publib_footer-1.0.3.js" data-isfootertrack="false" type="text/javascript"></script>
+<script>
+	$("a.flexible-btn").click(function(){
+		$(this).parents('div.aside-box').removeClass('flexible-box');
+		$(this).remove();
+	})
+</script>
+</div>
+<div class="mask-dark"></div>
+<div class="pulllog-box" style="display: block;">
+	<div class="pulllog clearfix">
+		<span class="text float-left">
+            <div id="dmp_ad_69"><div id="kp_box_75" data-pid="69" data-track-view='{"mod":"kp_popu_75","con":",,"}'><div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://www.csdn.net/2018dev/?utm_source=blogtextlink" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">开发者调查</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #000;padding:2px 5px 0px 5px;background:#000;">
+<a href="http://ai2018.csdn.net/?utm_source=bkxxl" target="_blank" style="color:#fff;font-weight:bold;text-decoration:none;">AI开发者大会日程曝光</a>
+</div>
+
+<div style="float:left;margin-right:5px;border:1px solid #f13d3d;padding:2px 5px 0px 5px;">
+<a href="https://gitchat.csdn.net/?utm_source=wzl" target="_blank" style="color:#f13d3d;font-weight:bold;text-decoration:none;">告别知识焦虑，即刻启程</a>
+</div>
+
+<div style="float:left;">
+<script type="text/javascript" src="//rabc1.iteye.com/common/js/ndr3h.js?b=wosyvccl"></script>
+</div></div><script>$(function(){csdn.track.viewCheck($("#kp_box_75"));});</script></div>            		</span>
+		<div class="pulllog-btn float-right clearfix">
+            <div class="float-left csdn-tracking-statistics tracking-click" data-mod="popu_557">
+                <a class="pulllog-login">登录</a>
+            </div>
+            <div class="pulllog-sigin float-left csdn-tracking-statistics tracking-click" data-mod="popu_558">
+                <a href="https://passport.csdn.net/account/mobileregister" target="_blank">注册</a>
+            </div>
+            <button class="btn-close">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#csdnc-times"></use>
+                </svg>
+            </button>
+		</div>
+	</div>
+</div>
+<div id="loginWrap" style="display:none"></div>
+<div class="tool-box">
+	<ul class="meau-list">
+		<li class="btn-like-box ">
+			<button class=" low-height hover-box btn-like " title="点赞">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-thumbsup"></use>
+				</svg>
+				<span class="hover-show text-box text">
+					<span class="no-active">点赞</span>
+					<span class="active">取消点赞</span>
+				</span>
+				<p>0</p>
+			</button>
+		</li>
+		<li class="">
+						<a class="btn-comments long-height hover-box" title="写评论" href="#commentBox">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-comments"></use>
+				</svg>
+				<span class="hover-show text">评论</span>
+				<p class="">
+						3				</p>
+			</a>
+		</li>
+		<li class="toc-container-box" id="liTocBox">
+			<button class="btn-toc low-height hover-box" title="目录">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-contents"></use>
+				</svg>
+				<span class="hover-show text">目录</span>
+			</button>
+			<div class="toc-container">
+				<div class="pos-box">
+					<div class="icon-arrow"></div>
+					<div class="scroll-box">
+						<div class="toc-box"></div>
+					</div>
+				</div>
+				<div class="opt-box">
+					<button class="btn-opt prev nomore" title="向上">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevronup"></use>
+						</svg>
+					</button>
+					<button class="btn-opt next">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#csdnc-chevrondown"></use>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<button class="btn-bookmark low-height hover-box" title="收藏">
+				<svg class="icon active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark-ok"></use>
+				</svg>
+				<svg class="icon no-active hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-bookmark"></use>
+				</svg>
+					<span class="hover-show text">收藏</span>
+				<!-- <span class="hover-show text-box text">
+					<span class="no-active">收藏</span>
+					<span class="active">取消收藏</span>
+				</span> -->
+			</button>
+		</li>
+				<li class="bdsharebuttonbox">
+			<button class="btn-comments low-height hover-box" >
+				<a href="#" class="bds_weixin clear-share-style" data-cmd="weixin" title="手机看"></a>
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-wechat"></use>
+				</svg>
+				<span class="hover-show text text3">
+					手机看
+				</span>
+			</button>
+		</li>
+							<li class="widescreen-hide">
+				<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/qq_40491569/article/details/82861002" title="c数据结构线性表之单链表(带头结点)基本操作">
+					<svg class="icon hover-hide" aria-hidden="true">
+						<use xlink:href="#csdnc-shangyiye"></use>
+					</svg>
+					<span class="hover-show text text3">上一篇</span>
+				</a>
+			</li>
+								<li class="widescreen-hide">
+			<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/qq_40491569/article/details/83049073" title="javascript中的innerHTML是什么意思，怎么个用法？">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-xiayiye"></use>
+				</svg>
+				<span class="hover-show text text3">下一篇</span>
+			</a>
+		</li>
+						<li class="bdsharebuttonbox _360_interactive"style="margin-top: 8px;">
+			<script type="text/javascript" src="//cjhd.mediav.com/js/interactive_plugin.js"></script> 
+			<style>
+				#_360_interactive > *{
+					 margin-left: -8px;
+				}
+			</style>
+			<div id="_360_interactive" > 
+				<script> typeof INTERACTIVE_PLUGIN != "object" ? '' : INTERACTIVE_PLUGIN.render({ showid : 'N0ufqn', w: 60, h: 60, type: 'click', placeholderId: '_360_interactive' }); </script> 
+			</div>
+			<img src="//img-ads.csdn.net/2016/201608021757063065.png" style="margin: 0 auto;display: block;" alt="">
+		</li>
+	  
+		<!-- 宽屏更多按钮 -->
+		<li class="widescreen-more">
+			<a class="btn-comments chat-ask-button low-height hover-box" title="快问" href="#chatqa">
+				<svg class="icon hover-hide" aria-hidden="true">
+					<use xlink:href="#csdnc-more"></use>
+				</svg>
+				<span class="hover-show text">更多</span>
+				
+			</a>
+			<ul class="widescreen-more-box">
+													<li class="widescreen-more">
+						<a class="btn-comments low-height hover-box" href="https://blog.csdn.net/qq_40491569/article/details/82861002" title="c数据结构线性表之单链表(带头结点)基本操作">
+							<svg class="icon hover-hide" aria-hidden="true">
+								<use xlink:href="#csdnc-shangyiye"></use>
+							</svg>
+							<span class="hover-show text text3">上一篇</span>
+						</a>
+					</li>
+																<li class="widescreen-more">
+					<a class="btn-comments hover-box low-height" href="https://blog.csdn.net/qq_40491569/article/details/83049073" title="javascript中的innerHTML是什么意思，怎么个用法？">
+						<svg class="icon hover-hide" aria-hidden="true">
+							<use xlink:href="#csdnc-xiayiye"></use>
+						</svg>
+						<span class="hover-show text text3">下一篇</span>
+					</a>
+				</li>
+							</ul>
+		</li>
+	</ul>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'https://csdnimg.cn/static/api/js/share.js?v=89860594'];</script>
+<script>
+    var recommendCount = 10;
+    recommendCount = recommendCount > 1 ? (recommendCount + (recommendCount>6 ? 2 : 1)) : recommendCount;
+    var articleTit = articleTitles;
+    var ChannelId = 37;
+    var articleId = "83039944";
+    var commentscount = 3;
+    var islock = false;
+    var curentUrl = "https://blog.csdn.net/qq_40491569/article/details/83039944";
+    var myUrl = "https://my.csdn.net/";
+    //1禁止评论，2正常
+    var commentAuth = 2;
+    //百度搜索
+    var baiduKey = "";
+    var needInsertBaidu = true;
+    // 代码段样式
+    var codeStyle = 'atom-one-dark';
+		var highlight = ["linux\u547d\u4ee4","\u5b66\u4e60\u7b14\u8bb0"];//高亮数组
+		// 相关推荐博主数据
+    var RecommendBlogExpertList = [{"user_name":"morning_color","nick_name":"morning_color","avatar":"https:\/\/avatar.csdn.net\/8\/F\/4\/3_morning_color.jpg","is_expert":false,"article_count":17},{"user_name":"hjack","nick_name":"hjack","avatar":"https:\/\/avatar.csdn.net\/F\/D\/B\/3_hjack.jpg","is_expert":false,"article_count":17},{"user_name":"o929778452o","nick_name":"o929778452o","avatar":"https:\/\/avatar.csdn.net\/3\/2\/5\/3_o929778452o.jpg","is_expert":false,"article_count":46},{"user_name":"l0605020112","nick_name":"l0605020112","avatar":"https:\/\/avatar.csdn.net\/0\/3\/D\/3_l0605020112.jpg","is_expert":false,"article_count":188},{"user_name":"tqq793126030","nick_name":"\u7edd\u7248\u7b80\u5355","avatar":"https:\/\/avatar.csdn.net\/3\/E\/3\/3_tqq793126030.jpg","is_expert":false,"article_count":9},{"user_name":"qq_27396789","nick_name":"\u7eff\u5b50i","avatar":"https:\/\/avatar.csdn.net\/3\/B\/2\/3_qq_27396789.jpg","is_expert":false,"article_count":17}];
+
+		var articleType = 1;
+		var CopyrightContent = '';
+</script>
+<script src="https://csdnimg.cn/public/sandalstrap/1.4/js/sandalstrap.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/vendor/pagination/paging.js"></script>
+<script src='https://csdnimg.cn/public/common/gotop/js/goTop-v1.0.min.js?v201803151422'></script>
+<script>
+    GoTop({
+        right: 8,
+        hasReport: true,
+        reportFun: function() {
+            showReport(false,articleTit);
+        }
+    })
+</script>
+<script src="https://g.csdnimg.cn/login-box/1.0.1/login-box.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/common-f5eab3c803.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/template/js/detail-434e58b8c9.min.js"></script>
+<script src="https://csdnimg.cn/release/phoenix/themes/skin-yellow/skin-yellow-9376486353.min.js"></script>
+<script src="//g.csdnimg.cn/fixed-sidebar/1.0.5/fixed-sidebar.js" type="text/javascript"></script>
+</body>
+<!-- 第四范式SDK -->
+
+<!-- 高亮未与 markdown兼容  -->
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/chart.css" />
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/lib/chart.min.js"></script>
+	<script type="text/javascript" src="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/chart/widget2chart.js"></script>
+	<link rel="stylesheet" href="https://csdnimg.cn/release/blog_editor_html/release1.3.1/ckeditor/plugins/codesnippet/lib/highlight/styles/atom-one-dark.css">
+	<script type="text/javascript" src="https://csdnimg.cn/release/phoenix/production/pc_wap_common-676a063698.js" /></script>
+
+	<script type="text/javascript">
+	$(function(){
+		var allEscRegex = /&(lt|gt|amp|quot|nbsp|shy|#\d{1,5});/g,
+		    namedEntities = {
+					lt: '<',
+					gt: '>',
+					amp: '&',
+					quot: '"',
+					nbsp: '\u00a0',
+					shy: '\u00ad'
+				}
+		var allEscDecode = function( match, code ) {
+				return namedEntities[ code ];
+		};
+		htmlDecodeAttr = function( text ) {
+				return text.replace( allEscRegex, allEscDecode );
+		}
+	  hljs.initHighlightingOnLoad();
+	  hljs.initCopyButtonOnLoad();
+	  hljs.initLineNumbersOnLoad();
+		if($('pre .language-plain').length>0){
+			$('pre .language-plain').each(function(i,e){
+				var highlightRe = hljs.highlightAuto(htmlDecodeAttr(e.innerHTML))
+				e.innerHTML = highlightRe.value;
+				e.className = 'language-'+highlightRe.language;
+			});
+		}
+	})
+	</script>
+<script type="text/javascript" src="//g.csdnimg.cn/check-adblock/1.0.9/check-adblock.js"></script>
+
+<script type="text/javascript" src="https://static-blog.csdn.net/mdeditor/public/res/bower-libs/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            "HTML-CSS": {
+                    linebreaks: { automatic: true, width: "94%container" },
+                    imageFont: null
+            },
+            tex2jax: {
+                preview: "none"
+            },
+            mml2jax: {
+                preview: 'none'
+            }
+    });
+</script>
+</html>
