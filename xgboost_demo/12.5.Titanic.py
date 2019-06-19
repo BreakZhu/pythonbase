@@ -7,8 +7,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.cluster import KMeans
 import pandas as pd
 import csv
+import matplotlib.pyplot as plt
+import matplotlib.colors
 
 
 def show_accuracy(a, b, tip):
@@ -16,6 +19,11 @@ def show_accuracy(a, b, tip):
     acc_rate = 100 * float(acc.sum()) / a.size
     # print '%s正确率：%.3f%%' % (tip, acc_rate)
     return acc_rate
+
+
+def expand(a, b):
+    d = (b - a) * 0.1
+    return a - d, b + d
 
 
 def load_data(file_name, is_train):
@@ -40,7 +48,7 @@ def load_data(file_name, is_train):
         # 年龄：使用随机森林预测年龄缺失值
         print('随机森林预测缺失年龄：--start--')
         data_for_age = data[['Age', 'Survived', 'Fare', 'Parch', 'SibSp', 'Pclass']]
-        age_exist = data_for_age.loc[(data.Age.notnull())]   # 年龄不缺失的数据
+        age_exist = data_for_age.loc[(data.Age.notnull())]  # 年龄不缺失的数据
         age_null = data_for_age.loc[(data.Age.isnull())]
         # print age_exist
         x = age_exist.values[:, 1:]
@@ -83,13 +91,14 @@ def load_data(file_name, is_train):
     y = None
     if 'Survived' in data:
         y = data['Survived']
-
     x = np.array(x)
     y = np.array(y)
 
     # 思考：这样做，其实发生了什么？
+    # tile函数的作用是让某个数组 以某种方式重复，构造出新的数组，所以返回值也是个数组
+    # 从右到左从最深到最浅 重复执行数组，构造数组维度，并重复维度
     x = np.tile(x, (5, 1))
-    y = np.tile(y, (5, ))
+    y = np.tile(y, (5,))
     if is_train:
         return x, y
     return x, data['PassengerId']
@@ -97,7 +106,7 @@ def load_data(file_name, is_train):
 
 def write_result(c, c_type):
     file_name = '12.Titanic.test.csv'
-    x, passenger_id = load_data(file_name, False)
+    x, passenger_id= load_data(file_name, False)
 
     if type == 3:
         x = xgb.DMatrix(x)
@@ -120,7 +129,7 @@ if __name__ == "__main__":
     lr.fit(x_train, y_train)
     y_hat = lr.predict(x_test)
     lr_rate = show_accuracy(y_hat, y_test, 'Logistic回归 ')
-    # write_result(lr, 1)
+    write_result(lr, 1)
 
     rfc = RandomForestClassifier(n_estimators=100)
     rfc.fit(x_train, y_train)
@@ -128,12 +137,55 @@ if __name__ == "__main__":
     rfc_rate = show_accuracy(y_hat, y_test, '随机森林 ')
     # write_result(rfc, 2)
 
+    km = KMeans(n_clusters=4, init='k-means++', n_jobs=4)
+    y_hat = km.fit(x_train)
+
+    matplotlib.rcParams['font.sans-serif'] = [u'SimHei']
+    matplotlib.rcParams['axes.unicode_minus'] = False
+
+    columns_name = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked_C', 'Embarked_Q', 'Embarked_S']
+    # 简单打印结果
+    r1 = pd.Series(km.labels_).value_counts()  # 统计各个类别的数目
+    r2 = pd.DataFrame(km.cluster_centers_)  # 找出聚类中心
+    r = pd.concat([r2, r1], axis=1)  # 横向连接(0是纵向), 得到聚类中心对应的类别下的数目
+    r.columns = list(columns_name) + [u'类别数目']  # 重命名表头
+    print(r)
+
+
+    # cm = matplotlib.colors.ListedColormap(list('rg'))
+    # plt.figure(figsize=(9, 10), facecolor='w')
+    #
+    # plt.subplot(121)
+    # plt.title(u'原始数据')
+    # # plt.show()
+    # plt.scatter(x_train[..., 0], x_train[..., 1])
+    # x1_min, x2_min = np.min(x_train[..., :2], axis=0)
+    # x1_max, x2_max = np.max(x_train[..., :2], axis=0)
+    # x1_min, x1_max = expand(x1_min, x1_max)
+    # x2_min, x2_max = expand(x2_min, x2_max)
+    # plt.xlim((x1_min, x1_max))
+    # plt.ylim((x2_min, x2_max))
+    # plt.grid(True)
+    #
+    # plt.subplot(122)
+    # plt.title(u'KMeans++聚类')
+    # plt.scatter(x_train[..., 0], x_train[..., 1])
+    # plt.xlim((x1_min, x1_max))
+    # plt.ylim((x2_min, x2_max))
+    # plt.grid(True)
+    #
+    # plt.tight_layout(2)
+    # plt.suptitle(u'KMeans++', fontsize=18)
+    # plt.subplots_adjust(top=0.92)
+    # plt.show()
+
+
     # XGBoost
     data_train = xgb.DMatrix(x_train, label=y_train)
     data_test = xgb.DMatrix(x_test, label=y_test)
     watch_list = [(data_test, 'eval'), (data_train, 'train')]
     param = {'max_depth': 3, 'eta': 0.5, 'silent': 1, 'objective': 'binary:logistic'}
-             # 'subsample': 1, 'alpha': 0, 'lambda': 0, 'min_child_weight': 1}
+    # 'subsample': 1, 'alpha': 0, 'lambda': 0, 'min_child_weight': 1}
     bst = xgb.train(param, data_train, num_boost_round=100, evals=watch_list)
     y_hat = bst.predict(data_test)
     # write_result(bst, 3)

@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors
 from sklearn.cluster import spectral_clustering
 from sklearn.feature_extraction import image
+
 from PIL import Image
 import time
 
